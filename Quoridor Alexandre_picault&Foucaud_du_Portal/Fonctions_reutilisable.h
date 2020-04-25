@@ -10,6 +10,34 @@
 
 #define Fonctions_reutilisable_h
 
+#define NB_CHAR 20
+
 void clear_console (void);
 
 void delay (void);
+
+struct coordinates
+{
+    int x;
+    int y;
+};
+typedef struct coordinates coordinates;
+
+
+struct pion
+{
+    char name[NB_CHAR];
+    int number_player;
+    int number_fence;
+    coordinates coord;
+};
+typedef struct pion pion;
+
+
+struct fence
+{
+    coordinates coord;
+};
+typedef struct fence fence;
+
+
