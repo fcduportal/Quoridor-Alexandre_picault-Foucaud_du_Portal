@@ -6,6 +6,12 @@
 //  Copyright © 2020 Foucaud de Bouët du Portal&Alexandre Picault. All rights reserved.
 //
 
+
+
+
+#ifndef info_start_h
+#define info_start_h
+
 #include <stdio.h>
 #include "Infos_start.h"
 #include "Fonctions_reutilisable.h"
@@ -23,12 +29,13 @@ void info_start(int *nb_players, int *nb_bots, int *duration) //Fonction which a
         printf("Il y a %d joueurs humain.\n\n",*nb_players);
         
         
+        /*
         printf ("Combien d'IA vont jouer ?\n"); // Get the number of bots.
         scanf("%d",&*nb_bots);
         printf("Il y a %d IA.\n\n",*nb_bots);
         
         nb_tot = *nb_players + *nb_bots; // Have the total number of players.
-        
+        */
         
         
         /*
@@ -88,3 +95,6 @@ void info_start(int *nb_players, int *nb_bots, int *duration) //Fonction which a
     delay();
     clear_console();
 }
+
+
+#endif /* info_start_h */

@@ -8,9 +8,12 @@
 
 
 
-#include <stdio.h>
-#include "Fonctions_reutilisable.h"
+#ifndef Fonctions_reutilisable_h
+#define Fonctions_reutilisable_h
 
+#include <stdio.h>
+#include <stdlib.h>
+#include "Fonctions_reutilisable.h"
 
 
 void clear_console (void)
@@ -24,3 +27,7 @@ void delay (void)
 {
     usleep(1000000);
 }
+
+
+#endif /* Fonctions_reutilisable_h */
+

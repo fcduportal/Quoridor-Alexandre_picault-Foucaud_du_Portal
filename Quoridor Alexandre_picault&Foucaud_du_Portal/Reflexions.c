@@ -40,11 +40,35 @@ A        Commencer le décompte;
  
  
  
+ Fonctions à faire :
+ Rentrer coordonées pion
+ rentrer cooordonnées barrières
+ struct barière 20
+ {
+ player
+ n° barière
+ cooordonées
+ }
+ 
+ struct pion 4
+{
+ Numéro player
+ Nb barrière restant
+ cooordonées
+ }
+ 
+ 
+ 
+ 
  - Jouer :
     Commencer par le joueur choisi;
+        fonction random
+ 
+ 
         Joueur humain
         Lui demander s'il veut jouer une barière ou son pion;
-            Barrière
+  si
+        Barrière
                 Regarder s'il lui reste des barières;
                     si il lui en reste;
                         Demander où placer sa barière (coordonnées des deux cases de la barière);
@@ -53,10 +77,14 @@ A        Commencer le décompte;
                         alors accepter l'emplacement
                     sinon
                         lui dire le problème et lui demander de rentrer d'autres coordonées
-                    Sinon lui annoncer qu'il ne lui en reste pas
+                        Appel fonction rentrer coordonnées
  
+                    Sinon lui annoncer qu'il ne lui en reste pas
+
+ 
+ sinon
         Pion
- ( Afficher les endroits ou il peut aller );
+Lui rappeler ou il est
  Demander où placer son pion (coordonnées de la cases);
  si la case du pion et celle souhaitée sont à coté horizontement ou verticalement;
  si la case est libre;
@@ -66,8 +94,44 @@ A        Commencer le décompte;
  
  
  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
  Comment faire l'IA:
  
+ 
+ struct jeubot
+ {
+ toutes les actions qu'il peut faire
+ Pour chacunes des ces actions il doit determiner toute les actions que peut faire le joueur
+ Calcul des toute les actions qu'il peut faire
+ 
+ }
  
  
  Quand c'est au tour de l'IA, il doit pouvoir déterminer toute les possibilitées de jeu qu'il peut faire ainsi que toute les possibilitées de jeu du joueur après avoir lui même joué et enfin une dernière fois ses possibilitées de jeu.
@@ -80,4 +144,10 @@ A        Commencer le décompte;
  ou encore la solution qui propose le plus de résultats satisfaisants.
  
  Le mieux serait d'attribuer des coefficients à chaque action exemple : 2 pour avancer, 1 pour ralentir le joueuer adverse ... et choisir l'action qui a la meilleure somme pondéré de ces valeurs. Les coefficients pourraient varier en fonction de l'avancement du pion adverse.
+
  */
+
+
+
+
+
