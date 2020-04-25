@@ -40,4 +40,6 @@ struct fence
 };
 typedef struct fence fence;
 
+void saisir_coord_Pion (coordinates *point);
+void afficher_coord_Pion (coordinates *point);
 

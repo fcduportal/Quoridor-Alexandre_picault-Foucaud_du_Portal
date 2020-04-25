@@ -24,10 +24,10 @@ int main(int argc, const char * argv[])
     
     
     
-    int nb_players = 0, nb_bots = 0, duration = 0;
+    int nb_players = 0, duration = 0;  //nb_bots = 0,
     
 
-    info_start(&nb_players, &nb_bots, &duration); // OK Call fonction to ask the first info in order to adress differents rules to the game.
+   // info_start(&nb_players, &nb_bots, &duration); // OK Call fonction to ask the first info in order to adress differents rules to the game.
     
     
     
