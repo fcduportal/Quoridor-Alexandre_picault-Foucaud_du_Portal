@@ -31,3 +31,24 @@ void delay (void)
 
 #endif /* Fonctions_reutilisable_h */
 
+
+
+
+void saisir_coord_Pion (coordinates *point)
+{
+    pion player1;
+    
+    printf("Ou voulez vous aller ?\n");
+    printf("Entrez l'abcisse du point :\n");
+    scanf("%d",&player1.coord.x);
+    printf("Entrez l'ordonnees du point :\n");
+    scanf("%d",&player1.coord.y);
+
+}
+
+
+void afficher_coord_Pion (coordinates *point)
+{
+    pion player1;
+    printf("Votre piont est à la case de coordonees x: %d et y: %d",player1.coord.x, player1.coord.y);
+}

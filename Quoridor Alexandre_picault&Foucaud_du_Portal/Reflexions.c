@@ -41,8 +41,10 @@ A        Commencer le décompte;
  
  
  Fonctions à faire :
+ 
  Rentrer coordonées pion
  rentrer cooordonnées barrières
+ 
  struct barière 20
  {
  player
