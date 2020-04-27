@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1EB95583245434F70019CC7E /* partie_jouer.c in Sources */ = {isa = PBXBuildFile; fileRef = 1EB95582245434F70019CC7E /* partie_jouer.c */; };
 		6038824B2433BC9C00CD8112 /* Fonctions_reutilisable.c in Sources */ = {isa = PBXBuildFile; fileRef = 6038824A2433BC9C00CD8112 /* Fonctions_reutilisable.c */; };
 		6038C3F6241E233400C6EF82 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 6038C3F5241E233400C6EF82 /* main.c */; };
 		6052C09C243F7DF3006B2FD4 /* Plateau.c in Sources */ = {isa = PBXBuildFile; fileRef = 6052C09B243F7DF3006B2FD4 /* Plateau.c */; };
@@ -27,6 +28,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1EB95581245434F70019CC7E /* partie_jouer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = partie_jouer.h; sourceTree = "<group>"; };
+		1EB95582245434F70019CC7E /* partie_jouer.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = partie_jouer.c; sourceTree = "<group>"; };
 		603882492433BC9C00CD8112 /* Fonctions_reutilisable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Fonctions_reutilisable.h; sourceTree = "<group>"; };
 		6038824A2433BC9C00CD8112 /* Fonctions_reutilisable.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Fonctions_reutilisable.c; sourceTree = "<group>"; };
 		6038C3F2241E233400C6EF82 /* Quoridor Alexandre_picault&Foucaud_du_Portal */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Quoridor Alexandre_picault&Foucaud_du_Portal"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,6 +73,8 @@
 			children = (
 				6038C3F5241E233400C6EF82 /* main.c */,
 				60FEB3062438CFFC00B3D5D0 /* Reflexions.c */,
+				1EB95581245434F70019CC7E /* partie_jouer.h */,
+				1EB95582245434F70019CC7E /* partie_jouer.c */,
 				603882492433BC9C00CD8112 /* Fonctions_reutilisable.h */,
 				6038824A2433BC9C00CD8112 /* Fonctions_reutilisable.c */,
 				60FEB3022438CE4D00B3D5D0 /* Infos_start.h */,
@@ -137,6 +142,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1EB95583245434F70019CC7E /* partie_jouer.c in Sources */,
 				60FEB3072438CFFC00B3D5D0 /* Reflexions.c in Sources */,
 				6038824B2433BC9C00CD8112 /* Fonctions_reutilisable.c in Sources */,
 				6052C09C243F7DF3006B2FD4 /* Plateau.c in Sources */,
