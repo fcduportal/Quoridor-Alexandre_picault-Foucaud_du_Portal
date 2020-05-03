@@ -11,4 +11,8 @@
 
 #include <stdio.h>
 
+void play (void);
+void playfence (void);
+
+
 #endif /* partie_jouer_h */

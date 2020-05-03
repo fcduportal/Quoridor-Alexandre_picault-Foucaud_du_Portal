@@ -7,23 +7,67 @@
 //
 
 #include "partie_jouer.h"
-int choice=0;
+#include "Fonctions_reutilisable.h"
+#include <stdio.h>
+#include <stdlib.h>
+
+void play (void)
 {
+    int choice=0;
+    
     printf("si vous voulez jouer une barriere taper 1 ou un pion taper 2:/n");
     scanf("%d",&choice);
-    if (choice==1)
+    
+    switch (choice)
     {
-        //struct combien il rete de barriere
-        if (fence>0)
+        case 1:
+            // play fence
+            break;
+            
+        case 2:
         {
-            //placement sur le plateau ?
+            // play pion
+        }
+            break;
+            
+            
+        default:
+        {
+            printf("Vous devez choisir 1 ou 2 :");
+            delay();
+            play();
+        }
+            break;
+    }
+}
+
+
+void playfence (void)
+{
+    
+    pion player1; // Pour l'instant on met player1 mais après il vas falloir faire un tableau de player
+    
+    
+    printf("Il vous reste %d barrières ",player1.number_fence);
+    switch (player1.number_fence)
+    {
+        case 0:
+            {
+                printf("Vous n'avez plus de barrierres.\nVeuillez déplacer votre pion.");
+                play();
+            }
+            break;
+            
+        default:
+        {
+            printf("Veuillez rentrer les coordonee x; y de votre premier point de la barriere");
+//            scanf("%d", player1.) il faut enregistrer le x et y
+            
+            printf("Veuillez rentrer les coordonee x; y du  deuxième point de la barriere");
+            //            scanf("%d", player1.) il faut enregistrer le x et y
+            
             
         }
-        
+        break;
     }
-    if (choice==2)
-    {
-        
-    }
-    
 }

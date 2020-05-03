@@ -30,7 +30,7 @@ int main(int argc, const char * argv[])
    // info_start(&nb_players, &nb_bots, &duration); // OK Call fonction to ask the first info in order to adress differents rules to the game.
     
     
-    
+
     
     
 ///
