@@ -1,22 +1,25 @@
-//
-//  Infos_start.c
-//  Quoridor Alexandre_picault&Foucaud_du_Portal
-//
-//  Created by Foucaud de Bouët du Portal on 04/04/2020.
-//  Copyright © 2020 Foucaud de Bouët du Portal&Alexandre Picault. All rights reserved.
-//
-
+/*
+   Infos_start.c
+   Quoridor Alexandre_picault&Foucaud_du_Portal
+ 
+   Created by Foucaud de Bouët du Portal on 04/04/2020.
+   Copyright © 2020 Foucaud de Bouët du Portal&Alexandre Picault. All rights reserved.
+ */
 
 
 
 #ifndef info_start_h
 #define info_start_h
 
+///
 
 #include "header.h"
 
 void info_start(int *nb_players, int *duration) //Fonction which ask the first info.
 {
+    
+    //
+    
     printf("==NOMBRE DE JOUEURS==\n2. 2joueurs\n4. 4joueurs\n");
     scanf("%d", nb_players);
     
@@ -49,7 +52,7 @@ void info_start(int *nb_players, int *duration) //Fonction which ask the first i
     delay();
     clear_console();
     
-    
+    //
     
     printf("==TEMPS DE PARTIE==\n10 minutes\n15 minutes\n20.minutes\n");
     scanf("%d", duration);
@@ -86,7 +89,11 @@ void info_start(int *nb_players, int *duration) //Fonction which ask the first i
     }
     delay();
     clear_console();
+    
+    //
+    
 }
 
+///
 
 #endif /* info_start_h */

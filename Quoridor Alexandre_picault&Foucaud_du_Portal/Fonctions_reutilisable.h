@@ -1,27 +1,32 @@
-//
-//  Fonctions_reutilisable.h
-//  Quoridor Alexandre_picault&Foucaud_du_Portal
-//
-//  Created by Foucaud de Bouët du Portal on 31/03/2020.
-//  Copyright © 2020 Foucaud de Bouët du Portal&Alexandre Picault. All rights reserved.
-//
-
-
- #include <time.h>
-
- #define Fonctions_reutilisable_h
+/*
+   Fonctions_reutilisable.h
+   Quoridor Alexandre_picault&Foucaud_du_Portal
  
+   Created by Foucaud de Bouët du Portal on 31/03/2020.
+   Copyright © 2020 Foucaud de Bouët du Portal&Alexandre Picault. All rights reserved.
+ */
 
 
+
+#define Fonctions_reutilisable_h
+
+///
+
+#include <time.h>
+
+//
 
 #define NB_CHAR 20
 
+//
+
 void clear_console (void);
+
+//
 
 void delay (void);
 
-
-
+//
 
 struct pion
 {
@@ -33,6 +38,7 @@ struct pion
 };
 typedef struct pion pion;
 
+//
 
 struct fence
 {
@@ -44,10 +50,20 @@ struct fence
 };
 typedef struct fence fence;
 
+//
 
 void enter_coord_Pion (void);
-void print_coord_Pion (void);
 
+//
+
+void display_coord_Pion (void);
+
+//
 
 void enter_coord_fence (void);
-void print_coord_fence (void);
+
+//
+
+void display_coord_fence (void);
+
+///
