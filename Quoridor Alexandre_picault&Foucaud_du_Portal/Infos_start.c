@@ -17,9 +17,14 @@
 
 void info_start(int *nb_players, int *duration) //Fonction which ask the first info.
 {
-    
-    //
-    
+    demand_nb_player(nb_players, duration);
+    demand_time(nb_players, duration);
+}
+
+//
+
+void demand_nb_player (int *nb_players, int *duration)
+{
     printf("==NOMBRE DE JOUEURS==\n2. 2joueurs\n4. 4joueurs\n");
     scanf("%d", nb_players);
     
@@ -46,12 +51,14 @@ void info_start(int *nb_players, int *duration) //Fonction which ask the first i
             info_start(nb_players, duration);
             break;
         }
-
     }
     clear_console();
-    
-    //
-    
+}
+
+//
+
+void demand_time (int *nb_players, int *duration)
+{
     printf("==TEMPS DE PARTIE==\n10 minutes\n15 minutes\n20.minutes\n");
     scanf("%d", duration);
     
@@ -82,12 +89,8 @@ void info_start(int *nb_players, int *duration) //Fonction which ask the first i
             info_start(nb_players, duration);
             break;
         }
-
     }
     clear_console();
-    
-    //
-    
 }
 
 ///

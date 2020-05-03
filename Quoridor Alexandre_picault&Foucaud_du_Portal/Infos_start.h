@@ -15,6 +15,14 @@
 
 void info_start(int *nb_players, int *duration);
 
+//
+
+void demand_nb_player (int *nb_players, int *duration);
+
+//
+
+void demand_time (int *nb_players, int *duration);
+
 ///
 
 #endif /* Infos_start_h */
