@@ -1,9 +1,9 @@
 /*
-   Fonctions_reutilisable.c
-   Quoridor Alexandre_picault&Foucaud_du_Portal
+ Fonctions_reutilisable.c
+ Quoridor Alexandre_picault&Foucaud_du_Portal
  
-   Created by Foucaud de Bouët du Portal on 31/03/2020.
-   Copyright © 2020 Foucaud de Bouët du Portal&Alexandre Picault. All rights reserved.
+ Created by Foucaud de Bouët du Portal on 31/03/2020.
+ Copyright © 2020 Foucaud de Bouët du Portal&Alexandre Picault. All rights reserved.
  */
 
 
@@ -19,7 +19,7 @@
 
 void clear_console (void)
 {
-    usleep(100000);
+    usleep(1000000);
     usleep(1000000);
     printf ("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"); // To erase console, not great but its work.
 }
@@ -81,7 +81,7 @@ void switchtest (int test, fence Barrier)
             
         case -1:
             break;
-
+            
         default:
         {
             printf("Votre barriere doit etre place sur deux cases adjacentes.\n");

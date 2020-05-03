@@ -1,9 +1,9 @@
 /* 
-   Infos_start.h
-   Quoridor Alexandre_picault&Foucaud_du_Portal
+ Infos_start.h
+ Quoridor Alexandre_picault&Foucaud_du_Portal
  
-   Created by Foucaud de Bouët du Portal on 04/04/2020.
-   Copyright © 2020 Foucaud de Bouët du Portal&Alexandre Picault. All rights reserved.
+ Created by Foucaud de Bouët du Portal on 04/04/2020.
+ Copyright © 2020 Foucaud de Bouët du Portal&Alexandre Picault. All rights reserved.
  */
 
 

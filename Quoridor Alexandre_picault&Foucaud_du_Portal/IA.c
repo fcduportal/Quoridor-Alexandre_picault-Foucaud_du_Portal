@@ -1,17 +1,17 @@
 /*
-   IA.c
-   Quoridor Alexandre_picault&Foucaud_du_Portal
+ IA.c
+ Quoridor Alexandre_picault&Foucaud_du_Portal
  
-   Created by Foucaud de Bouët du Portal on 03/05/2020.
-   Copyright © 2020 Foucaud de Bouët du Portal&Alexandre Picault. All rights reserved.
+ Created by Foucaud de Bouët du Portal on 03/05/2020.
+ Copyright © 2020 Foucaud de Bouët du Portal&Alexandre Picault. All rights reserved.
  */
 
 
 /*
  Main
-    nb_bots = 0,
+ nb_bots = 0,
  
-    fonction info start (&nb_bots,)
+ fonction info start (&nb_bots,)
  
  
  
@@ -26,14 +26,14 @@
  
  
  
-  if(nb_tot <= 4) // Verifing that the number of players is less than 4.
-  {
-  good = 1; // Exit while.
-  }
-  else // Loop.
-  {
-  printf("Desole, vous etes trop nombreux, le total de joueurs doit etre inferieur ou egale a 4.\n");
-  }
-  */
+ if(nb_tot <= 4) // Verifing that the number of players is less than 4.
+ {
+ good = 1; // Exit while.
+ }
+ else // Loop.
+ {
+ printf("Desole, vous etes trop nombreux, le total de joueurs doit etre inferieur ou egale a 4.\n");
+ }
+ */
 
- 
+

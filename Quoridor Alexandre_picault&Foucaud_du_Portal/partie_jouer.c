@@ -1,9 +1,9 @@
 /*
-   partie_jouer.c
-   Quoridor Alexandre_picault&Foucaud_du_Portal
+ partie_jouer.c
+ Quoridor Alexandre_picault&Foucaud_du_Portal
  
-   Created by Alexandre Picault on 25/04/2020.
-   Copyright © 2020 Foucaud de Bouët du Portal&Alexandre Picault. All rights reserved.
+ Created by Alexandre Picault on 25/04/2020.
+ Copyright © 2020 Foucaud de Bouët du Portal&Alexandre Picault. All rights reserved.
  */
 
 
@@ -18,7 +18,7 @@ void playFence (void)
     
     //
     
-    pion player1 = {"",1,10,0,0}; // Pour l'instant on met player1 mais après il vas falloir faire un tableau de player 
+    pion player1 = {"",1,10,0,0}; // Pour l'instant on met player1 mais après il vas falloir faire un tableau de player
     
     //
     
@@ -26,10 +26,10 @@ void playFence (void)
     switch (player1.number_fence)
     {
         case 0:
-            {
-                printf("Vous n'avez plus de barrieres.\nVeuillez déplacer votre pion.");
-                //play pion
-            }
+        {
+            printf("Vous n'avez plus de barrieres.\nVeuillez déplacer votre pion.");
+            //play pion
+        }
             break;
             
         default:
@@ -37,7 +37,7 @@ void playFence (void)
             enter_coord_fence();
             display_coord_fence();
         }
-        break;
+            break;
     }
     
     //
@@ -47,5 +47,5 @@ void playFence (void)
 
 void playPion (void)
 {
-// enter code here
+    // enter code here
 }

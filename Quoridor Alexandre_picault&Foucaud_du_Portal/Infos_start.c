@@ -1,9 +1,9 @@
 /*
-   Infos_start.c
-   Quoridor Alexandre_picault&Foucaud_du_Portal
+ Infos_start.c
+ Quoridor Alexandre_picault&Foucaud_du_Portal
  
-   Created by Foucaud de Bouët du Portal on 04/04/2020.
-   Copyright © 2020 Foucaud de Bouët du Portal&Alexandre Picault. All rights reserved.
+ Created by Foucaud de Bouët du Portal on 04/04/2020.
+ Copyright © 2020 Foucaud de Bouët du Portal&Alexandre Picault. All rights reserved.
  */
 
 
@@ -75,7 +75,7 @@ void demand_time (int *nb_players, int *duration)
             printf("Vous allez jouer %d minutes", *duration);
             break;
         }
-         
+            
         case 20:
         {
             printf("Vous allez jouer %d minutes", *duration);
@@ -86,7 +86,7 @@ void demand_time (int *nb_players, int *duration)
         {
             printf("Choississez 10, 15, 20 minutes.\n");
             clear_console();
-            info_start(nb_players, duration);
+            demand_time(*nb_players, *duration);
             break;
         }
     }
