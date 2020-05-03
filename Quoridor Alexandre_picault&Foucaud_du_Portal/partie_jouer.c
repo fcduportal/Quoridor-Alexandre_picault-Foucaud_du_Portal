@@ -45,10 +45,10 @@ void play (void)
 void playfence (void)
 {
     
-    pion player1; // Pour l'instant on met player1 mais après il vas falloir faire un tableau de player
+    pion player1 = {"",1,10,0,0}; // Pour l'instant on met player1 mais après il vas falloir faire un tableau de player
     
     
-    printf("Il vous reste %d barrières ",player1.number_fence);
+    printf("Il vous reste %d barrières\n",player1.number_fence);
     switch (player1.number_fence)
     {
         case 0:
@@ -60,13 +60,8 @@ void playfence (void)
             
         default:
         {
-            printf("Veuillez rentrer les coordonee x; y de votre premier point de la barriere");
-//            scanf("%d", player1.) il faut enregistrer le x et y
-            
-            printf("Veuillez rentrer les coordonee x; y du  deuxième point de la barriere");
-            //            scanf("%d", player1.) il faut enregistrer le x et y
-            
-            
+            enter_coord_fence();
+            print_coord_fence();
         }
         break;
     }

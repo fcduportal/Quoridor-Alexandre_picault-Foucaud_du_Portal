@@ -16,12 +16,7 @@ void clear_console (void);
 
 void delay (void);
 
-struct coordinates
-{
-    int x;
-    int y;
-};
-typedef struct coordinates coordinates;
+
 
 
 struct pion
@@ -29,17 +24,26 @@ struct pion
     char name[NB_CHAR];
     int number_player;
     int number_fence;
-    coordinates coord;
+    int x;
+    int y;
 };
 typedef struct pion pion;
 
 
 struct fence
 {
-    coordinates coord;
+    int x1;
+    int y1;
+    int x2;
+    int y2;
+
 };
 typedef struct fence fence;
 
-void saisir_coord_Pion (coordinates *point);
-void afficher_coord_Pion (coordinates *point);
 
+void enter_coord_Pion (void);
+void print_coord_Pion (void);
+
+
+void enter_coord_fence (void);
+void print_coord_fence (void);
