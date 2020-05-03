@@ -86,7 +86,7 @@ void demand_time (int *nb_players, int *duration)
         {
             printf("Choississez 10, 15, 20 minutes.\n");
             clear_console();
-            demand_time(*nb_players, *duration);
+            demand_time(nb_players, duration);
             break;
         }
     }
