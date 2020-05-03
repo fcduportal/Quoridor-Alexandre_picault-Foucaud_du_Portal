@@ -16,10 +16,9 @@
 
 int main()
 {
-    fonction_a_tester();
+//    fonction_a_tester();
     
     
-/*
  int nb_players = 0, duration = 0;
  
  //
@@ -33,7 +32,7 @@ int main()
      case 2: // play 2
      {
          printf("Faire le jeu avec 2 joueurs\n");
-         //Game_2_Player();
+         Game_2_Player();
          break;
      }
          
@@ -49,7 +48,6 @@ int main()
  
  //
 
- */
 }
 
 ///

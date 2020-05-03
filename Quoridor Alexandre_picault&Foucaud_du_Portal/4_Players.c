@@ -43,7 +43,6 @@ void Game_4_Player (void)
         default:
         {
             printf("Vous devez choisir 1 ou 2 :");
-            delay();
             clear_console();
             Game_4_Player();
         }

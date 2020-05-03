@@ -24,10 +24,6 @@ void clear_console (void);
 
 //
 
-void delay (void);
-
-//
-
 struct pion
 {
     char name[NB_CHAR];

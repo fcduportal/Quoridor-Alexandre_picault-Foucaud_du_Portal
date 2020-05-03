@@ -21,7 +21,7 @@ void Game_2_Player (void)
     
     //
     
-    printf("si vous voulez jouer une barriere taper 1 ou un pion taper 2:/n");
+    printf("si vous voulez jouer une barriere taper 1 ou un pion taper 2:\n");
     scanf("%d",&choice);
     
     switch (choice)
@@ -42,7 +42,6 @@ void Game_2_Player (void)
         default:
         {
             printf("Vous devez choisir 1 ou 2 :");
-            delay();
             clear_console();
             Game_2_Player();
         }

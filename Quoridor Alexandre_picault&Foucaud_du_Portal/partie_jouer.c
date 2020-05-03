@@ -47,7 +47,5 @@ void playFence (void)
 
 void playPion (void)
 {
-    display_coord_Pion();
-    enter_coord_Pion();
-    display_coord_Pion();
+// enter code here
 }

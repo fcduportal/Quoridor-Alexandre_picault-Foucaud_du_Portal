@@ -42,14 +42,12 @@ void info_start(int *nb_players, int *duration) //Fonction which ask the first i
         default:
         {
             printf("Choississez 2 ou 4\n");
-            delay();
             clear_console();
             info_start(nb_players, duration);
             break;
         }
 
     }
-    delay();
     clear_console();
     
     //
@@ -80,14 +78,12 @@ void info_start(int *nb_players, int *duration) //Fonction which ask the first i
         default:
         {
             printf("Choississez 10, 15, 20 minutes.\n");
-            delay();
             clear_console();
             info_start(nb_players, duration);
             break;
         }
 
     }
-    delay();
     clear_console();
     
     //
