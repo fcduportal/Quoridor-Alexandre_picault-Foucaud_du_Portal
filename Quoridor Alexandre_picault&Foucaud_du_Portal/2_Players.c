@@ -1,12 +1,11 @@
 //
-//  Plateau.h
+//  2_Players.c
 //  Quoridor Alexandre_picault&Foucaud_du_Portal
 //
-//  Created by Foucaud de Bouët du Portal on 09/04/2020.
+//  Created by Foucaud de Bouët du Portal on 03/05/2020.
 //  Copyright © 2020 Foucaud de Bouët du Portal&Alexandre Picault. All rights reserved.
 //
 
-#define Plateau_h
+#include "header.h"
 
 
-void init_plateau(void);

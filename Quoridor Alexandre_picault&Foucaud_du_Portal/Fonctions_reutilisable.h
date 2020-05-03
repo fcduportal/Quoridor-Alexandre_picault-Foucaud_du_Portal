@@ -6,9 +6,13 @@
 //  Copyright © 2020 Foucaud de Bouët du Portal&Alexandre Picault. All rights reserved.
 //
 
-#include <time.h>
 
-#define Fonctions_reutilisable_h
+ #include <time.h>
+
+ #define Fonctions_reutilisable_h
+ 
+
+
 
 #define NB_CHAR 20
 

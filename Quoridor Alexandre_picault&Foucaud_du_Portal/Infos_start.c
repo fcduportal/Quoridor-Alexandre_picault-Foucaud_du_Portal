@@ -12,85 +12,77 @@
 #ifndef info_start_h
 #define info_start_h
 
-#include <stdio.h>
-#include "Infos_start.h"
-#include "Fonctions_reutilisable.h"
 
-void info_start(int *nb_players, int *nb_bots, int *duration) //Fonction which ask the first info.
+#include "header.h"
+
+void info_start(int *nb_players, int *duration) //Fonction which ask the first info.
 {
-    int  nb_tot = 0, good = 0;
+    printf("==NOMBRE DE JOUEURS==\n2. 2joueurs\n4. 4joueurs\n");
+    scanf("%d", nb_players);
     
-    
-    
-    while (good != 1)
+    switch (*nb_players)
     {
-        printf ("Combien de joueurs humains vont jouer ?\n");  // Get the number of humans.
-        scanf("%d",&*nb_players);
-        printf("Il y a %d joueurs humain.\n\n",*nb_players);
-        
-        
-        /*
-        printf ("Combien d'IA vont jouer ?\n"); // Get the number of bots.
-        scanf("%d",&*nb_bots);
-        printf("Il y a %d IA.\n\n",*nb_bots);
-        
-        nb_tot = *nb_players + *nb_bots; // Have the total number of players.
-        */
-        
-        
-        /*
-         if(nb_tot <= 4) // Verifing that the number of players is less than 4.
-         {
-         good = 1; // Exit while.
-         }
-         else // Loop.
-         {
-         printf("Desole, vous etes trop nombreux, le total de joueurs doit etre inferieur ou egale a 4.\n");
-         }
-         */
-        
-        good = (nb_tot <= 4) ? 1 : 0;
-        
-        
-        
-        if (good!=1)
+        case 2:
         {
-            printf("Desole, vous etes trop nombreux, le total de joueurs doit etre inferieur ou egale a 4.\n\n");
+            printf("Vous allez jouer a 2 mais combien de temps ?\n");
+            break;
         }
+            
+            
+        case 4:
+        {
+            printf("Vous allez jouer a 4 mais combien de temps ?\n");
+            break;
+        }
+            
+            
+        default:
+        {
+            printf("Choississez 2 ou 4\n");
+            delay();
+            clear_console();
+            info_start(nb_players, duration);
+            break;
+        }
+
     }
-    printf("Il y a donc %d joueurs humains et %d joueurs ordinateurs.\n\n\n",*nb_players, *nb_bots);
-    
-    /*
-     nb_tot = 5
-     while nb_tot > 4....
-     */
-    
     delay();
     clear_console();
     
     
     
-    good = 0;
+    printf("==TEMPS DE PARTIE==\n10 minutes\n15 minutes\n20.minutes\n");
+    scanf("%d", duration);
     
-    while (good != 1)
+    switch (*duration)
     {
-        printf ("Combien de temps voulez vous jouer : entre 10 a 20 minutes.\n\n");  // Get the duration.
-        scanf("%d",&*duration);
-        
-        
-        if(*duration < 10)
+        case 10:
         {
-            printf("Desole, la partie sera trop courte, choississez une duree entre 10 et 20 minute.\n");
+            printf("Vous allez jouer %d minutes", *duration);
+            break;
         }
-        else if (*duration > 20)
+            
+        case 15:
         {
-            printf("Desole, la partie sera trop longue, choississez une duree entre 10 et 20 minute.\n");
+            printf("Vous allez jouer %d minutes", *duration);
+            break;
         }
-        else
+         
+        case 20:
         {
-            good = 1;
-            printf("La partie durera maximum %d minutes.\n\n\n",*duration);
+            printf("Vous allez jouer %d minutes", *duration);
+            break;
         }
+            
+        default:
+        {
+            printf("Choississez 10, 15, 20 minutes.\n");
+            delay();
+            clear_console();
+            info_start(nb_players, duration);
+            break;
+        }
+
     }
     delay();
     clear_console();

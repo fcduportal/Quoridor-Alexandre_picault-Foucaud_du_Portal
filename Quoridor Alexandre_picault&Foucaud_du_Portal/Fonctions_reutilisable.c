@@ -11,10 +11,8 @@
 #ifndef Fonctions_reutilisable_h
 #define Fonctions_reutilisable_h
 
-#include <stdio.h>
-#include <stdlib.h>
-#include "Fonctions_reutilisable.h"
 
+#include "header.h"
 
 void clear_console (void)
 {
@@ -26,6 +24,7 @@ void clear_console (void)
 void delay (void)
 {
     usleep(1000000);
+    usleep(100000);
 }
 
 

@@ -8,35 +8,33 @@
 
 
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <time.h>
-
-#include "Fonctions_reutilisable.h"
-#include "partie_jouer.h"
-#include "Infos_start.h"
-#include "Plateau.h"
-
+#include "header.h"
 
 
 
 int main(int argc, const char * argv[])
 {
-    
-    
-    
-    int nb_players = 0, duration = 0;  //nb_bots = 0,
-    
 
-   // info_start(&nb_players, &nb_bots, &duration); // OK Call fonction to ask the first info in order to adress differents rules to the game.
+    int nb_players = 0, duration = 0;
+    
+    info_start(&nb_players, &duration); //  Call fonction to ask the first info in order to adress differents rules to the game.
     
     
-    
-    
-    
-///
-  //  init_plateau();
-///
-    return 0;
+     
+    switch (nb_players) // play in fonction of the number of players
+    {
+        case 2: // play 2
+        {
+//            Game_2_Player();
+            break;
+        }
+            
+            
+        case 4: // play 4
+        {
+            
+            break;
+        }
+               return 0;
+    }
 }
-

@@ -6,10 +6,8 @@
 //  Copyright © 2020 Foucaud de Bouët du Portal&Alexandre Picault. All rights reserved.
 //
 
-#include "partie_jouer.h"
-#include "Fonctions_reutilisable.h"
-#include <stdio.h>
-#include <stdlib.h>
+
+#include "header.h"
 
 void play (void)
 {

@@ -1,12 +1,11 @@
 //
-//  Infos_start.h
+//  4_Players.c
 //  Quoridor Alexandre_picault&Foucaud_du_Portal
 //
-//  Created by Foucaud de Bouët du Portal on 04/04/2020.
+//  Created by Foucaud de Bouët du Portal on 03/05/2020.
 //  Copyright © 2020 Foucaud de Bouët du Portal&Alexandre Picault. All rights reserved.
 //
 
+#include "header.h"
 
-#define Infos_start_h
 
-void info_start(int *nb_players, int *duration);
