@@ -60,6 +60,11 @@ void display_coord_Pion (void);
 
 //
 
+void tester_barrier (fence Barrier);
+void switchtest (int test, fence Barrier);
+
+//
+
 void enter_coord_fence (void);
 
 //

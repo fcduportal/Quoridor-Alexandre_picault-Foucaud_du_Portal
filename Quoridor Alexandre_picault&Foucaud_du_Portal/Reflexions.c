@@ -69,6 +69,12 @@ A        Commencer le décompte;
         Joueur humain
         Lui demander s'il veut jouer une barière ou son pion;
   si
+ 
+ 
+ 
+ 
+ 
+ 
         Barrière
                 Regarder s'il lui reste des barières;
                     si il lui en reste;
@@ -82,6 +88,11 @@ A        Commencer le décompte;
  
                     Sinon lui annoncer qu'il ne lui en reste pas
 
+ 
+ 
+ 
+ 
+ 
  
  sinon
         Pion
