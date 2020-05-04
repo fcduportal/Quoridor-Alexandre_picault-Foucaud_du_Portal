@@ -1,11 +1,10 @@
-//
-//  Reflexions.c
-//  Quoridor Alexandre_picault&Foucaud_du_Portal
-//
-//  Created by Foucaud de Bouët du Portal on 04/04/2020.
-//  Copyright © 2020 Foucaud de Bouët du Portal&Alexandre Picault. All rights reserved.
-//
-
+/*
+ Reflexions.c
+ Quoridor Alexandre_picault&Foucaud_du_Portal
+ 
+ Created by Foucaud de Bouët du Portal on 04/04/2020.
+ Copyright © 2020 Foucaud de Bouët du Portal&Alexandre Picault. All rights reserved.
+ */
 
 
 /*
@@ -25,18 +24,18 @@
  
  - Début :
  ( Enoncer les règles )
-    infos nécéssaires
-        
-        Demander le nombre de joueurs humains;
-        Demander le nombre de joueurs IA;
-        Demander la durée de la partie ( entre 10 à 20 min )
+ infos nécéssaires
  
-    Présentation
-A        Placer le plateau;
-F        Placer les joueurs humains et IA dans leur emplacement de départ;
-F        Placer les barrières dans leurs espaces de stockage;
-A        Determiner par un tirage au sort qui commence;
-A        Commencer le décompte;
+ Demander le nombre de joueurs humains;
+ Demander le nombre de joueurs IA;
+ Demander la durée de la partie ( entre 10 à 20 min )
+ 
+ Présentation
+ A        Placer le plateau;
+ F        Placer les joueurs humains et IA dans leur emplacement de départ;
+ F        Placer les barrières dans leurs espaces de stockage;
+ A        Determiner par un tirage au sort qui commence;
+ A        Commencer le décompte;
  
  
  
@@ -53,7 +52,7 @@ A        Commencer le décompte;
  }
  
  struct pion 4
-{
+ {
  Numéro player
  Nb barrière restant
  cooordonées
@@ -63,30 +62,41 @@ A        Commencer le décompte;
  
  
  - Jouer :
-    Commencer par le joueur choisi;
-        fonction random
+ Commencer par le joueur choisi;
+ fonction random
  
  
-        Joueur humain
-        Lui demander s'il veut jouer une barière ou son pion;
-  si
-        Barrière
-                Regarder s'il lui reste des barières;
-                    si il lui en reste;
-                        Demander où placer sa barière (coordonnées des deux cases de la barière);
-                    si les deux cases sont à coté horizontement ou verticalement;
-                    si la case est libre;
-                        alors accepter l'emplacement
-                    sinon
-                        lui dire le problème et lui demander de rentrer d'autres coordonées
-                        Appel fonction rentrer coordonnées
+ Joueur humain
+ Lui demander s'il veut jouer une barière ou son pion;
+ si
  
-                    Sinon lui annoncer qu'il ne lui en reste pas
-
+ 
+ 
+ 
+ 
+ 
+ Barrière
+ Regarder s'il lui reste des barières;
+ si il lui en reste;
+ Demander où placer sa barière (coordonnées des deux cases de la barière);
+ si les deux cases sont à coté horizontement ou verticalement;
+ si la case est libre;
+ alors accepter l'emplacement
+ sinon
+ lui dire le problème et lui demander de rentrer d'autres coordonées
+ Appel fonction rentrer coordonnées
+ 
+ Sinon lui annoncer qu'il ne lui en reste pas
+ 
+ 
+ 
+ 
+ 
+ 
  
  sinon
-        Pion
-Lui rappeler ou il est
+ Pion
+ Lui rappeler ou il est
  Demander où placer son pion (coordonnées de la cases);
  si la case du pion et celle souhaitée sont à coté horizontement ou verticalement;
  si la case est libre;
@@ -146,7 +156,7 @@ Lui rappeler ou il est
  ou encore la solution qui propose le plus de résultats satisfaisants.
  
  Le mieux serait d'attribuer des coefficients à chaque action exemple : 2 pour avancer, 1 pour ralentir le joueuer adverse ... et choisir l'action qui a la meilleure somme pondéré de ces valeurs. Les coefficients pourraient varier en fonction de l'avancement du pion adverse.
-
+ 
  */
 
 
