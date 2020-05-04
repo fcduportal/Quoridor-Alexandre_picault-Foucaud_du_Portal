@@ -14,7 +14,7 @@
 
 #include <stdio.h>
 
-//
+//player code
 
 void Game_2_Player (void);
 

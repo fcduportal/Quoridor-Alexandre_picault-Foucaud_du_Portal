@@ -15,11 +15,11 @@
 
 #include <stdio.h>
 
-//
+//play a fence
 
 void playFence (void);
 
-//
+//play a pawn
 
 void playPion (void);
 

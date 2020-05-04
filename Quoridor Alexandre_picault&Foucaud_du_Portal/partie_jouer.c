@@ -11,7 +11,7 @@
 
 #include "header.h"
 
-//
+//play a fence
 
 void playFence (void)
 {
@@ -28,7 +28,7 @@ void playFence (void)
         case 0:
         {
             printf("Vous n'avez plus de barrieres.\nVeuillez déplacer votre pion.");
-            //play pion
+            //play a pawn
         }
             break;
             
@@ -43,7 +43,7 @@ void playFence (void)
     //
 }
 
-//
+//play a pawn
 
 void playPion (void)
 {

@@ -21,7 +21,7 @@ void info_start(int *nb_players, int *duration) //Fonction which ask the first i
     demand_time(nb_players, duration);
 }
 
-//
+//request for the number of players
 
 void demand_nb_player (int *nb_players, int *duration)
 {
@@ -55,7 +55,7 @@ void demand_nb_player (int *nb_players, int *duration)
     clear_console();
 }
 
-//
+//request for party time
 
 void demand_time (int *nb_players, int *duration)
 {
