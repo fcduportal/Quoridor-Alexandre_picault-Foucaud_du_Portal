@@ -163,3 +163,47 @@
 
 
 
+
+
+
+
+
+
+
+/*
+ enumeration : partie
+ en_cours / terminé / non_debuté
+ 
+ tant que la partie est pas termine
+    jouer tout les joueurs un a un
+    
+ 
+ 
+ 
+ menu recommencer
+ printf ("voulze recommencer )
+ printf (1OUI 2non )
+ 
+ switch
+ 1
+ {
+ printf (voulez allez recom)
+ clear console
+ main ();
+ }
+ 
+ 2
+ {
+ au revoir bonne nuit
+ exit 0;
+ }
+ 
+ default
+ {
+ vous devez
+ clear console 
+ menu recomencer();
+ }
+ 
+ 
+ */
