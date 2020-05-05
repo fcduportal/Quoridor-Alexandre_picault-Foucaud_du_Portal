@@ -12,7 +12,7 @@
 
 ///
 
-void Game_2_Player (void)
+void Game_2_Player (pawn player)
 {
     
     //
@@ -28,7 +28,7 @@ void Game_2_Player (void)
     {
         case 1:
         {
-            playFence();
+            playFence(player);
             // play fence there is 10 max
             break;
         }
@@ -36,7 +36,7 @@ void Game_2_Player (void)
             
         case 2:
         {
-            playPawn();
+            playPawn(player);
             // play pawn
             break;
         }
@@ -46,7 +46,7 @@ void Game_2_Player (void)
         {
             printf("Vous devez choisir 1 ou 2 :");
             clear_console();
-            Game_2_Player();
+            Game_2_Player(player);
             break;
         }
             

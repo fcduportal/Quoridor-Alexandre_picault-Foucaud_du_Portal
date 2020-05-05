@@ -10,8 +10,8 @@
 		1EB95583245434F70019CC7E /* partie_jouer.c in Sources */ = {isa = PBXBuildFile; fileRef = 1EB95582245434F70019CC7E /* partie_jouer.c */; };
 		1EB955862461B04C0019CC7E /* random.c in Sources */ = {isa = PBXBuildFile; fileRef = 1EB955852461B04C0019CC7E /* random.c */; };
 		600B241B245EFF7900FD1F23 /* IA.c in Sources */ = {isa = PBXBuildFile; fileRef = 600B241A245EFF7900FD1F23 /* IA.c */; };
-		600B241E245F061300FD1F23 /* 2_Players.c in Sources */ = {isa = PBXBuildFile; fileRef = 600B241D245F061300FD1F23 /* 2_Players.c */; };
-		600B2427245F0AF600FD1F23 /* 4_Players.c in Sources */ = {isa = PBXBuildFile; fileRef = 600B2426245F0AF600FD1F23 /* 4_Players.c */; };
+		600B241E245F061300FD1F23 /* two_Players.c in Sources */ = {isa = PBXBuildFile; fileRef = 600B241D245F061300FD1F23 /* two_Players.c */; };
+		600B2427245F0AF600FD1F23 /* four_Players.c in Sources */ = {isa = PBXBuildFile; fileRef = 600B2426245F0AF600FD1F23 /* four_Players.c */; };
 		6038824B2433BC9C00CD8112 /* Fonctions_reutilisable.c in Sources */ = {isa = PBXBuildFile; fileRef = 6038824A2433BC9C00CD8112 /* Fonctions_reutilisable.c */; };
 		6038C3F6241E233400C6EF82 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 6038C3F5241E233400C6EF82 /* main.c */; };
 		609BC505245F255A001048BC /* test_fonction.c in Sources */ = {isa = PBXBuildFile; fileRef = 609BC504245F255A001048BC /* test_fonction.c */; };
@@ -37,11 +37,11 @@
 		1EB955842461B04C0019CC7E /* random.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = random.h; sourceTree = "<group>"; };
 		1EB955852461B04C0019CC7E /* random.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = random.c; sourceTree = "<group>"; };
 		600B241A245EFF7900FD1F23 /* IA.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = IA.c; sourceTree = "<group>"; };
-		600B241C245F061300FD1F23 /* 2_Players.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = 2_Players.h; sourceTree = "<group>"; };
-		600B241D245F061300FD1F23 /* 2_Players.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = 2_Players.c; sourceTree = "<group>"; };
+		600B241C245F061300FD1F23 /* two_Players.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = two_Players.h; sourceTree = "<group>"; };
+		600B241D245F061300FD1F23 /* two_Players.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = two_Players.c; sourceTree = "<group>"; };
 		600B241F245F066100FD1F23 /* header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = header.h; sourceTree = "<group>"; };
-		600B2425245F0AF600FD1F23 /* 4_Players.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = 4_Players.h; sourceTree = "<group>"; };
-		600B2426245F0AF600FD1F23 /* 4_Players.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = 4_Players.c; sourceTree = "<group>"; };
+		600B2425245F0AF600FD1F23 /* four_Players.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = four_Players.h; sourceTree = "<group>"; };
+		600B2426245F0AF600FD1F23 /* four_Players.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = four_Players.c; sourceTree = "<group>"; };
 		603882492433BC9C00CD8112 /* Fonctions_reutilisable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Fonctions_reutilisable.h; sourceTree = "<group>"; };
 		6038824A2433BC9C00CD8112 /* Fonctions_reutilisable.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Fonctions_reutilisable.c; sourceTree = "<group>"; };
 		6038C3F2241E233400C6EF82 /* Quoridor Alexandre_picault&Foucaud_du_Portal */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Quoridor Alexandre_picault&Foucaud_du_Portal"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,10 +93,10 @@
 				60FEB3032438CE4D00B3D5D0 /* Infos_start.c */,
 				1EB95581245434F70019CC7E /* partie_jouer.h */,
 				1EB95582245434F70019CC7E /* partie_jouer.c */,
-				600B241C245F061300FD1F23 /* 2_Players.h */,
-				600B241D245F061300FD1F23 /* 2_Players.c */,
-				600B2425245F0AF600FD1F23 /* 4_Players.h */,
-				600B2426245F0AF600FD1F23 /* 4_Players.c */,
+				600B241C245F061300FD1F23 /* two_Players.h */,
+				600B241D245F061300FD1F23 /* two_Players.c */,
+				600B2425245F0AF600FD1F23 /* four_Players.h */,
+				600B2426245F0AF600FD1F23 /* four_Players.c */,
 				609BC503245F255A001048BC /* test_fonction.h */,
 				609BC504245F255A001048BC /* test_fonction.c */,
 				1EB955842461B04C0019CC7E /* random.h */,
@@ -166,12 +166,14 @@
 				60FEB3072438CFFC00B3D5D0 /* Reflexions.c in Sources */,
 				6038824B2433BC9C00CD8112 /* Fonctions_reutilisable.c in Sources */,
 				609BC505245F255A001048BC /* test_fonction.c in Sources */,
-				600B241E245F061300FD1F23 /* 2_Players.c in Sources */,
+				600B241E245F061300FD1F23 /* two_Players.c in Sources */,
 				600B241B245EFF7900FD1F23 /* IA.c in Sources */,
 				6038C3F6241E233400C6EF82 /* main.c in Sources */,
 				60FEB3042438CE4D00B3D5D0 /* Infos_start.c in Sources */,
-				1EB955862461B04C0019CC7E /* random.c in Sources */,
-				600B2427245F0AF600FD1F23 /* 4_Players.c in Sources */,
+
+				600B2427245F0AF600FD1F23 /* four_Players.c in Sources */,`
+        	1EB955862461B04C0019CC7E /* random.c in Sources */,
+
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

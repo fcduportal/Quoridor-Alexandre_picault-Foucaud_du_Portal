@@ -137,14 +137,6 @@ void tester_Pawn (pawn player)
 
 //
 
-void display_coord_Pawn (void)
-{
-    pawn player;
-    printf("Votre pion est en %d;%d\n", player.x, player.y);
-}
-
-//
-
 void switchtest_P (int test, pawn player)
 {
     switch (test)
@@ -157,7 +149,7 @@ void switchtest_P (int test, pawn player)
             
         default:
         {
-            printf("Votre barriere doit etre place sur deux cases adjacentes.\n");
+            printf("Votre Pion doit etre place sur une case adjacente a la precedente.\n");
             clear_console();
             enter_coord_Pawn();
         }
@@ -165,6 +157,13 @@ void switchtest_P (int test, pawn player)
     }
 }
 
+//
+
+void display_coord_Pawn (void)
+{
+    pawn player;
+    printf("Votre pion est en %d;%d\n", player.x, player.y);
+}
 
 
 /// end Pawn-------------------------------------------- Begin boxes

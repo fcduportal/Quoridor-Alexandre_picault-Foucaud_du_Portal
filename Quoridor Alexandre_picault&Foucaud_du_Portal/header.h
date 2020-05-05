@@ -17,13 +17,14 @@
 #include <stdlib.h>
 #include <time.h>
 
+#include "unistd.h"
+#include "random.h"
 #include "Fonctions_reutilisable.h"
 #include "partie_jouer.h"
 #include "Infos_start.h"
-#include "2_Players.h"
-#include "4_Players.h"
-#include "unistd.h"
-#include "random.h"
+#include "two_Players.h"
+#include "four_Players.h"
+
 //
 
 #include "test_fonction.h"
