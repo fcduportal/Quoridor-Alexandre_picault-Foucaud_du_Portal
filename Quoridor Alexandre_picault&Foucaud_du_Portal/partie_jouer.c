@@ -13,22 +13,15 @@
 
 //play a fence
 
-void playFence (void)
+void playFence (pawn player)
 {
-    
-    //
-    
-    pawn player = {"",1,0,0,0}; // Pour l'instant on met player1 mais après il vas falloir faire un tableau de player
-    
-    //
-    
     printf("Il vous reste %d barrières\n",player.number_fence);
     switch (player.number_fence)
     {
         case 0:
         {
             printf("Vous n'avez plus de barrieres.\nVeuillez déplacer votre pion.");
-            playPawn();
+            playPawn(player);
             break;
         }
             
@@ -46,8 +39,9 @@ void playFence (void)
 
 //play a pawn
 
-void playPawn (void)
+void playPawn (pawn player)
 {
     display_coord_Pawn();
     enter_coord_Pawn();
+    availability_Box();
 }
