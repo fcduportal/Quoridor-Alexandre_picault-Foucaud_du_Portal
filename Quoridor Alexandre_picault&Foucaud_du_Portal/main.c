@@ -18,8 +18,9 @@ int main()
 {
         fonction_a_tester();
     
-    /*
+    
     int nb_players = 0, duration = 0;
+    pawn player = {"",1,0,0,0};
     
     //
     
@@ -32,7 +33,7 @@ int main()
         case 2: // play 2
         {
             printf("Faire le jeu avec 2 joueurs\n");
-            Game_2_Player();
+            Game_2_Player(player);
             break;
         }
             
@@ -40,12 +41,11 @@ int main()
         case 4: // play 4
         {
             printf("Faire le jeu avec 4 joueurs\n");
-//            game_4_players();
+            Game_4_Player(player);
             break;
         }
             return 0;
     }
-    */
     //
     
 }
