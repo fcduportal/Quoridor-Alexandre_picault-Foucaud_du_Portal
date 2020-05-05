@@ -10,5 +10,5 @@
 
 void fonction_a_tester (void)
 {
-    display_coord_fence();
+    playFence();
 }

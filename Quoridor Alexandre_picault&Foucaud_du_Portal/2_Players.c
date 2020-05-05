@@ -27,16 +27,19 @@ void Game_2_Player (void)
     switch (choice)
     {
         case 1:
+        {
             playFence();
             // play fence there is 10 max
             break;
+        }
+            
             
         case 2:
         {
             playPion();
             // play pion
-        }
             break;
+        }
             
             
         default:
@@ -44,8 +47,9 @@ void Game_2_Player (void)
             printf("Vous devez choisir 1 ou 2 :");
             clear_console();
             Game_2_Player();
-        }
             break;
+        }
+            
     }
     
     //

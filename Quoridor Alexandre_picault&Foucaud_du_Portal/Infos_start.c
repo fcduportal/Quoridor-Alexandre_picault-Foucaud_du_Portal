@@ -55,7 +55,7 @@ void demand_nb_player (int *nb_players, int *duration)
     clear_console();
 }
 
-//request for party time
+//request for game time
 
 void demand_time (int *nb_players, int *duration)
 {

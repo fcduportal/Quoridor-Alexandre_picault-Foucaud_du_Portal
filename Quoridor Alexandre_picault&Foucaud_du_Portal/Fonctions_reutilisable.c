@@ -65,7 +65,7 @@ void tester_barrier (fence Barrier)
     }
     else
     {
-        printf("Votre barriere doit etre place sur deux cases adjacentes.n");
+        printf("Votre barriere doit etre place sur deux cases adjacentes.\n");
         clear_console();
         enter_coord_fence();
     }
@@ -104,6 +104,18 @@ void display_coord_fence (void)
 
 //
 
+void availability_Box (void)
+{
+    boxes box = FREE;
+    if (box != FREE)
+    {
+        printf("Vous ne pouvez pas placer votre barrierre ici, la case est déjà prise.\n");
+        enter_coord_fence();
+    }
+}
+
+//
+
 void enter_coord_Pion (void)
 {
     pion player; // Pour l'instant on met player1 mais après il vas falloir faire un tableau de player
@@ -123,20 +135,6 @@ void display_coord_Pion (void)
 }
 
 //
-
-void availability_Box (void) // a integrer dans le test
-{
-    boxes box = FREE;
-    if (box == FREE)
-    {
-        display_coord_fence();
-    }
-    else
-    {
-        printf("Vous ne pouvez pas placer votre barrierre ici, la case est déjà prise.\n");
-        enter_coord_fence();
-    }
-}
 
 ///
 
