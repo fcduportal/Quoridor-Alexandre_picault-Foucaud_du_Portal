@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1EB95583245434F70019CC7E /* partie_jouer.c in Sources */ = {isa = PBXBuildFile; fileRef = 1EB95582245434F70019CC7E /* partie_jouer.c */; };
-		1EB955862461B04C0019CC7E /* random.c in Sources */ = {isa = PBXBuildFile; fileRef = 1EB955852461B04C0019CC7E /* random.c */; };
 		600B241B245EFF7900FD1F23 /* IA.c in Sources */ = {isa = PBXBuildFile; fileRef = 600B241A245EFF7900FD1F23 /* IA.c */; };
 		600B241E245F061300FD1F23 /* two_Players.c in Sources */ = {isa = PBXBuildFile; fileRef = 600B241D245F061300FD1F23 /* two_Players.c */; };
 		600B2427245F0AF600FD1F23 /* four_Players.c in Sources */ = {isa = PBXBuildFile; fileRef = 600B2426245F0AF600FD1F23 /* four_Players.c */; };
@@ -34,8 +33,6 @@
 /* Begin PBXFileReference section */
 		1EB95581245434F70019CC7E /* partie_jouer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = partie_jouer.h; sourceTree = "<group>"; };
 		1EB95582245434F70019CC7E /* partie_jouer.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = partie_jouer.c; sourceTree = "<group>"; };
-		1EB955842461B04C0019CC7E /* random.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = random.h; sourceTree = "<group>"; };
-		1EB955852461B04C0019CC7E /* random.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = random.c; sourceTree = "<group>"; };
 		600B241A245EFF7900FD1F23 /* IA.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = IA.c; sourceTree = "<group>"; };
 		600B241C245F061300FD1F23 /* two_Players.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = two_Players.h; sourceTree = "<group>"; };
 		600B241D245F061300FD1F23 /* two_Players.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = two_Players.c; sourceTree = "<group>"; };
@@ -99,8 +96,6 @@
 				600B2426245F0AF600FD1F23 /* four_Players.c */,
 				609BC503245F255A001048BC /* test_fonction.h */,
 				609BC504245F255A001048BC /* test_fonction.c */,
-				1EB955842461B04C0019CC7E /* random.h */,
-				1EB955852461B04C0019CC7E /* random.c */,
 			);
 			path = "Quoridor Alexandre_picault&Foucaud_du_Portal";
 			sourceTree = "<group>";
@@ -170,10 +165,7 @@
 				600B241B245EFF7900FD1F23 /* IA.c in Sources */,
 				6038C3F6241E233400C6EF82 /* main.c in Sources */,
 				60FEB3042438CE4D00B3D5D0 /* Infos_start.c in Sources */,
-
-				600B2427245F0AF600FD1F23 /* four_Players.c in Sources */,`
-        	1EB955862461B04C0019CC7E /* random.c in Sources */,
-
+				600B2427245F0AF600FD1F23 /* four_Players.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
