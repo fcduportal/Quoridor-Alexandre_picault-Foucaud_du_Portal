@@ -22,17 +22,11 @@
 
 void clear_console (void);
 
-//structure for each pawn used
 
-struct pion
-{
-    char name[NB_CHAR];
-    int number_player;
-    int number_fence;
-    int x;
-    int y;
-};
-typedef struct pion pion;
+
+/// -------------------------------------------  fence
+
+
 
 //structure for each fence used
 
@@ -46,28 +40,55 @@ struct fence
 };
 typedef struct fence fence;
 
-//define the position of a pawn
+//define the position of a fence
 
-void enter_coord_Pion (void);
+void enter_coord_fence (void);
 
-//pawn display
-
-void display_coord_Pion (void);
 
 //verification that it is possible to place the fence
 
 void tester_barrier (fence Barrier);
-void switchtest (int test, fence Barrier);
+void switchtest_B (int test, fence Barrier);
 
-//define the position of a fence
-
-void enter_coord_fence (void);
 
 //fence display
 
 void display_coord_fence (void);
 
+
+
+/// end fence -------------------------------------------  begin Pawn
+
+
+
+//structure for each pawn used
+
+struct pawn
+{
+    char name[NB_CHAR];
+    int number_player;
+    int number_fence;
+    int x, y;
+    int xtemp, ytemp;
+};
+typedef struct pawn pawn;
+
+//define the position of a pawn
+
+void enter_coord_Pawn (void);
+
+//pawn display
+
+void display_coord_Pawn (void);
+
 //
+
+void tester_Pawn (pawn player);
+void switchtest_P (int test, pawn player);
+
+
+
+/// end Pawn-------------------------------------------- Begin boxes
 
 
 
@@ -81,4 +102,4 @@ typedef enum boxes boxes;
 
 void availability_Box (void);
 
-///
+/// end boxes-------------------------------------------- 

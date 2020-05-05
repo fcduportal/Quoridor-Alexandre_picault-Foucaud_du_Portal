@@ -21,7 +21,7 @@ void playFence (void);
 
 //play a pawn
 
-void playPion (void);
+void playPawn (void);
 
 ///
 

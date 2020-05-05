@@ -40,7 +40,7 @@ int main()
         case 4: // play 4
         {
             printf("Faire le jeu avec 4 joueurs\n");
-            //game_4_players();
+//            game_4_players();
             break;
         }
             return 0;

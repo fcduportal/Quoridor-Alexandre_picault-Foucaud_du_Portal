@@ -36,8 +36,8 @@ void Game_2_Player (void)
             
         case 2:
         {
-            playPion();
-            // play pion
+            playPawn();
+            // play pawn
             break;
         }
             
