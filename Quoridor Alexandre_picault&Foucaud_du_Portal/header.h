@@ -15,15 +15,15 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "unistd.h"
-//#include <time.h>
+#include <time.h>
 
 #include "Fonctions_reutilisable.h"
 #include "partie_jouer.h"
 #include "Infos_start.h"
 #include "2_Players.h"
 #include "4_Players.h"
-
+#include "unistd.h"
+#include "random.h"
 //
 
 #include "test_fonction.h"

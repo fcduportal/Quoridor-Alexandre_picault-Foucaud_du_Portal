@@ -16,15 +16,21 @@
 
 int main()
 {
-        fonction_a_tester();
+       // fonction_a_tester();
+    
+    int nb_players = 0, duration = 0, i =0;
+    
+    info_start(&nb_players, &duration);
+    choice_player(nb_players, &i);
     
     /*
-    int nb_players = 0, duration = 0;
+    int nb_players = 0, duration = 0, i =0;
     
     //
     
     info_start(&nb_players, &duration); //  Call fonction to ask the first info in order to adress differents rules to the game.
-    
+    appel random (&)
+     
     //
     
     switch (nb_players) // play in fonction of the number of players
