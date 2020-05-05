@@ -67,4 +67,18 @@ void enter_coord_fence (void);
 
 void display_coord_fence (void);
 
+//
+
+
+
+enum boxes
+{
+    FREE, TAKEN, PAWN
+};
+typedef enum boxes boxes;
+
+//
+
+void availability_Box (void);
+
 ///

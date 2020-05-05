@@ -16,9 +16,9 @@
 
 int main()
 {
-    //    fonction_a_tester();
+        fonction_a_tester();
     
-    
+    /*
     int nb_players = 0, duration = 0;
     
     //
@@ -45,7 +45,7 @@ int main()
         }
             return 0;
     }
-    
+    */
     //
     
 }

@@ -41,6 +41,7 @@ void enter_coord_fence (void)
     
     tester_barrier(Barrier);
     
+    
 }
 
 //
@@ -119,6 +120,22 @@ void display_coord_Pion (void)
 {
     pion player;
     printf("Votre pion est en %d;%d\n", player.x, player.y);
+}
+
+//
+
+void availability_Box (void) // a integrer dans le test
+{
+    boxes box = FREE;
+    if (box == FREE)
+    {
+        display_coord_fence();
+    }
+    else
+    {
+        printf("Vous ne pouvez pas placer votre barrierre ici, la case est déjà prise.\n");
+        enter_coord_fence();
+    }
 }
 
 ///
