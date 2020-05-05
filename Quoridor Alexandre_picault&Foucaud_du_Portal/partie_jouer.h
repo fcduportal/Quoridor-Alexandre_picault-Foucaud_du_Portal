@@ -17,11 +17,11 @@
 
 //play a fence
 
-void playFence (void);
+void playFence (pawn player);
 
 //play a pawn
 
-void playPawn (void);
+void playPawn (pawn player);
 
 ///
 
