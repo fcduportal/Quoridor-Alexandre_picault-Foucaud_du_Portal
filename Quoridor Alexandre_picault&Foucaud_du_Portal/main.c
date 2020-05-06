@@ -18,19 +18,17 @@ int main()
 {
        // fonction_a_tester();
     
-    int nb_players = 0, duration = 0, i =0;
-    pawn player = {"",1,0,0,0};
     
-    info_start(&nb_players, &duration);
-    choice_player(nb_players, &i);
+
     
-    /*
+    
     int nb_players = 0, duration = 0, i =0;
+     pawn player = {"",1,0,0,0};
     
     //
     
     info_start(&nb_players, &duration); //  Call fonction to ask the first info in order to adress differents rules to the game.
-    appel random (&)
+//    appel random (&)
      
     //
     
@@ -47,14 +45,13 @@ int main()
         case 4: // play 4
         {
             printf("Faire le jeu avec 4 joueurs\n");
-//            game_4_players(player);
+            Game_4_Player(player);
             break;
         }
             return 0;
     }
-    */
-    //
     
+    //
 }
 
 ///
