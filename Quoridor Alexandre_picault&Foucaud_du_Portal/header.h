@@ -24,6 +24,7 @@
 #include "four_Players.h"
 #include "unistd.h"
 #include "random.h"
+#include "Plateau.h"
 //
 
 #include "test_fonction.h"
