@@ -133,7 +133,8 @@
  switch
  1
  {
- printf (voulez allez recom)
+ printf ("voulez allez recommencer,si oui tapez 1,sinon tapez 2:);
+ scanf(%d,&fin)
  clear console
  main ();
  }
