@@ -103,6 +103,12 @@
  alors accepter l'emplacement
  sinon
  lui dire le problème et lui demander de rentrer d'autres coordonées
+ 
+ 
+    Si il y a un pion devant lui vérifier la case derriere le pion 
+ 
+ 
+ 
  */
 
 
