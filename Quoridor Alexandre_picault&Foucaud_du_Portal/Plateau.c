@@ -16,14 +16,7 @@ void display_board (void)
         {
             printf("%d|",x+1);
 
-            
-            
             printf("\n");
         }
         printf(" | a--b--c--d--e--f--g--h--i |\n");
 }
-
-
-
-
-
