@@ -10,7 +10,7 @@
 
 void display_board (void)
 {
-        int x,y;
+        int x;
         printf(" | a--b--c--d--e--f--g--h--i |\n");
         for (x=0; x<9; x++)
         {

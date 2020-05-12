@@ -20,6 +20,7 @@
 #include "Fonctions_reutilisable.h"
 #include "partie_jouer.h"
 #include "Infos_start.h"
+#include "One_player.h"
 #include "two_Players.h"
 #include "four_Players.h"
 #include "unistd.h"

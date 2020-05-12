@@ -20,27 +20,25 @@ int main()
        // fonction_a_tester();
     
     
-    
-    
-    display_board();
-    
-    
-    
-
-    /*
 
          int nb_players = 0, duration = 0, i =0;
-          pawn player = {"",1,0,0,0};
+          pawn player[2] = {"",0,0,0};
          
-         //
-         
+
+
+    
          info_start(&nb_players, &duration); //  Call fonction to ask the first info in order to adress differents rules to the game.
      //    appel random (&)
           
-         //
          
          switch (nb_players) // play in fonction of the number of players
          {
+            case 1:
+             {
+                 printf("Faire le jeu avec un bot.\n";
+                
+             }
+                 
              case 2: // play 2
              {
                  printf("Faire le jeu avec 2 joueurs\n");
@@ -57,10 +55,6 @@ int main()
              }
                  return 0;
          }
-
-     */
- 
-
 }
 
 ///

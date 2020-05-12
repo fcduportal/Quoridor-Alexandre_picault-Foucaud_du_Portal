@@ -66,7 +66,6 @@ void display_coord_fence (void);
 struct pawn
 {
     char name[NB_CHAR];
-    int number_player;
     int number_fence;
     int x, y;
     int xtemp, ytemp;

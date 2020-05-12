@@ -25,11 +25,17 @@ void info_start(int *nb_players, int *duration) //Fonction which ask the first i
 
 void demand_nb_player (int *nb_players, int *duration)
 {
-    printf("==NOMBRE DE JOUEURS==\n2. 2joueurs\n4. 4joueurs\n");
+    printf("==NOMBRE DE JOUEURS==\n1. 1joueur humain et une IA.\n2. 2joueurs\n4. 4joueurs\n");
     scanf("%d", nb_players);
     
     switch (*nb_players)
     {
+        case 1:
+        {
+            printf("Vous allez jouer tout seul mais contre un bot, mais combien de temps");
+            break;
+        }
+            
         case 2:
         {
             printf("Vous allez jouer a 2 mais combien de temps ?\n");
