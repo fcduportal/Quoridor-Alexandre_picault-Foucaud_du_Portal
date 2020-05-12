@@ -12,7 +12,7 @@
 
 ///
 
-void Game_2_Player (pawn player)
+void Game_2_Player (pawn player[])
 {
     
     //
@@ -28,7 +28,7 @@ void Game_2_Player (pawn player)
     {
         case 1:
         {
-            playFence(player);
+            playFence(player[0]); // j'ai mis 0 mais il vas falloir mettre le numero du joueur
             // play fence there is 10 max
             break;
         }
@@ -36,7 +36,7 @@ void Game_2_Player (pawn player)
             
         case 2:
         {
-            playPawn(player);
+            playPawn(player[0]); // idem
             // play pawn
             break;
         }

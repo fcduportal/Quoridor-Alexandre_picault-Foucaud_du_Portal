@@ -13,7 +13,7 @@
 
 //
 
-void Game_4_Player (pawn player)
+void Game_4_Player (pawn player[])
 {
     
     //
@@ -28,13 +28,13 @@ void Game_4_Player (pawn player)
     switch (choice)
     {
         case 1:
-            playFence(player);
+            playFence(player[0]);
             // play fence There is 5 max
             break;
             
         case 2:
         {
-            playPawn(player);
+            playPawn(player[0]);
             // play pawn
         }
             break;

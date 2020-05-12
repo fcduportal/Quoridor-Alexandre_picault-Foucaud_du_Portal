@@ -35,22 +35,22 @@ int main()
          {
             case 1:
              {
-                 printf("Faire le jeu avec un bot.\n";
-                
+                 printf("Faire le jeu avec un bot.\n");
+                 Game_one_player(&player[0]); // j'ai mis 0 il vas falloir Mettre le nb player
              }
                  
              case 2: // play 2
              {
-                 printf("Faire le jeu avec 2 joueurs\n");
-                 Game_2_Player(player);
+                 printf("Faire le jeu avec 2 joueurs\n"); // idem
+                 Game_2_Player(&player[0]);
                  break;
              }
                  
                  
              case 4: // play 4
              {
-                 printf("Faire le jeu avec 4 joueurs\n");
-                 Game_4_Player(player);
+                 printf("Faire le jeu avec 4 joueurs\n"); // idem
+                 Game_4_Player(&player[0]);
                  break;
              }
                  return 0;

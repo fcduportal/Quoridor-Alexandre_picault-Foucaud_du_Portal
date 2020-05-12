@@ -8,4 +8,4 @@
 
 #include "header.h"
 
-void game_one_player (pawn player[]);
+void Game_one_player (pawn player[]);

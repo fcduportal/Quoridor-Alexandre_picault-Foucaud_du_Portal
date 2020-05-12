@@ -16,7 +16,7 @@
 
 //player code
 
-void Game_2_Player (pawn player);
+void Game_2_Player (pawn player[]);
 
 ///
 

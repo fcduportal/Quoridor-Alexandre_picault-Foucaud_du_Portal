@@ -15,7 +15,7 @@
 
 //
 
-void Game_4_Player (pawn player);
+void Game_4_Player (pawn player[]);
 
 ///
 
