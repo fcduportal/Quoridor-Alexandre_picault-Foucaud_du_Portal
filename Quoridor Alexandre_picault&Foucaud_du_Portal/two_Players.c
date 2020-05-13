@@ -12,8 +12,15 @@
 
 ///
 
-void Game_2_Player (pawn player[])
+int Game_2_Player (pawn player[], int nb_Players)
 {
+    
+    
+                player = malloc(nb_Players * sizeof(int)); // Memory is allocated for the array
+                if (player == NULL) // Checking to see if allocation worked
+                {
+                    return EXIT_FAILURE; // Stop because malloc didn't worked
+                }
     
     //
     
@@ -28,7 +35,7 @@ void Game_2_Player (pawn player[])
     {
         case 1:
         {
-            playFence(player[0]); // j'ai mis 0 mais il vas falloir mettre le numero du joueur
+            playFence(player[0]); // j'ai mis 0 mais il va falloir mettre le numero du joueur
             // play fence there is 10 max
             break;
         }
@@ -46,13 +53,15 @@ void Game_2_Player (pawn player[])
         {
             printf("Vous devez choisir 1 ou 2 :");
             clear_console();
-            Game_2_Player(player);
+            Game_2_Player(player, nb_Players);
             break;
         }
             
     }
     
-    //
+    // free memory gave to the malloc
+    free(player);
+    return EXIT_SUCCESS;
     
 }
 

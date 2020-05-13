@@ -76,21 +76,14 @@ void tester_barrier (fence Barrier)
 
 void switchtest_B (int test, fence Barrier)
 {
-    switch (test)
+    if(test == 1 || test== -1){
+        availability_Box();
+    }
+    else
     {
-        case 1:
-            break;
-            
-        case -1:
-            break;
-            
-        default:
-        {
-            printf("Votre barriere doit etre place sur deux cases adjacentes.\n");
-            clear_console();
-            enter_coord_fence();
-        }
-            break;
+        printf("Votre barriere doit etre place sur deux cases adjacentes.\n");
+        clear_console();
+        enter_coord_fence();
     }
 }
 
@@ -173,7 +166,9 @@ void display_coord_Pawn (void)
 
 void availability_Box (void)
 {
-    boxes box = TAKEN;
+    int bool = 0;
+    boxes box = FREE; // il faudra le bouger
+
     if (box != FREE)
     {
         printf("Vous ne pouvez pas placer votre barrierre ici, la case est déjà prise.\n");

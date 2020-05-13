@@ -15,6 +15,9 @@
 
 #include <stdio.h>
 
+// 
+
+
 //play a fence
 
 void playFence (pawn player);

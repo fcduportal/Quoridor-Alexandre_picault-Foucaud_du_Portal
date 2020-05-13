@@ -8,7 +8,16 @@
 
 #include "header.h"
 
-void Game_one_Player (pawn player[])
+int Game_one_Player (pawn player[], int nb_Players)
 {
+    nb_Players+=1;
+    player = malloc(nb_Players * sizeof(int)); // Memory is allocated for the array
+    if (player == NULL) // Checking to see if allocation worked
+    {
+        return EXIT_FAILURE; // Stop because malloc didn't worked
+    }
     
+    // free memory gave to the malloc
+    free(player);
+    return EXIT_SUCCESS;
 }

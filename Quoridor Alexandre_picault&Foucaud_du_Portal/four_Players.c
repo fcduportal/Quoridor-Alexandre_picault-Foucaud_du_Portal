@@ -13,10 +13,15 @@
 
 //
 
-void Game_4_Player (pawn player[])
+int Game_4_Player (pawn player[], int nb_Players)
 {
     
-    //
+    player = malloc(nb_Players * sizeof(int)); // Memory is allocated for the array
+    if (player == NULL) // Checking to see if allocation worked
+    {
+        return EXIT_FAILURE; // Stop because malloc didn't worked
+    }
+    
     
     int choice=0;
     
@@ -44,12 +49,14 @@ void Game_4_Player (pawn player[])
         {
             printf("Vous devez choisir 1 ou 2 :");
             clear_console();
-            Game_4_Player(player);
+            Game_4_Player(player, nb_Players);
         }
             break;
     }
     
-    //
+    // free memory gave to the malloc
+    free(player);
+    return EXIT_SUCCESS;
     
 }
 

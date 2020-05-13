@@ -11,6 +11,6 @@
 
 #include <stdio.h>
 
-void Game_one_Player (pawn player[]);
+int Game_one_Player (pawn player[], int nb_Players);
 
 #endif /* One_player_h */
