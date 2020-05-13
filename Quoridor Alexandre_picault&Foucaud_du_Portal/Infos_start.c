@@ -18,7 +18,7 @@
 void info_start(int *nb_players, int *duration) //Fonction which ask the first info.
 {
     demand_nb_player(nb_players);
-    demand_time(duration);
+//    demand_time(duration);
 }
 
 //request for the number of players

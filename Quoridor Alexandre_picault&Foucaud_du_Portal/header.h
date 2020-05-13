@@ -26,6 +26,8 @@
 #include "unistd.h"
 #include "random.h"
 
+#define NB_FENCE_MAX 10
+
 
 #include "test_fonction.h"
 

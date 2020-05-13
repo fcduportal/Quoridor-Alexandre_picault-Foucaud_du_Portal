@@ -32,58 +32,73 @@ void clear_console (void)
 
 
 
-void enter_coord_fence (void)
+fence enter_coord_fence (int *board)
 {
-    fence Barrier; // Pour l'instant on met barrier1 mais après il vas falloir faire un tableau de barrier
+    fence Barrier;
     
     printf("Veuiilez saisir l'abscisse 1 (x1) de l'emplacement souhaite :\t");
-    scanf("%d",&Barrier.x1);
+    scanf("%d",&Barrier.A.x);
     printf("Veuiilez saisir l'ordonnee 1 (y1) de l'emplacement souhaite :\t");
-    scanf("%d",&Barrier.y1);
+    scanf("%d",&Barrier.A.y);
     printf("Veuiilez saisir l'abscisse 2 (x2) de l'emplacement souhaite :\t");
-    scanf("%d",&Barrier.x2);
+    scanf("%d",&Barrier.B.x);
     printf("Veuiilez saisir l'ordonnee 2 (y2) de l'emplacement souhaite :\t");
-    scanf("%d",&Barrier.y2);
+    scanf("%d",&Barrier.B.y);
     
-    tester_barrier(Barrier);
+    tester_barrier(Barrier, board);
+    
+    return Barrier;
 }
 
 //
 
-void tester_barrier (fence Barrier)
+void tester_barrier (fence Barrier, int *board)
 {
     int test=0;
-    if (Barrier.x1 == Barrier.x2)
+    if (Barrier.A.x == Barrier.B.x)
     {
-        test = Barrier.y1-Barrier.y2;
-        switchtest_B(test, Barrier);
+        test = Barrier.A.y-Barrier.B.y;
+        switchtest_B(test, Barrier, board);
     }
     
-    else if (Barrier.y1 == Barrier.y2)
+    else if (Barrier.A.y == Barrier.B.y)
     {
-        test = Barrier.x1-Barrier.x2;
-        switchtest_B(test, Barrier);
+        test = Barrier.A.x-Barrier.B.x;
+        switchtest_B(test, Barrier, board);
     }
     else
     {
         printf("Votre barriere doit etre place sur deux cases adjacentes.\n");
         clear_console();
-        enter_coord_fence();
+        enter_coord_fence(board);
+    }
+    
+    
+    if (availability_Box(Barrier.A, board)==0 || availability_Box(Barrier.B, board)==0)
+    {
+        printf("envoyer les coordonées au tableau");
+    }
+    else
+    {
+        printf("Une case n'est pas libre. Pauv naze\n");
+        enter_coord_fence(board);
     }
 }
 
 //
 
-void switchtest_B (int test, fence Barrier)
+
+
+void switchtest_B (int test, fence Barrier, int *board)
 {
-    if(test == 1 || test== -1){
-        availability_Box();
+    if(test == 1 || test== -1)
+    {
     }
     else
     {
         printf("Votre barriere doit etre place sur deux cases adjacentes.\n");
         clear_console();
-        enter_coord_fence();
+        enter_coord_fence(board);
     }
 }
 
@@ -93,7 +108,7 @@ void display_coord_fence (void)
 {
     fence barrier;
     
-    printf("Votre barrière est en : %d;%d et %d;%d\n", barrier.x1, barrier.y1, barrier.x2, barrier.y2);
+    printf("Votre barrière est en : (%d;%d) et (%d;%d)\n", barrier.A.x, barrier.A.y, barrier.B.x, barrier.B.y);
     clear_console();
 }
 
@@ -105,59 +120,67 @@ void display_coord_fence (void)
 
 
 
-void enter_coord_Pawn (void)
+void enter_coord_Pawn (int *board, pawn player)
 {
-    pawn player; // Pour l'instant on met player1 mais après il vas falloir faire un tableau de player
     
-    printf("Veuiilez saisir l'abscisse (x) de l'emplacement souhaite :™t");
-    scanf("%d",&player.x);
+    
+    printf("Veuiilez saisir l'abscisse (x) de l'emplacement souhaite :\t");
+    scanf("%d",&player.temp.x);
     printf("Veuiilez saisir l'ordonnee (y) de l'emplacement souhaite :\t");
-    scanf("%d",&player.y);
+    scanf("%d",&player.temp.y);
     
-    tester_Pawn(player);
+    tester_Pawn(player, board);
     
 }
 
 //
 
-void tester_Pawn (pawn player)
+void tester_Pawn (pawn player, int *board)
 {
+    printf("coucou a : (%d,%d) , temp: (%d,%d)\n", player.A.x, player.A.y, player.temp.x, player.temp.y);
     int test=0;
-    if (player.x == player.xtemp)
+    if (player.A.x == player.temp.x)
     {
-        test = player.x-player.xtemp;
-        switchtest_P(test, player);
+        test = player.A.y-player.temp.y;
+        switchtest_P(test, player, board);
     }
+    else if (player.A.y == player.temp.y)
+    {
+        test = player.A.x-player.temp.x;
+        switchtest_P(test, player, board);
+    }
+    else
+    {
+        printf("Votre pion doit etre place sur une case adjacente à la precedente.\n");
+        enter_coord_Pawn(board, player);
+    }
+
 }
 
 //
 
-void switchtest_P (int test, pawn player)
+void switchtest_P (int test, pawn player, int *board)
 {
-    switch (test)
-    {
-        case 1:
-            break;
+
+            if (test==1 || test==-1)
+            {
+            }
             
-        case -1:
-            break;
-            
-        default:
+        else
         {
             printf("Votre Pion doit etre place sur une case adjacente a la precedente.\n");
             clear_console();
-            enter_coord_Pawn();
+            enter_coord_Pawn(board, player);
         }
-            break;
-    }
+            
+            availability_Box(player.A, board);
 }
 
 //
 
-void display_coord_Pawn (void)
+void display_coord_Pawn (pawn player)
 {
-    pawn player;
-    printf("Votre pion est en %d;%d\n", player.x, player.y);
+    printf("Votre pion est en (%d;%d)\n", player.A.x, player.A.y);
 }
 
 //
@@ -166,25 +189,28 @@ void display_coord_Pawn (void)
 
 
 
-void availability_Box (void)
+int availability_Box (point M, int *board)
 {
+    int tableau [9][9] = {TAKEN};
     
-    boxes box = FREE; // il faudra le bouger
-
-    if (box != FREE)
+    
+    if (tableau[M.x][M.y] != FREE)
     {
         printf("Vous ne pouvez pas placer votre barrierre ici, la case est déjà prise.\n");
         clear_console();
-        enter_coord_fence();
+        enter_coord_fence(board);
+        return EXIT_FAILURE;
+    }
+    else
+    {
+        printf("La case est libre (%d,%d)\n", M.x, M.y);
+        return EXIT_SUCCESS;
     }
 }
 
 
 
 ///end boxes-------------------------------------------- 
-
-
-
 
 
 

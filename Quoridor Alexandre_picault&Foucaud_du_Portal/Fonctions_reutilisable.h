@@ -24,6 +24,18 @@ void clear_console (void);
 
 
 
+struct point
+{
+    int x,y;
+};
+typedef struct point point;
+
+
+
+
+
+
+
 /// -------------------------------------------  fence
 
 
@@ -32,23 +44,19 @@ void clear_console (void);
 
 struct fence
 {
-    int x1;
-    int y1;
-    int x2;
-    int y2;
-    
+    point A,B;
 };
 typedef struct fence fence;
 
 //define the position of a fence
 
-void enter_coord_fence (void);
+ fence enter_coord_fence (int *board);
 
 
 //verification that it is possible to place the fence
 
-void tester_barrier (fence Barrier);
-void switchtest_B (int test, fence Barrier);
+void tester_barrier (fence Barrier, int *board);
+void switchtest_B (int test, fence Barrier, int *board);
 
 
 //fence display
@@ -67,23 +75,22 @@ struct pawn
 {
     char name[NB_CHAR];
     int number_fence;
-    int x, y;
-    int xtemp, ytemp;
+    point A, temp;
 };
 typedef struct pawn pawn;
 
 //define the position of a pawn
 
-void enter_coord_Pawn (void);
+void enter_coord_Pawn (int *board, pawn player);
 
 //pawn display
 
-void display_coord_Pawn (void);
+void display_coord_Pawn (pawn player);
 
 //
 
-void tester_Pawn (pawn player);
-void switchtest_P (int test, pawn player);
+void tester_Pawn (pawn player, int *board);
+void switchtest_P (int test, pawn player, int *board);
 
 
 
@@ -99,6 +106,15 @@ typedef enum boxes boxes;
 
 //
 
-void availability_Box (void);
+
+
+
+
+
+
+int availability_Box (point M, int *board);
+
+
+
 
 /// end boxes-------------------------------------------- 
