@@ -19,9 +19,13 @@ void info_start(int *nb_players, int *duration);
 
 void demand_nb_player (int *nb_players, int *duration);
 
+// request name player
+
+void demand_name_player (int *nb_players);
+
 //request for party time
 
-void demand_time (int *nb_players, int *duration);
+void demand_time (int *duration);
 
 ///
 

@@ -18,7 +18,7 @@
 void info_start(int *nb_players, int *duration) //Fonction which ask the first info.
 {
     demand_nb_player(nb_players, duration);
-    demand_time(nb_players, duration);
+    demand_time(duration);
 }
 
 //request for the number of players
@@ -63,7 +63,7 @@ void demand_nb_player (int *nb_players, int *duration)
 
 //request for game time
 
-void demand_time (int *nb_players, int *duration)
+void demand_time (int *duration)
 {
     printf("==TEMPS DE PARTIE==\n10 minutes\n15 minutes\n20.minutes\n");
     scanf("%d", duration);
@@ -92,7 +92,7 @@ void demand_time (int *nb_players, int *duration)
         {
             printf("Choississez 10, 15, 20 minutes.\n");
             clear_console();
-            demand_time(nb_players, duration);
+            demand_time(duration);
             break;
         }
     }
