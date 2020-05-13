@@ -52,7 +52,7 @@ void demand_nb_player (int *nb_players)
             
         default:
         {
-            printf("Choississez 2 ou 4\n");
+            printf("Choississez 1, 2 ou 4\n");
             clear_console();
             demand_nb_player(nb_players);
             break;

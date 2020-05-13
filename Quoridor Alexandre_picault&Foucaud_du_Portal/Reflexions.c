@@ -158,5 +158,13 @@
  menu recomencer();
  }
  
+
+ 
+ 
+ pour alterner les joueurs :
+ while la partie est pas terminée
+ joueurs = (+1%2)
+ permet d'alterner entre les joueurs
+ 
  
  */
