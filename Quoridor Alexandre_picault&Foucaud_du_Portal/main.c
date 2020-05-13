@@ -22,13 +22,13 @@ int main()
          int nb_Players = 0, duration = 0, digit_player =0;
           pawn *player = NULL; // This pointer will be used as an array after the malloc's call...
          
-
-
+    
     
          info_start(&nb_Players, &duration); //  Call fonction to ask the first info in order to adress differents rules to the game.
      //    appel random (&)
           
-         
+    
+    
          switch (nb_Players) // play in fonction of the number of players
          {
             case 1:
@@ -67,7 +67,6 @@ int main()
                  break;
              }
                  
-                 
              case 4: // play 4
              {
                  player = malloc(nb_Players * sizeof(int)); // Memory is allocated for the array
@@ -84,9 +83,14 @@ int main()
                  
                  break;
              }
-                 
-                 
          }
+    
+    
+    
+    // fonction recommencer
+    
+    
+    
     return EXIT_SUCCESS;
 }
 
