@@ -20,7 +20,7 @@
 
 //play a fence
 
-void playFence (pawn player);
+void playFence (pawn player[], int digit_Player);
 
 //play a pawn
 

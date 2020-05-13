@@ -114,6 +114,7 @@ void enter_coord_Pawn (void)
     scanf("%d",&player.y);
     
     tester_Pawn(player);
+    
 }
 
 //
@@ -166,7 +167,7 @@ void display_coord_Pawn (void)
 
 void availability_Box (void)
 {
-    int bool = 0;
+    
     boxes box = FREE; // il faudra le bouger
 
     if (box != FREE)

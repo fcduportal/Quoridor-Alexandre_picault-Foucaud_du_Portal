@@ -14,7 +14,6 @@
 		600B2427245F0AF600FD1F23 /* four_Players.c in Sources */ = {isa = PBXBuildFile; fileRef = 600B2426245F0AF600FD1F23 /* four_Players.c */; };
 		6038824B2433BC9C00CD8112 /* Fonctions_reutilisable.c in Sources */ = {isa = PBXBuildFile; fileRef = 6038824A2433BC9C00CD8112 /* Fonctions_reutilisable.c */; };
 		6038C3F6241E233400C6EF82 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 6038C3F5241E233400C6EF82 /* main.c */; };
-		604A121724656B9C00F579BA /* Plateau.c in Sources */ = {isa = PBXBuildFile; fileRef = 604A121624656B9C00F579BA /* Plateau.c */; };
 		60593C7C246AA04C00B80F22 /* One_player.c in Sources */ = {isa = PBXBuildFile; fileRef = 60593C7B246AA04C00B80F22 /* One_player.c */; };
 		609BC505245F255A001048BC /* test_fonction.c in Sources */ = {isa = PBXBuildFile; fileRef = 609BC504245F255A001048BC /* test_fonction.c */; };
 		60FEB3042438CE4D00B3D5D0 /* Infos_start.c in Sources */ = {isa = PBXBuildFile; fileRef = 60FEB3032438CE4D00B3D5D0 /* Infos_start.c */; };
@@ -48,8 +47,6 @@
 		6038824A2433BC9C00CD8112 /* Fonctions_reutilisable.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Fonctions_reutilisable.c; sourceTree = "<group>"; };
 		6038C3F2241E233400C6EF82 /* Quoridor Alexandre_picault&Foucaud_du_Portal */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Quoridor Alexandre_picault&Foucaud_du_Portal"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6038C3F5241E233400C6EF82 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
-		604A121524656B9C00F579BA /* Plateau.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Plateau.h; sourceTree = "<group>"; };
-		604A121624656B9C00F579BA /* Plateau.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Plateau.c; sourceTree = "<group>"; };
 		60593C7A246AA04C00B80F22 /* One_player.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = One_player.h; sourceTree = "<group>"; };
 		60593C7B246AA04C00B80F22 /* One_player.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = One_player.c; sourceTree = "<group>"; };
 		609BC503245F255A001048BC /* test_fonction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = test_fonction.h; sourceTree = "<group>"; };
@@ -107,8 +104,6 @@
 				600B2426245F0AF600FD1F23 /* four_Players.c */,
 				1EB955842461B04C0019CC7E /* random.h */,
 				1EB955852461B04C0019CC7E /* random.c */,
-				604A121524656B9C00F579BA /* Plateau.h */,
-				604A121624656B9C00F579BA /* Plateau.c */,
 				609BC503245F255A001048BC /* test_fonction.h */,
 				609BC504245F255A001048BC /* test_fonction.c */,
 			);
@@ -174,7 +169,6 @@
 			files = (
 				1EB95583245434F70019CC7E /* partie_jouer.c in Sources */,
 				60FEB3072438CFFC00B3D5D0 /* Reflexions.c in Sources */,
-				604A121724656B9C00F579BA /* Plateau.c in Sources */,
 				6038824B2433BC9C00CD8112 /* Fonctions_reutilisable.c in Sources */,
 				609BC505245F255A001048BC /* test_fonction.c in Sources */,
 				600B241E245F061300FD1F23 /* two_Players.c in Sources */,

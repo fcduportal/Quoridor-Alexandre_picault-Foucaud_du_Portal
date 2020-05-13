@@ -14,19 +14,22 @@
 
 int Game_2_Player (pawn player[], int nb_Players)
 {
+
+    
+    player = malloc(nb_Players * sizeof(int)); // Memory is allocated for the array
+    if (player == NULL) // Checking to see if allocation worked
+    {
+        return EXIT_FAILURE; // Stop because malloc didn't worked
+    }
     
     
-                player = malloc(nb_Players * sizeof(int)); // Memory is allocated for the array
-                if (player == NULL) // Checking to see if allocation worked
-                {
-                    return EXIT_FAILURE; // Stop because malloc didn't worked
-                }
+    int board [9][9];
+    int digit_Player=0, choice=0;
     
-    //
     
-    int choice=0;
     
-    //
+    //    appel random (&)
+    
     
     printf("si vous voulez jouer une barriere taper 1 ou un pion taper 2:\n");
     scanf("%d",&choice);
@@ -35,7 +38,7 @@ int Game_2_Player (pawn player[], int nb_Players)
     {
         case 1:
         {
-            playFence(player[0]); // j'ai mis 0 mais il va falloir mettre le numero du joueur
+            playFence(&player[digit_Player], digit_Player); // j'ai mis 0 mais il va falloir mettre le numero du joueur
             // play fence there is 10 max
             break;
         }
@@ -43,7 +46,7 @@ int Game_2_Player (pawn player[], int nb_Players)
             
         case 2:
         {
-            playPawn(player[0]); // idem
+            playPawn(player[digit_Player]); // idem
             // play pawn
             break;
         }

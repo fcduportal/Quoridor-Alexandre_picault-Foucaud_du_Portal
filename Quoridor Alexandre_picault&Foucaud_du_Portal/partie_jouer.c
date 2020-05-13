@@ -13,15 +13,15 @@
 
 //play a fence
 
-void playFence (pawn player)
+void playFence (pawn player[], int digit_Player)
 {
-    printf("Il vous reste %d barrières\n",player.number_fence);
-    switch (player.number_fence)
+    printf("Il vous reste %d barrières\n",player[digit_Player].number_fence);
+    switch (player->number_fence)
     {
         case 0:
         {
             printf("Vous n'avez plus de barrieres.\nVeuillez déplacer votre pion.");
-            playPawn(player);
+            playPawn(*player);
             break;
         }
             
@@ -29,6 +29,7 @@ void playFence (pawn player)
         {
             enter_coord_fence();
             availability_Box();
+            
             display_coord_fence();
             break;
         }

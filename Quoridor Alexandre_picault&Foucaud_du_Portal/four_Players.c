@@ -23,7 +23,8 @@ int Game_4_Player (pawn player[], int nb_Players)
     }
     
     
-    int choice=0;
+    int board [9][9];
+    int digit_Player=0, choice=0;
     
     //
     
@@ -33,7 +34,7 @@ int Game_4_Player (pawn player[], int nb_Players)
     switch (choice)
     {
         case 1:
-            playFence(player[0]);
+            playFence(&player[digit_Player], digit_Player);
             // play fence There is 5 max
             break;
             
