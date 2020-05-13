@@ -92,6 +92,7 @@ void switchtest_B (int test, fence Barrier)
 void display_coord_fence (void)
 {
     fence barrier;
+    
     printf("Votre barrière est en : %d;%d et %d;%d\n", barrier.x1, barrier.y1, barrier.x2, barrier.y2);
     clear_console();
 }
@@ -180,7 +181,10 @@ void availability_Box (void)
 
 
 
-///end boxes--------------------------------------------
+///end boxes-------------------------------------------- 
+
+
+
 
 
 

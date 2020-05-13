@@ -13,10 +13,10 @@
 
 //play a fence
 
-void playFence (pawn player[], int digit_Player)
+void playFence (pawn player[], int digit_Player, int board[])
 {
     printf("Il vous reste %d barrières\n",player[digit_Player].number_fence);
-    switch (player->number_fence)
+    switch (player[digit_Player].number_fence)
     {
         case 0:
         {

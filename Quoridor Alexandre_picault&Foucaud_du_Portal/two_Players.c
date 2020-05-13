@@ -31,23 +31,21 @@ int Game_2_Player (pawn player[], int nb_Players)
     //    appel random (&)
     
     
-    printf("si vous voulez jouer une barriere taper 1 ou un pion taper 2:\n");
+    printf("Si vous voulez jouer une barriere taper 1 ou un pion taper 2:\n");
     scanf("%d",&choice);
     
     switch (choice)
     {
         case 1:
         {
-            playFence(&player[digit_Player], digit_Player); // j'ai mis 0 mais il va falloir mettre le numero du joueur
-            // play fence there is 10 max
+            playFence(&player[digit_Player], digit_Player, *board);
             break;
         }
             
             
         case 2:
         {
-            playPawn(player[digit_Player]); // idem
-            // play pawn
+            playPawn(player[digit_Player]);
             break;
         }
             
