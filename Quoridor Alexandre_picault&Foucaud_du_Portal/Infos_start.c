@@ -17,13 +17,13 @@
 
 void info_start(int *nb_players, int *duration) //Fonction which ask the first info.
 {
-    demand_nb_player(nb_players, duration);
+    demand_nb_player(nb_players);
     demand_time(duration);
 }
 
 //request for the number of players
 
-void demand_nb_player (int *nb_players, int *duration)
+void demand_nb_player (int *nb_players)
 {
     printf("==NOMBRE DE JOUEURS==\n1. 1joueur humain et une IA.\n2. 2joueurs\n4. 4joueurs\n");
     scanf("%d", nb_players);
@@ -54,7 +54,7 @@ void demand_nb_player (int *nb_players, int *duration)
         {
             printf("Choississez 2 ou 4\n");
             clear_console();
-            info_start(nb_players, duration);
+            demand_nb_player(nb_players);
             break;
         }
     }
