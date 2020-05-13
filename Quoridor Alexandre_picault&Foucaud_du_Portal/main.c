@@ -21,7 +21,7 @@ int main()
     
     
 
-         int nb_players = 0, duration = 0, i =0;
+         int nb_players = 0, duration = 0, digit_player =0;
           pawn player[2] = {"",0,0,0};
          
 
@@ -58,3 +58,4 @@ int main()
 }
 
 ///
+numero
