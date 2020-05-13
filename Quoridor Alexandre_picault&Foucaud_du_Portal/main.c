@@ -20,7 +20,7 @@ int main()
        // fonction_a_tester();
 
          int nb_Players = 0, duration = 0, digit_player =0;
-          pawn *player = NULL; // Ce pointeur va servir de tableau après l'appel du malloc
+          pawn *player = NULL; // This pointer will be used as an array after the malloc's call...
          
 
 
@@ -35,16 +35,16 @@ int main()
              {
                  
                  nb_Players+=1;
-                 player = malloc(nb_Players * sizeof(int)); // On alloue de la mémoire pour le tableau
-                 if (player == NULL) // On vérifie si l'allocation a marché ou non
+                 player = malloc(nb_Players * sizeof(int)); // Memory is allocated for the array
+                 if (player == NULL) // Checking to see if allocation worked
                  {
-                     exit(0); // On arrête tout
+                     return EXIT_FAILURE; // Stop because malloc didn't worked
                  }
                  
                  printf("Faire le jeu avec un bot.\n");
-                 Game_one_Player(&player[digit_player]); // j'ai mis 0 il vas falloir Mettre le nb player
+                 Game_one_Player(&player[digit_player]);
                  
-                 // On libère la mémoire allouée avec malloc, on n'en a plus besoin
+                 // free memory gave to the malloc
                  free(player);
                  
                  break;
@@ -52,16 +52,16 @@ int main()
                  
              case 2: // play 2
              {
-                 player = malloc(nb_Players * sizeof(int)); // On alloue de la mémoire pour le tableau
-                 if (player == NULL) // On vérifie si l'allocation a marché ou non
+                 player = malloc(nb_Players * sizeof(int)); // Memory is allocated for the array
+                 if (player == NULL) // Checking to see if allocation worked
                  {
-                     exit(0); // On arrête tout
+                     return EXIT_FAILURE; // Stop because malloc didn't worked
                  }
                  
                  printf("Faire le jeu avec 2 joueurs\n"); // idem
                  Game_2_Player(&player[digit_player]);
                  
-                 // On libère la mémoire allouée avec malloc, on n'en a plus besoin
+                 // free memory gave to the malloc
                  free(player);
                  
                  break;
@@ -70,24 +70,24 @@ int main()
                  
              case 4: // play 4
              {
-                 player = malloc(nb_Players * sizeof(int)); // On alloue de la mémoire pour le tableau
-                 if (player == NULL) // On vérifie si l'allocation a marché ou non
+                 player = malloc(nb_Players * sizeof(int)); // Memory is allocated for the array
+                 if (player == NULL) // Checking to see if allocation worked
                  {
-                     exit(0); // On arrête tout
+                     return EXIT_FAILURE; // Stop because malloc didn't worked
                  }
                  
-                 printf("Faire le jeu avec 4 joueurs\n"); // idem
+                 printf("Faire le jeu avec 4 joueurs\n");
                  Game_4_Player(&player[digit_player]);
                  
-                 // On libère la mémoire allouée avec malloc, on n'en a plus besoin
-                 free(player);
+                // free memory gave to the malloc
+                free(player);
                  
                  break;
-                 
              }
                  
+                 
          }
-    return 0;
+    return EXIT_SUCCESS;
 }
 
 ///
