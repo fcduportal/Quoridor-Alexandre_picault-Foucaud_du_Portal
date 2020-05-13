@@ -36,7 +36,7 @@ int main()
             case 1:
              {
                  printf("Faire le jeu avec un bot.\n");
-                 Game_one_player(&player[0]); // j'ai mis 0 il vas falloir Mettre le nb player
+                 Game_one_Player(&player[0]); // j'ai mis 0 il vas falloir Mettre le nb player
              }
                  
              case 2: // play 2
