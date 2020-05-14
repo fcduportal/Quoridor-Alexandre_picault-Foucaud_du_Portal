@@ -25,7 +25,7 @@ void demand_name_player (int *nb_players);
 
 //request for party time
 
-void demand_time (int *duration);
+int demand_time (void);
 
 ///
 

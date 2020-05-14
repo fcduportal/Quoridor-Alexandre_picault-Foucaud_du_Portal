@@ -57,7 +57,7 @@ int main()
                 return EXIT_FAILURE; // Stop because malloc didn't worked
             }
             
-            test = Game_2_Player(&player[digit_player], nb_Players, plateau);
+            test = Game_2_Player(&player[digit_player], nb_Players, plateau, &duration);
             
             printf("\nAvant free memory\n");
             

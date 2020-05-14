@@ -12,13 +12,8 @@
 
 ///
 
-int Game_2_Player (pawn player[], int nb_Players, plateau plateau)
+int Game_2_Player (pawn player[], int nb_Players, plateau plateau, int *duration)
 {
-
-    
-
-    
-    
     
     int digit_Player=0, choice=0;
     
@@ -37,6 +32,9 @@ int Game_2_Player (pawn player[], int nb_Players, plateau plateau)
     
     //    appel random (&)
     
+    time_t t_debut=time(NULL);
+    
+    printf("\ndigit player : %d",digit_Player);
     
     printf("Si vous voulez jouer une barriere taper 1 ou un pion taper 2:\n");
     scanf("%d",&choice);
@@ -46,6 +44,8 @@ int Game_2_Player (pawn player[], int nb_Players, plateau plateau)
         case 1:
         {
             playFence(&player[digit_Player], digit_Player, plateau);
+            digit_Player = ((digit_Player+1)%2);
+            
             break;
         }
             
@@ -53,6 +53,7 @@ int Game_2_Player (pawn player[], int nb_Players, plateau plateau)
         case 2:
         {
             playPawn(player[digit_Player], plateau);
+            digit_Player = ((digit_Player+1)%2);
             break;
         }
             
@@ -61,21 +62,23 @@ int Game_2_Player (pawn player[], int nb_Players, plateau plateau)
         {
             printf("Vous devez choisir 1 ou 2 :");
             clear_console();
-            Game_2_Player(player, nb_Players, plateau);
+            // appel fonction sablier
+//            Game_2_Player(player, nb_Players, plateau, &duration);
+            
             break;
         }
-            
     }
     
-    
-    
-    // rappel de la fonction avec le deuxieme player
-    
+    if (sablier(duration, t_debut) == 0)
+    {
+        Game_2_Player(player, nb_Players, plateau, duration);
+    }
+    else
+    {
+        return 0;
+    }
 
-    
-    
     return 0;
-    
 }
 
 ///

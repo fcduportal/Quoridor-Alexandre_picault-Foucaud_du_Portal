@@ -233,4 +233,22 @@ int availability_Box (point M, plateau plateau)
 
 
 
+int sablier (int *duration, time_t t_debut)
+{
+    time_t t_courant = (time(NULL));
+    time_t t_ecoule = (t_courant-t_debut);
+
+    if (t_ecoule>(*duration*30))
+    {
+        return EXIT_FAILURE;
+    }
+    else
+    {
+        return EXIT_SUCCESS;
+    }
+    
+}
+
+
+
 #endif /* Fonctions_reutilisable_h */

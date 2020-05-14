@@ -121,3 +121,4 @@ int availability_Box (point M, plateau plateau);
 
 
 
+int sablier (int *duration, time_t t_debut);
