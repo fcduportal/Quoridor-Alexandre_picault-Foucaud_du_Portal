@@ -10,7 +10,7 @@
 
 #define Fonctions_reutilisable_h
 
-///
+//
 
 #include <time.h>
 
@@ -32,11 +32,18 @@ typedef struct point point;
 
 
 
+struct plateau
+{
+    int board [9][9];
+};
+typedef struct plateau plateau;
 
 
 
 
-/// -------------------------------------------  fence
+
+
+// -------------------------------------------  fence
 
 
 
@@ -50,13 +57,13 @@ typedef struct fence fence;
 
 //define the position of a fence
 
- fence enter_coord_fence (int *board);
+ fence enter_coord_fence (void);
 
 
 //verification that it is possible to place the fence
 
-void tester_barrier (fence Barrier, int *board);
-void switchtest_B (int test, fence Barrier, int *board);
+void tester_barrier (fence Barrier, plateau plateau);
+void switchtest_B (int test, fence Barrier);
 
 
 //fence display
@@ -65,7 +72,7 @@ void display_coord_fence (void);
 
 
 
-/// end fence -------------------------------------------  begin Pawn
+// end fence -------------------------------------------  begin Pawn
 
 
 
@@ -81,7 +88,7 @@ typedef struct pawn pawn;
 
 //define the position of a pawn
 
-void enter_coord_Pawn (int *board, pawn player);
+void enter_coord_Pawn (pawn player, plateau plateau);
 
 //pawn display
 
@@ -89,12 +96,12 @@ void display_coord_Pawn (pawn player);
 
 //
 
-void tester_Pawn (pawn player, int *board);
-void switchtest_P (int test, pawn player, int *board);
+void tester_Pawn (pawn player, plateau plateau);
+void switchtest_P (int test, pawn player, plateau plateau);
 
 
 
-/// end Pawn-------------------------------------------- Begin boxes
+// end Pawn-------------------------------------------- Begin boxes
 
 
 
@@ -108,13 +115,9 @@ typedef enum boxes boxes;
 
 
 
+int availability_Box (point M, plateau plateau);
+
+// end boxes--------------------------------------------
 
 
 
-
-int availability_Box (point M, int *board);
-
-
-
-
-/// end boxes-------------------------------------------- 

@@ -27,6 +27,8 @@
 #include "random.h"
 
 #define NB_FENCE_MAX 10
+#define DIM_TAB 9
+
 
 
 #include "test_fonction.h"

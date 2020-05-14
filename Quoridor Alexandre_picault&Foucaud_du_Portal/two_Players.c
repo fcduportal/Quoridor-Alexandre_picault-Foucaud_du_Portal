@@ -12,7 +12,7 @@
 
 ///
 
-int Game_2_Player (pawn player[], int nb_Players)
+int Game_2_Player (pawn player[], int nb_Players, plateau plateau)
 {
 
     
@@ -23,7 +23,7 @@ int Game_2_Player (pawn player[], int nb_Players)
     }
     
     
-    int board [9][9] = {FREE};
+    
     int digit_Player=0, choice=0;
     
     player[0].number_fence = NB_FENCE_MAX;
@@ -50,14 +50,14 @@ int Game_2_Player (pawn player[], int nb_Players)
     {
         case 1:
         {
-            playFence(&player[digit_Player], digit_Player, board);
+            playFence(&player[digit_Player], digit_Player, plateau);
             break;
         }
             
             
         case 2:
         {
-            playPawn(player[digit_Player], board);
+            playPawn(player[digit_Player], plateau);
             break;
         }
             
@@ -66,7 +66,7 @@ int Game_2_Player (pawn player[], int nb_Players)
         {
             printf("Vous devez choisir 1 ou 2 :");
             clear_console();
-            Game_2_Player(player, nb_Players);
+            Game_2_Player(player, nb_Players, plateau);
             break;
         }
             

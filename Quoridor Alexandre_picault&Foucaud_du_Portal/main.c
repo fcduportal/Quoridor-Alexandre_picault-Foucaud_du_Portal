@@ -12,11 +12,20 @@
 
 #include "header.h"
 
-
 //
 
 int main()
 {
+    plateau plateau;
+    
+    for (int i = 1; i<=9; i++)
+    {
+        for (int j=1; j<=9; j++)
+        {
+            plateau.board[i][j]=FREE;
+        }
+    }
+    
     // fonction_a_tester();
     
     int nb_Players = 0, duration = 0, digit_player =0;
@@ -42,7 +51,7 @@ int main()
         case 2: // play 2
         {
             printf("Faire le jeu avec 2 joueurs\n"); 
-            Game_2_Player(&player[digit_player], nb_Players);
+            Game_2_Player(&player[digit_player], nb_Players, plateau);
             
             break;
         }
@@ -50,7 +59,7 @@ int main()
         case 4: // play 4
         {
             printf("Faire le jeu avec 4 joueurs\n");
-            Game_4_Player(&player[digit_player], nb_Players);
+            Game_4_Player(&player[digit_player], nb_Players, plateau);
             
             break;
         }

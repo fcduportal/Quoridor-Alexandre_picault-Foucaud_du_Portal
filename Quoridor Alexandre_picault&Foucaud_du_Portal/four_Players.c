@@ -13,7 +13,7 @@
 
 //
 
-int Game_4_Player (pawn player[], int nb_Players)
+int Game_4_Player (pawn player[], int nb_Players, plateau plateau)
 {
     
     player = malloc(nb_Players * sizeof(int)); // Memory is allocated for the array
@@ -23,7 +23,7 @@ int Game_4_Player (pawn player[], int nb_Players)
     }
     
     
-    int board [9][9];
+    
     int digit_Player=0, choice=0;
     
     //
@@ -34,13 +34,13 @@ int Game_4_Player (pawn player[], int nb_Players)
     switch (choice)
     {
         case 1:
-            playFence(&player[digit_Player], digit_Player, board);
+            playFence(&player[digit_Player], digit_Player, plateau);
             // play fence There is 5 max
             break;
             
         case 2:
         {
-            playPawn(player[digit_Player], board);
+            playPawn(player[digit_Player], plateau);
             // play pawn
         }
             break;
@@ -50,7 +50,7 @@ int Game_4_Player (pawn player[], int nb_Players)
         {
             printf("Vous devez choisir 1 ou 2 :");
             clear_console();
-            Game_4_Player(player, nb_Players);
+            Game_4_Player(player, nb_Players, plateau);
         }
             break;
     }
