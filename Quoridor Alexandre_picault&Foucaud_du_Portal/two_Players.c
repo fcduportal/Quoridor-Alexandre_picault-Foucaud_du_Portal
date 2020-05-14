@@ -16,11 +16,7 @@ int Game_2_Player (pawn player[], int nb_Players, plateau plateau)
 {
 
     
-    player = malloc(nb_Players * sizeof(int)); // Memory is allocated for the array
-    if (player == NULL) // Checking to see if allocation worked
-    {
-        return EXIT_FAILURE; // Stop because malloc didn't worked
-    }
+
     
     
     
@@ -29,16 +25,15 @@ int Game_2_Player (pawn player[], int nb_Players, plateau plateau)
     player[0].number_fence = NB_FENCE_MAX;
     player[1].number_fence = NB_FENCE_MAX;
     
-    player[0].A.x = 5;
-    player[0].A.y = 1;
+    player[0].A.x = 4;
+    player[0].A.y = 0;
+    plateau.board[4][0] = PAWN;
     
-    player[1].A.x = 5;
-    player[1].A.y = 9;
+    player[1].A.x = 4;
+    player[1].A.y = 8;
+    plateau.board[4][8] = PAWN;
 
 
-
-    
-    
     
     //    appel random (&)
     
@@ -72,9 +67,14 @@ int Game_2_Player (pawn player[], int nb_Players, plateau plateau)
             
     }
     
-    // free memory gave to the malloc
-    free(player);
-    return EXIT_SUCCESS;
+    
+    
+    // rappel de la fonction avec le deuxieme player
+    
+
+    
+    
+    return 0;
     
 }
 

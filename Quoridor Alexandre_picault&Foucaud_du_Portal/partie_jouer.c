@@ -30,11 +30,19 @@ void playFence (pawn player[], int digit_Player, plateau plateau)
         default:
         {
             Barrier = enter_coord_fence();
+            
+            printf("play fence : barriere : (%d;%d), (%d;%d)\t", Barrier.A.x, Barrier.A.y, Barrier.B.x, Barrier.B.y);
+            
             tester_barrier(Barrier, plateau);
             
-            
-            
+            plateau.board[Barrier.A.x][Barrier.A.y] = TAKEN;
+            plateau.board[Barrier.B.x][Barrier.B.y] = TAKEN;
             display_coord_fence();
+            
+            printf("\ndigit player : %d / number fence : %d\t ",digit_Player, player[digit_Player].number_fence );
+            player[digit_Player].number_fence--;
+            printf("\ndigit player : %d / number fence : %d\t ",digit_Player, player[digit_Player].number_fence );
+            
             break;
         }
     }

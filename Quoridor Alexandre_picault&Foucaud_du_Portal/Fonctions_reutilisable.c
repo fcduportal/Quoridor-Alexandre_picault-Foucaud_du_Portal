@@ -14,6 +14,8 @@
 ///
 
 #include "header.h"
+#define BETWEEN(value, min, max) (value <= max && value >= min)
+
 
 //
 
@@ -35,16 +37,30 @@ void clear_console (void)
 fence enter_coord_fence (void)
 {
     fence Barrier;
+    int test = -1;
     
-    printf("Veuiilez saisir l'abscisse 1 (x1) de l'emplacement souhaite :\t");
-    scanf("%d",&Barrier.A.x);
-    printf("Veuiilez saisir l'ordonnee 1 (y1) de l'emplacement souhaite :\t");
-    scanf("%d",&Barrier.A.y);
-    printf("Veuiilez saisir l'abscisse 2 (x2) de l'emplacement souhaite :\t");
-    scanf("%d",&Barrier.B.x);
-    printf("Veuiilez saisir l'ordonnee 2 (y2) de l'emplacement souhaite :\t");
-    scanf("%d",&Barrier.B.y);
-    
+    while (test != 0)
+    {
+        printf("Veuiilez saisir l'abscisse 1 (x1) de l'emplacement souhaite :\t");
+        scanf("%d",&Barrier.A.x);
+        printf("Veuiilez saisir l'ordonnee 1 (y1) de l'emplacement souhaite :\t");
+        scanf("%d",&Barrier.A.y);
+        printf("Veuiilez saisir l'abscisse 2 (x2) de l'emplacement souhaite :\t");
+        scanf("%d",&Barrier.B.x);
+        printf("Veuiilez saisir l'ordonnee 2 (y2) de l'emplacement souhaite :\t");
+        scanf("%d",&Barrier.B.y);
+        
+        if (BETWEEN(Barrier.A.x, 0, 8) && BETWEEN(Barrier.A.y, 0, 8) && BETWEEN(Barrier.B.x, 0, 8) && BETWEEN(Barrier.B.y, 0, 8))
+        {
+            printf("Beetwen\n");
+            test = 0;
+        }
+        else
+        {
+            printf("Vos coordonees doivent etre comprises entre 0 et 8\n");
+        }
+    }
+    printf("barriere : (%d;%d), (%d;%d)\t", Barrier.A.x, Barrier.A.y, Barrier.B.x, Barrier.B.y);
     return Barrier;
 }
 
@@ -52,6 +68,9 @@ fence enter_coord_fence (void)
 
 void tester_barrier (fence Barrier, plateau plateau)
 {
+    printf("tester barriere : barriere : (%d;%d), (%d;%d)\n", Barrier.A.x, Barrier.A.y, Barrier.B.x, Barrier.B.y);
+
+    
     int test=0;
     if (Barrier.A.x == Barrier.B.x)
     {
@@ -71,11 +90,13 @@ void tester_barrier (fence Barrier, plateau plateau)
         enter_coord_fence();
     }
     
-    
+    printf("test : %d\n", test);
     
     if (availability_Box(Barrier.A, plateau)==0 || availability_Box(Barrier.B, plateau)==0)
     {
-        printf("envoyer les coordonées au tableau");
+        printf("availability box : barriere : (%d;%d), (%d;%d)\t", Barrier.A.x, Barrier.A.y, Barrier.B.x, Barrier.B.y);
+
+        printf("envoyer les coordonées au tableau\n");
     }
     else
     {

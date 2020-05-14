@@ -18,9 +18,9 @@ int main()
 {
     plateau plateau;
     
-    for (int i = 1; i<=9; i++)
+    for (int i = 0; i<9; i++)
     {
-        for (int j=1; j<=9; j++)
+        for (int j=0; j<9; j++)
         {
             plateau.board[i][j]=FREE;
         }
@@ -36,7 +36,7 @@ int main()
     info_start(&nb_Players, &duration); //  Call fonction to ask the first info in order to adress differents rules to the game.
     
 
-    
+    int test=111;
     
     switch (nb_Players) // play in fonction of the number of players
     {
@@ -50,8 +50,23 @@ int main()
             
         case 2: // play 2
         {
-            printf("Faire le jeu avec 2 joueurs\n"); 
-            Game_2_Player(&player[digit_player], nb_Players, plateau);
+            
+            player = malloc(nb_Players * sizeof(pawn)); // Memory is allocated for the array
+            if (player == NULL) // Checking to see if allocation worked
+            {
+                return EXIT_FAILURE; // Stop because malloc didn't worked
+            }
+            
+            test = Game_2_Player(&player[digit_player], nb_Players, plateau);
+            
+            printf("\nAvant free memory\n");
+            
+            // free memory gave to the malloc
+            free(player);
+            
+            printf("\nApres free memory\n");
+            
+            printf("Avant break : test : %d\n", test);
             
             break;
         }
@@ -65,11 +80,11 @@ int main()
         }
     }
     
-    
+    printf("Avant exit success : test : %d\n", test);
     
     // fonction recommencer
     
-    return EXIT_SUCCESS;
+    return 0;
 }
 
 ///
