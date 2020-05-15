@@ -33,8 +33,8 @@ int Game_one_Player (Player player[], int nb_Players, Plateau plateau, int *dura
     
     
     
-    
     //    appel random (&)
+    
     
     
     time_t t_debut=time(NULL);

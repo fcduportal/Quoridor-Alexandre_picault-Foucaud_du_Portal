@@ -14,8 +14,6 @@
 ///
 
 #include "header.h"
-#define BETWEEN(value, min, max) (value <= max && value >= min)
-
 
 //
 
@@ -41,13 +39,13 @@ fence enter_coord_fence (void)
     
     while (test != 0)
     {
-        printf("Veuiilez saisir l'abscisse 1 (x1) de l'emplacement souhaite :\t");
+        printf("Veuillez saisir l'abscisse 1 (x1) de l'emplacement souhaite :\t");
         scanf("%d",&Barrier.A.ligne);
-        printf("Veuiilez saisir l'ordonnee 1 (y1) de l'emplacement souhaite :\t");
+        printf("Veuillez saisir l'ordonnee 1 (y1) de l'emplacement souhaite :\t");
         scanf("%d",&Barrier.A.colonne);
-        printf("Veuiilez saisir l'abscisse 2 (x2) de l'emplacement souhaite :\t");
+        printf("Veuillez saisir l'abscisse 2 (x2) de l'emplacement souhaite :\t");
         scanf("%d",&Barrier.B.ligne);
-        printf("Veuiilez saisir l'ordonnee 2 (y2) de l'emplacement souhaite :\t");
+        printf("Veuillez saisir l'ordonnee 2 (y2) de l'emplacement souhaite :\t");
         scanf("%d",&Barrier.B.colonne);
         
         if (BETWEEN(Barrier.A.ligne, 0, 8) && BETWEEN(Barrier.A.colonne, 0, 8) && BETWEEN(Barrier.B.ligne, 0, 8) && BETWEEN(Barrier.B.colonne, 0, 8))
@@ -66,68 +64,8 @@ fence enter_coord_fence (void)
 
 //
 
-//void tester_barrier (fence Barrier, plateau plateau)
-//{
-//    printf("tester barriere : barriere : (%d;%d), (%d;%d)\n", Barrier.A.x, Barrier.A.y, Barrier.B.x, Barrier.B.y);
-//
-//
-//    int test=0;
-//    if (Barrier.A.x == Barrier.B.x)
-//    {
-//        test = Barrier.A.y-Barrier.B.y;
-//        switchtest_B(test, Barrier);
-//    }
-//
-//    else if (Barrier.A.y == Barrier.B.y)
-//    {
-//        test = Barrier.A.x-Barrier.B.x;
-//        switchtest_B(test, Barrier);
-//    }
-//    else
-//    {
-//        printf("Votre barriere doit etre place sur deux cases adjacentes.\n");
-//        clear_console();
-//        enter_coord_fence();
-//    }
-//
-//    printf("test : %d\n", test);
-//
-//    if (availability_Box(Barrier.A, plateau)==0 || availability_Box(Barrier.B, plateau)==0)
-//    {
-//        printf("availability box : barriere : (%d;%d), (%d;%d)\t", Barrier.A.x, Barrier.A.y, Barrier.B.x, Barrier.B.y);
-//
-//        printf("envoyer les coordonées au tableau\n");
-//    }
-//    else
-//    {
-//        printf("Une case n'est pas libre. Pauv naze\n");
-//        enter_coord_fence();
-//    }
-//}
-
-//
-
-
-
-//void switchtest_B (int test, fence Barrier)
-//{
-//    if(test == 1 || test== -1)
-//    {
-//    }
-//    else
-//    {
-//        printf("Votre barriere doit etre place sur deux cases adjacentes.\n");
-//        clear_console();
-//        enter_coord_fence();
-//    }
-//}
-
-//
-
 void display_coord_fence (fence barrier)
 {
-    
-    
     printf("Votre barrière est en : (%d;%d) et (%d;%d)\n", barrier.A.ligne, barrier.A.colonne, barrier.B.ligne, barrier.B.colonne);
     clear_console();
 }
@@ -142,21 +80,46 @@ void display_coord_fence (fence barrier)
 
 point enter_coord_Pawn (void)
 {
-    
     point point;
     
-    printf("Veuiilez saisir l'abscisse (x) de l'emplacement souhaite :\t");
+    printf("Veuillez saisir l'abscisse (x) de l'emplacement souhaite :\t");
     scanf("%d",&point.ligne);
-    printf("Veuiilez saisir l'ordonnee (y) de l'emplacement souhaite :\t");
+    printf("Veuillez saisir l'ordonnee (y) de l'emplacement souhaite :\t");
     scanf("%d",&point.colonne);
-    
-    printf("point : (%d,%d)\n",point.ligne, point.colonne);
     
     return point;
 }
 
 //
 
+void display_coord_Pawn (Player player)
+{
+    printf("Votre pion est en (%d;%d)\n", player.position.ligne, player.position.colonne);
+}
+
+//
+
+
+
+/// end Pawn-------------------------------------------- Begin boxes
+
+
+
+int availability_Box (point M, Plateau *plateau)
+{
+    if (plateau->board[M.ligne][M.colonne] != FREE)
+    {
+        printf("Impossible la case (%d;%d) est déjà prise.\n", M.ligne, M.colonne);
+        return EXIT_FAILURE;
+    }
+    else
+    {
+        printf("La case est libre (%d,%d)\n", M.ligne, M.colonne);
+        return EXIT_SUCCESS;
+    }
+}
+
+//
 
 int tester_adjacent (point M, point N)
 {
@@ -179,84 +142,7 @@ int tester_adjacent (point M, point N)
 
 
 
-
-
-
-
-//int tester_Pawn (pawn player, plateau plateau)
-//{
-//    printf("tester pawn a : (%d,%d) , temp: (%d,%d)\n", player.A.x, player.A.y, player.temp.x, player.temp.y);
-//    int test=0;
-//    if (player.A.x == player.temp.x)
-//    {
-//        test = player.A.y-player.temp.y;
-//        test = switchtest_P(test, player, plateau);
-//    }
-//    else if (player.A.y == player.temp.y)
-//    {
-//        test = player.A.x-player.temp.x;
-//        test = switchtest_P(test, player, plateau);
-//    }
-//
-//    if (test == EXIT_SUCCESS)
-//    {
-//        return availability_Box(player.temp, plateau);
-//    }
-//    else
-//    {
-//        return EXIT_FAILURE;
-//    }
-//
-//
-//}
-
-//
-
-//int switchtest_P (int test, pawn player, plateau plateau)
-//{
-//
-//    if (test==1 || test==-1)
-//    {
-//        return EXIT_SUCCESS;
-//    }
-//
-//    else
-//    {
-//        printf("Votre Pion doit etre place sur une case adjacente a la precedente.\n");
-//        return EXIT_FAILURE;
-//    }
-//}
-
-//
-
-void display_coord_Pawn (Player player)
-{
-    printf("Votre pion est en (%d;%d)\n", player.position.ligne, player.position.colonne);
-}
-
-//
-
-/// end Pawn-------------------------------------------- Begin boxes
-
-
-
-int availability_Box (point M, Plateau *plateau)
-{
-    if (plateau->board[M.ligne][M.colonne] != FREE)
-    {
-        printf("Impossible la case (%d;%d) est déjà prise.\n", M.ligne, M.colonne);
-        return EXIT_FAILURE;
-    }
-    else
-    {
-        printf("La case est libre (%d,%d)\n", M.ligne, M.colonne);
-        return EXIT_SUCCESS;
-    }
-}
-
-
-
-///end boxes-------------------------------------------- 
+///end boxes--------------------------------------------  begin end game
 
 
 
@@ -273,10 +159,9 @@ int sablier (int *duration, time_t t_debut)
     {
         return EXIT_SUCCESS;
     }
-    
 }
 
-
+//
 
 int gagnant (Player *player)
 {

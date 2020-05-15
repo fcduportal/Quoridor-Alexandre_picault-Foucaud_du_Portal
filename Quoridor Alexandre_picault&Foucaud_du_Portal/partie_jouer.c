@@ -17,7 +17,7 @@ int playFence (Player player[], int digit_Player, Plateau *plateau)
 {
     fence Barrier;
     
-    printf("Il vous reste %d barrières\n",player[digit_Player].number_fence);
+    printf("\n%s : Il vous reste %d barrières\n",player[digit_Player].name,player[digit_Player].number_fence);
     switch (player[digit_Player].number_fence)
     {
         case 0:
@@ -31,9 +31,6 @@ int playFence (Player player[], int digit_Player, Plateau *plateau)
         {
             Barrier = enter_coord_fence();
             int test = -1;
-            
-            printf("play fence : barriere : (%d;%d), (%d;%d)\t", Barrier.A.ligne, Barrier.A.colonne, Barrier.B.ligne, Barrier.B.colonne);
-            
             
             test = tester_adjacent(Barrier.A, Barrier.B);
             if (test == EXIT_SUCCESS)

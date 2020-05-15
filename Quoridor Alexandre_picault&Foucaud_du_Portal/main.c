@@ -17,7 +17,6 @@
 int main()
 {
     Plateau plateau;
-    
     for (int i = 0; i<9; i++)
     {
         for (int j=0; j<9; j++)
@@ -30,10 +29,11 @@ int main()
     int nbPlayers = 0, duration = 0;
     Player player[4];
     
+    //
+    
     info_start(&nbPlayers, &duration); //  Call fonction to ask the first info in order to adress differents rules to the game.
     
-
-    int test=111;
+    //
     
     switch (nbPlayers) // play in fonction of the number of players
     {
@@ -41,7 +41,7 @@ int main()
         {
             printf("Faire le jeu avec un bot.\n");
             Game_one_Player(player, nbPlayers, plateau, &duration);
-
+            
             break;
         }
             
@@ -60,8 +60,6 @@ int main()
             break;
         }
     }
-    
-    printf("Avant exit success : test : %d\n", test);
     
     // fonction recommencer
     

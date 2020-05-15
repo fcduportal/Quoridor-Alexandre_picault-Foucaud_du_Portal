@@ -13,10 +13,10 @@
 //
 
 #include <time.h>
+#define NB_CHAR 15
 
 //this part is used for all the functions in we will need many times
 
-#define NB_CHAR 20
 
 //
 
@@ -57,7 +57,7 @@ typedef struct fence fence;
 
 //define the position of a fence
 
- fence enter_coord_fence (void);
+fence enter_coord_fence (void);
 
 
 //verification that it is possible to place the fence

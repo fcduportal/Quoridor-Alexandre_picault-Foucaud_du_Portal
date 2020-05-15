@@ -17,10 +17,9 @@
 
 void info_start(int *nb_players, int *duration) //Fonction which ask the first info.
 {
-//    demand_nb_player(nb_players);
-    *nb_players = 2;
-//    *duration = demand_time();
-    *duration = 10;
+    demand_nb_player(nb_players);
+    *duration = demand_time();
+    clear_console();
 }
 
 //request for the number of players
@@ -32,11 +31,11 @@ void demand_nb_player (int *nb_players)
     
     switch (*nb_players)
     {
-        case 1:
-        {
-            printf("Vous allez jouer tout seul mais contre un bot, mais combien de temps");
-            break;
-        }
+            //        case 1:
+            //        {
+            //            printf("Vous allez jouer tout seul mais contre un bot, mais combien de temps");
+            //            break;
+            //        }
             
         case 2:
         {
@@ -44,13 +43,11 @@ void demand_nb_player (int *nb_players)
             break;
         }
             
-            
         case 4:
         {
             printf("Vous allez jouer a 4 mais combien de temps ?\n");
             break;
         }
-            
             
         default:
         {
@@ -60,7 +57,6 @@ void demand_nb_player (int *nb_players)
             break;
         }
     }
-//    clear_console();
 }
 
 //request for game time
@@ -104,7 +100,6 @@ int demand_time (void)
             break;
         }
     }
-//    clear_console();
     return duration;
 }
 

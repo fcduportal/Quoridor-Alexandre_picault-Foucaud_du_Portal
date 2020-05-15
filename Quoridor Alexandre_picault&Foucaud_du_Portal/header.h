@@ -13,25 +13,25 @@
 
 ///
 
+#include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 #include <string.h>
 
 #include "Fonctions_reutilisable.h"
 #include "partie_jouer.h"
 #include "Infos_start.h"
+#include "random.h"
+#include "unistd.h"
+
 #include "One_player.h"
 #include "two_Players.h"
 #include "four_Players.h"
-#include "unistd.h"
-#include "random.h"
 
-#define NB_FENCE_MAX 10
 #define DIM_TAB 9
-
-
-
+#define NB_CHAR 15
+#define NB_FENCE_MAX 10
+#define BETWEEN(value, min, max) (value <= max && value >= min)
 
 ///
 

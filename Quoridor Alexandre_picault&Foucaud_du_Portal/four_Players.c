@@ -99,7 +99,7 @@ int Game_4_Player (Player player[], int nb_Players, Plateau plateau, int *durati
     }
     
     return 0;
-
+    
 }
 
 ///
