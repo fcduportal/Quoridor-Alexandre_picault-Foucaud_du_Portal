@@ -13,52 +13,93 @@
 
 //
 
-int Game_4_Player (pawn player[], int nb_Players, plateau plateau)
+int Game_4_Player (Player player[], int nb_Players, Plateau plateau, int *duration)
 {
-    
-    player = malloc(nb_Players * sizeof(int)); // Memory is allocated for the array
-    if (player == NULL) // Checking to see if allocation worked
-    {
-        return EXIT_FAILURE; // Stop because malloc didn't worked
-    }
-    
-    
-    
     int digit_Player=0, choice=0;
     
-    //
+    char foucaud[NB_CHAR] = "Foucaud", Alexandre[NB_CHAR] = "Alexandre";
     
-    printf("si vous voulez jouer une barriere taper 1 ou un pion taper 2:/n");
-    scanf("%d",&choice);
+    strcpy(player[0].name, foucaud);
+    strcpy(player[1].name, Alexandre);
     
-    switch (choice)
+    for (int i = 0; i<4; i++)
     {
-        case 1:
-            playFence(&player[digit_Player], digit_Player, plateau);
-            // play fence There is 5 max
-            break;
-            
-        case 2:
-        {
-            playPawn(player[digit_Player], plateau);
-            // play pawn
-        }
-            break;
-            
-            
-        default:
-        {
-            printf("Vous devez choisir 1 ou 2 :");
-            clear_console();
-            Game_4_Player(player, nb_Players, plateau);
-        }
-            break;
+        player[i].number_fence = NB_FENCE_MAX;
     }
     
-    // free memory gave to the malloc
-    free(player);
-    return EXIT_SUCCESS;
+    player[0].position.ligne = 4;
+    player[0].position.colonne = 0;
+    plateau.board[4][0] = PAWN;
     
+    player[1].position.ligne = 4;
+    player[1].position.colonne = 8;
+    plateau.board[4][8] = PAWN;
+    
+    player[2].position.ligne = 4;
+    player[2].position.colonne = 0;
+    plateau.board[4][0] = PAWN;
+    
+    player[1].position.ligne = 8;
+    player[1].position.colonne = 4;
+    plateau.board[8][4] = PAWN;
+    
+    
+    //    appel random (&)
+    
+    
+    time_t t_debut=time(NULL);
+    
+    int boucle = -1;
+    
+    while (boucle!=0)
+    {
+        printf(" \nnom du joueur %s\n", player[digit_Player].name);
+        printf("Votre pion est en : (%d;%d) et il vous reste %d barrieres.\n\n", player[digit_Player].position.ligne, player[digit_Player].position.colonne, player[digit_Player].number_fence);
+        
+        printf("Si vous voulez jouer une barriere taper 1 ou un pion taper 2:\t");
+        scanf("%d",&choice);
+        
+        switch (choice)
+        {
+            case 1:
+            {
+                if (playFence(&player[digit_Player], digit_Player, &plateau) == EXIT_SUCCESS)
+                {
+                    digit_Player = ((digit_Player+1)%4);
+                }
+                break;
+            }
+                
+                
+            case 2:
+            {
+                
+                if (playPawn(&player[digit_Player], &plateau) == EXIT_SUCCESS)
+                {
+                    digit_Player = ((digit_Player+1)%4);
+                }
+                break;
+            }
+                
+                
+            default:
+            {
+                printf("Vous devez choisir 1 ou 2 :");
+                break;
+            }
+        }
+        
+        if (sablier(duration, t_debut) == 0) // il reste du temps
+        {
+        }
+        else
+        {
+            boucle = 0;
+        }
+    }
+    
+    return 0;
+
 }
 
 ///

@@ -26,7 +26,7 @@ void clear_console (void);
 
 struct point
 {
-    int x,y;
+    int ligne,colonne;
 };
 typedef struct point point;
 
@@ -36,7 +36,7 @@ struct plateau
 {
     int board [9][9];
 };
-typedef struct plateau plateau;
+typedef struct plateau Plateau;
 
 
 
@@ -62,13 +62,13 @@ typedef struct fence fence;
 
 //verification that it is possible to place the fence
 
-void tester_barrier (fence Barrier, plateau plateau);
-void switchtest_B (int test, fence Barrier);
+//void tester_barrier (fence Barrier, plateau plateau);
+//void switchtest_B (int test, fence Barrier);
 
 
 //fence display
 
-void display_coord_fence (void);
+void display_coord_fence (fence barrier);
 
 
 
@@ -82,22 +82,25 @@ struct pawn
 {
     char name[NB_CHAR];
     int number_fence;
-    point A, temp;
+    point position, temp;
 };
-typedef struct pawn pawn;
+typedef struct pawn Player;
 
 //define the position of a pawn
 
-void enter_coord_Pawn (pawn player, plateau plateau);
+point enter_coord_Pawn (void);
 
 //pawn display
 
-void display_coord_Pawn (pawn player);
+void display_coord_Pawn (Player player);
 
 //
 
-void tester_Pawn (pawn player, plateau plateau);
-void switchtest_P (int test, pawn player, plateau plateau);
+int tester_adjacent (point M, point N);
+int switchtest_adjacent (int test, point M, point N, Plateau plateau);
+
+//int tester_Pawn (pawn player, plateau plateau);
+//int switchtest_P (int test, pawn player, plateau plateau);
 
 
 
@@ -115,10 +118,12 @@ typedef enum boxes boxes;
 
 
 
-int availability_Box (point M, plateau plateau);
+int availability_Box (point M, Plateau *plateau);
 
 // end boxes--------------------------------------------
 
 
 
 int sablier (int *duration, time_t t_debut);
+
+int gagnant (Player *player);

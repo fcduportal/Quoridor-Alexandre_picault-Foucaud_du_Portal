@@ -16,7 +16,7 @@
 
 //player code
 
-int Game_2_Player (pawn player[], int nb_Players, plateau plateau, int *duration);
+int Game_2_Players (Player player[], int nb_Players, Plateau plateau, int *duration);
 
 ///
 

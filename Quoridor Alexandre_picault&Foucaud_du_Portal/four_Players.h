@@ -15,7 +15,7 @@
 
 //
 
-int Game_4_Player (pawn player[], int nb_Players, plateau plateau);
+int Game_4_Player (Player player[], int nb_Players, Plateau plateau, int *duration);
 
 ///
 

@@ -16,7 +16,7 @@
 
 int main()
 {
-    plateau plateau;
+    Plateau plateau;
     
     for (int i = 0; i<9; i++)
     {
@@ -26,47 +26,28 @@ int main()
         }
     }
     
-    // fonction_a_tester();
     
-    int nb_Players = 0, duration = 0, digit_player =0;
-    pawn *player = NULL; // This pointer will be used as an array after the malloc's call...
+    int nbPlayers = 0, duration = 0;
+    Player player[4];
     
-
-    
-    info_start(&nb_Players, &duration); //  Call fonction to ask the first info in order to adress differents rules to the game.
+    info_start(&nbPlayers, &duration); //  Call fonction to ask the first info in order to adress differents rules to the game.
     
 
     int test=111;
     
-    switch (nb_Players) // play in fonction of the number of players
+    switch (nbPlayers) // play in fonction of the number of players
     {
         case 1:
         {
             printf("Faire le jeu avec un bot.\n");
-            Game_one_Player(&player[digit_player], nb_Players);
+            Game_one_Player(player, nbPlayers, plateau, &duration);
 
             break;
         }
             
         case 2: // play 2
         {
-            
-            player = malloc(nb_Players * sizeof(pawn)); // Memory is allocated for the array
-            if (player == NULL) // Checking to see if allocation worked
-            {
-                return EXIT_FAILURE; // Stop because malloc didn't worked
-            }
-            
-            test = Game_2_Player(&player[digit_player], nb_Players, plateau, &duration);
-            
-            printf("\nAvant free memory\n");
-            
-            // free memory gave to the malloc
-            free(player);
-            
-            printf("\nApres free memory\n");
-            
-            printf("Avant break : test : %d\n", test);
+            Game_2_Players(player, nbPlayers, plateau, &duration);
             
             break;
         }
@@ -74,7 +55,7 @@ int main()
         case 4: // play 4
         {
             printf("Faire le jeu avec 4 joueurs\n");
-            Game_4_Player(&player[digit_player], nb_Players, plateau);
+            Game_4_Player(player, nbPlayers, plateau, &duration);
             
             break;
         }
@@ -88,4 +69,3 @@ int main()
 }
 
 ///
-

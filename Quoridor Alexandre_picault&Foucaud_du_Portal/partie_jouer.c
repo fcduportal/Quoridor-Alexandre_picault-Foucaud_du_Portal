@@ -13,7 +13,7 @@
 
 //play a fence
 
-void playFence (pawn player[], int digit_Player, plateau plateau)
+int playFence (Player player[], int digit_Player, Plateau *plateau)
 {
     fence Barrier;
     
@@ -22,39 +22,76 @@ void playFence (pawn player[], int digit_Player, plateau plateau)
     {
         case 0:
         {
-            printf("Vous n'avez plus de barrieres.\nVeuillez déplacer votre pion.");
-            playPawn(*player, plateau);
+            printf("Vous n'avez plus de barrieres.\nVeuillez déplacer votre pion.\n");
+            return EXIT_FAILURE;
             break;
         }
             
         default:
         {
             Barrier = enter_coord_fence();
+            int test = -1;
             
-            printf("play fence : barriere : (%d;%d), (%d;%d)\t", Barrier.A.x, Barrier.A.y, Barrier.B.x, Barrier.B.y);
+            printf("play fence : barriere : (%d;%d), (%d;%d)\t", Barrier.A.ligne, Barrier.A.colonne, Barrier.B.ligne, Barrier.B.colonne);
             
-            tester_barrier(Barrier, plateau);
             
-            plateau.board[Barrier.A.x][Barrier.A.y] = TAKEN;
-            plateau.board[Barrier.B.x][Barrier.B.y] = TAKEN;
-            display_coord_fence();
-            
-            printf("\ndigit player : %d / number fence : %d\t ",digit_Player, player[digit_Player].number_fence );
-            player[digit_Player].number_fence--;
-            printf("\ndigit player : %d / number fence : %d\t ",digit_Player, player[digit_Player].number_fence );
+            test = tester_adjacent(Barrier.A, Barrier.B);
+            if (test == EXIT_SUCCESS)
+            {
+                if (availability_Box(Barrier.A, plateau) == EXIT_SUCCESS)
+                {
+                    if (availability_Box(Barrier.B, plateau) == EXIT_SUCCESS)
+                    {
+                        plateau->board[Barrier.A.ligne][Barrier.A.colonne] = TAKEN;
+                        plateau->board[Barrier.B.ligne][Barrier.B.colonne] = TAKEN;
+                        display_coord_fence(Barrier);
+                        player[digit_Player].number_fence--;
+                        return EXIT_SUCCESS;
+                    }
+                }
+            }
+            else
+            {
+                return EXIT_FAILURE;
+            }
             
             break;
         }
     }
-    
-    //
+    return EXIT_SUCCESS;
 }
+
+
 
 //play a pawn
 
-void playPawn (pawn player, plateau plateau)
+int playPawn (Player player[], Plateau *plateau)
 {
-    display_coord_Pawn(player);
-    enter_coord_Pawn(player, plateau);
+    int test = -1;
     
+    display_coord_Pawn(*player);
+    player->temp = enter_coord_Pawn();
+    
+    test = tester_adjacent(player->position, player->temp);
+    if (test == EXIT_SUCCESS)
+    {
+        if (availability_Box(player->temp, plateau) == EXIT_SUCCESS)
+        {
+            plateau->board[player->temp.ligne][player->temp.colonne] = PAWN;
+            plateau->board[player->position.ligne][player->position.colonne] = FREE;
+            
+            player->position = player->temp;
+            player->temp.ligne = -1;
+            player->temp.colonne = -1;
+            
+            display_coord_Pawn(*player);
+            return EXIT_SUCCESS;
+        }
+    }
+    else
+    {
+        return EXIT_FAILURE;
+    }
+    
+    return EXIT_SUCCESS;
 }

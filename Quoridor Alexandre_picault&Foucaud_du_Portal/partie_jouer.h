@@ -20,12 +20,12 @@
 
 //play a fence
 
-void playFence (pawn player[], int digit_Player, plateau plateau);
+int playFence (Player *player, int digit_Player, Plateau *plateau);
 
 
 //play a pawn
 
-void playPawn (pawn player, plateau plateau);
+int playPawn (Player *player, Plateau *plateau);
 
 ///
 
