@@ -39,13 +39,13 @@ fence enter_coord_fence (void)
     
     while (test != 0)
     {
-        printf("Veuillez saisir l'abscisse 1 (x1) de l'emplacement souhaite :\t");
+        printf("Veuillez saisir le numero de ligne (y1) de l'emplacement souhaite :\t");
         scanf("%d",&Barrier.A.ligne);
-        printf("Veuillez saisir l'ordonnee 1 (y1) de l'emplacement souhaite :\t");
+        printf("Veuillez saisir le numero de colonnes (x1) de l'emplacement souhaite :\t");
         scanf("%d",&Barrier.A.colonne);
-        printf("Veuillez saisir l'abscisse 2 (x2) de l'emplacement souhaite :\t");
+        printf("Veuillez saisir le numero de ligne (y2) de l'emplacement souhaite :\t");
         scanf("%d",&Barrier.B.ligne);
-        printf("Veuillez saisir l'ordonnee 2 (y2) de l'emplacement souhaite :\t");
+        printf("Veuillez saisir le numero de colonnes (x2) de l'emplacement souhaite :\t");
         scanf("%d",&Barrier.B.colonne);
         
         if (BETWEEN(Barrier.A.ligne, 0, 8) && BETWEEN(Barrier.A.colonne, 0, 8) && BETWEEN(Barrier.B.ligne, 0, 8) && BETWEEN(Barrier.B.colonne, 0, 8))
