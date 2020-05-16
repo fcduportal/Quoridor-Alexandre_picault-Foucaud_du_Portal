@@ -59,13 +59,6 @@ typedef struct fence fence;
 
 fence enter_coord_fence (void);
 
-
-//verification that it is possible to place the fence
-
-//void tester_barrier (fence Barrier, plateau plateau);
-//void switchtest_B (int test, fence Barrier);
-
-
 //fence display
 
 void display_coord_fence (fence barrier);
@@ -78,19 +71,20 @@ void display_coord_fence (fence barrier);
 
 //structure for each pawn used
 
-struct pawn
+struct Player
 {
     char name[NB_CHAR];
     int number_fence;
     point position, temp;
+    char affichage ;
 };
-typedef struct pawn Player;
+typedef struct Player Player;
 
-//define the position of a pawn
+//define the position of a Player
 
 point enter_coord_Pawn (void);
 
-//pawn display
+//Player display
 
 void display_coord_Pawn (Player player);
 
@@ -99,8 +93,8 @@ void display_coord_Pawn (Player player);
 int tester_adjacent (point M, point N);
 int switchtest_adjacent (int test, point M, point N, Plateau plateau);
 
-//int tester_Pawn (pawn player, plateau plateau);
-//int switchtest_P (int test, pawn player, plateau plateau);
+//int tester_Pawn (Player player, plateau plateau);
+//int switchtest_P (int test, Player player, plateau plateau);
 
 
 
@@ -127,3 +121,5 @@ int availability_Box (point M, Plateau *plateau);
 int sablier (int *duration, time_t t_debut);
 
 int gagnant (Player *player);
+
+void display_board (Plateau *plateau, Player player[]);

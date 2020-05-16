@@ -32,6 +32,9 @@ int Game_2_Players (Player player[], int nb_Players, Plateau plateau, int *durat
     player[1].position.colonne = 4;
     plateau.board[8][4] = PAWN;
     
+    player[0].affichage = 'F';
+    player[1].affichage = 'A';
+    
     
     //    appel random (&)
     
@@ -42,6 +45,9 @@ int Game_2_Players (Player player[], int nb_Players, Plateau plateau, int *durat
     
     while (boucle!=0)
     {
+        
+        display_board(&plateau, player);
+        
         printf("%s : Votre pion est en : (%d;%d) et il vous reste %d barrieres.\n\n", player[digitPlayer].name, player[digitPlayer].position.ligne, player[digitPlayer].position.colonne, player[digitPlayer].number_fence);
         
         printf("Si vous voulez jouer une barriere taper 1 ou un pion taper 2:\t");
@@ -75,26 +81,12 @@ int Game_2_Players (Player player[], int nb_Players, Plateau plateau, int *durat
             }
         }
         
-        if (sablier(duration, t_debut) == EXIT_SUCCESS) // il ne reste pas de temps
+        if (sablier(duration, t_debut) != EXIT_SUCCESS || gagnant(player) == EXIT_SUCCESS) // il ne reste plus de temps ou un joueur a gagne la partie.
         {
-        }
-        else
-        {
-            printf("JE SUIS UN CONNARD");
+            printf("\nFin de Partie.\n");
             boucle=0;
-        }
-        
-        
-        if (gagnant(player) == EXIT_SUCCESS) // Quelqu'un a gagné
-        {
-            boucle=0;
-        }
-        else
-        {
-            printf("Je suis aussI UHN CONNARD");
         }
     }
-    
     return 0;
 }
 

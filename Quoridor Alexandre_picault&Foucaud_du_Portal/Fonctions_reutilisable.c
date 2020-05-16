@@ -34,7 +34,7 @@ void clear_console (void)
 
 fence enter_coord_fence (void)
 {
-    fence Barrier;
+    fence Barrier = {-1, -1, -1, -1};
     int test = -1;
     
     while (test != 0)
@@ -50,7 +50,6 @@ fence enter_coord_fence (void)
         
         if (BETWEEN(Barrier.A.ligne, 0, 8) && BETWEEN(Barrier.A.colonne, 0, 8) && BETWEEN(Barrier.B.ligne, 0, 8) && BETWEEN(Barrier.B.colonne, 0, 8))
         {
-            printf("Beetwen\n");
             test = 0;
         }
         else
@@ -58,7 +57,6 @@ fence enter_coord_fence (void)
             printf("Vos coordonees doivent etre comprises entre 0 et 8\n");
         }
     }
-    printf("barriere : (%d;%d), (%d;%d)\t", Barrier.A.ligne, Barrier.A.colonne, Barrier.B.ligne, Barrier.B.colonne);
     return Barrier;
 }
 
@@ -80,13 +78,25 @@ void display_coord_fence (fence barrier)
 
 point enter_coord_Pawn (void)
 {
-    point point;
+    point point = {-1, -1};
+    int test = -1;
     
-    printf("Veuillez saisir l'abscisse (x) de l'emplacement souhaite :\t");
-    scanf("%d",&point.ligne);
-    printf("Veuillez saisir l'ordonnee (y) de l'emplacement souhaite :\t");
-    scanf("%d",&point.colonne);
-    
+    while (test != 0)
+    {
+        printf("Veuillez saisir l'abscisse (x) de l'emplacement souhaite :\t");
+        scanf("%d",&point.ligne);
+        printf("Veuillez saisir l'ordonnee (y) de l'emplacement souhaite :\t");
+        scanf("%d",&point.colonne);
+        
+            if (BETWEEN(point.ligne, 0, 8) && BETWEEN(point.colonne, 0, 8))
+            {
+                test = 0;
+            }
+            else
+            {
+                printf("Vos coordonees doivent etre comprises entre 0 et 8\n");
+            }
+    }
     return point;
 }
 
@@ -123,8 +133,6 @@ int availability_Box (point M, Plateau *plateau)
 
 int tester_adjacent (point M, point N)
 {
-    printf("tester adjacent M : (%d,%d) , N: (%d,%d)\n", M.ligne, M.colonne, N.ligne, N.colonne);
-    
     if (M.ligne == N.ligne && (M.colonne-N.colonne==-1 || M.colonne-N.colonne == 1))
     {
         return EXIT_SUCCESS;
@@ -166,7 +174,6 @@ int sablier (int *duration, time_t t_debut)
 int gagnant (Player *player)
 {
     int etat = EXIT_FAILURE;
-    printf("AVANT IF");
     if (player[0].position.ligne == 8)
     {
         printf("Le joueur %s a gagne.\n", player[0].name);
@@ -189,5 +196,39 @@ int gagnant (Player *player)
     }
     return etat;
 }
+
+
+void display_board (Plateau *plateau, Player player[])
+{
+    clear_console();
+    
+    for (int i = 0; i < 9; i++)
+    {
+        for (int j = 0; j < 9; j++)
+        {
+            switch (plateau->board[i][j])
+            {
+                case FREE:
+                {
+                    printf("|   ");
+                    break;
+                }
+                case TAKEN:
+                {
+                    printf("| X ");
+                    break;
+                }
+                case PAWN:
+                {
+                    printf("| J ");
+                    break;
+                }
+            }
+        }
+        printf("|\n");
+    }
+    printf("\n\n");
+}
+
 
 #endif /* Fonctions_reutilisable_h */

@@ -18,6 +18,7 @@ int playFence (Player player[], int digit_Player, Plateau *plateau)
     fence Barrier;
     
     printf("\n%s : Il vous reste %d barrières\n",player[digit_Player].name,player[digit_Player].number_fence);
+    
     switch (player[digit_Player].number_fence)
     {
         case 0:
@@ -30,10 +31,8 @@ int playFence (Player player[], int digit_Player, Plateau *plateau)
         default:
         {
             Barrier = enter_coord_fence();
-            int test = -1;
             
-            test = tester_adjacent(Barrier.A, Barrier.B);
-            if (test == EXIT_SUCCESS)
+            if (tester_adjacent(Barrier.A, Barrier.B) == EXIT_SUCCESS)
             {
                 if (availability_Box(Barrier.A, plateau) == EXIT_SUCCESS)
                 {
@@ -45,17 +44,28 @@ int playFence (Player player[], int digit_Player, Plateau *plateau)
                         player[digit_Player].number_fence--;
                         return EXIT_SUCCESS;
                     }
+//                    else
+//                    {
+//                        return EXIT_FAILURE;
+//                    }
                 }
+//                else
+//                {
+//                    return EXIT_FAILURE;
+//                }
+
             }
-            else
-            {
-                return EXIT_FAILURE;
-            }
+//            else
+//            {
+//                return EXIT_FAILURE;
+//            }
             
             break;
         }
     }
-    return EXIT_SUCCESS;
+return EXIT_FAILURE;
+
+
 }
 
 
@@ -64,13 +74,10 @@ int playFence (Player player[], int digit_Player, Plateau *plateau)
 
 int playPawn (Player player[], Plateau *plateau)
 {
-    int test = -1;
-    
     display_coord_Pawn(*player);
     player->temp = enter_coord_Pawn();
     
-    test = tester_adjacent(player->position, player->temp);
-    if (test == EXIT_SUCCESS)
+    if (tester_adjacent(player->position, player->temp) == EXIT_SUCCESS)
     {
         if (availability_Box(player->temp, plateau) == EXIT_SUCCESS)
         {
@@ -85,10 +92,10 @@ int playPawn (Player player[], Plateau *plateau)
             return EXIT_SUCCESS;
         }
     }
-    else
-    {
-        return EXIT_FAILURE;
-    }
+//    else
+//    {
+//        return EXIT_FAILURE;
+//    }
     
-    return EXIT_SUCCESS;
+    return EXIT_FAILURE;
 }
