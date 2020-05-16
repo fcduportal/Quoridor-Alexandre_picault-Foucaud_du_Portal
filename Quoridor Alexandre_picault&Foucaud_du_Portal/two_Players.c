@@ -17,9 +17,10 @@ int Game_2_Players (Player player[], int nb_Players, Plateau plateau, int *durat
     int digitPlayer=0, choice=0;
     
     char Foucaud[NB_CHAR] = "Foucaud", Alexandre[NB_CHAR] = "Alexandre";
-    
+
     strcpy(player[0].name, Foucaud);
     strcpy(player[1].name, Alexandre);
+    
     
     player[0].number_fence = NB_FENCE_MAX;
     player[1].number_fence = NB_FENCE_MAX;
@@ -32,8 +33,10 @@ int Game_2_Players (Player player[], int nb_Players, Plateau plateau, int *durat
     player[1].position.colonne = 4;
     plateau.board[8][4] = PAWN;
     
-    player[0].affichage = 'F';
-    player[1].affichage = 'A';
+    for (int i = 0; i<nb_Players; i++)
+    {
+        player[i].affichage = i+1;
+    }
     
     
     //    appel random (&)
@@ -46,7 +49,7 @@ int Game_2_Players (Player player[], int nb_Players, Plateau plateau, int *durat
     while (boucle!=0)
     {
         
-        display_board(&plateau, player);
+        display_board(&plateau, player, nb_Players);
         
         printf("%s : Votre pion est en : (%d;%d) et il vous reste %d barrieres.\n\n", player[digitPlayer].name, player[digitPlayer].position.ligne, player[digitPlayer].position.colonne, player[digitPlayer].number_fence);
         

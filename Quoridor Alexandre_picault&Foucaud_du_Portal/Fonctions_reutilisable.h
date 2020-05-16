@@ -76,7 +76,7 @@ struct Player
     char name[NB_CHAR];
     int number_fence;
     point position, temp;
-    char affichage ;
+    int affichage ;
 };
 typedef struct Player Player;
 
@@ -122,4 +122,10 @@ int sablier (int *duration, time_t t_debut);
 
 int gagnant (Player *player);
 
-void display_board (Plateau *plateau, Player player[]);
+void display_board (Plateau *plateau, Player player[], int nb_player);
+
+void display_name_player (Player player);
+
+void display_abscisses(void);
+
+void display_lines (void);

@@ -15,10 +15,20 @@
 
 #include "header.h"
 
-void info_start(int *nb_players, int *duration) //Fonction which ask the first info.
+void info_start(int *nb_players, int *duration, Player *player[]) //Fonction which ask the first info.
 {
-    demand_nb_player(nb_players);
-    *duration = demand_time();
+//    demand_nb_player(nb_players);
+    *nb_players = 2;
+    
+//    for (int i =0; i < *nb_players; i++)
+//    {
+//         demand_name_player(i, player[i]);
+//    }
+    
+//    *duration = demand_time();
+    *duration = 10;
+    
+
     clear_console();
 }
 
@@ -102,6 +112,18 @@ int demand_time (void)
     }
     return duration;
 }
+
+//void demand_name_player (int i, Player *player)
+//{
+//    char name[NB_CHAR];
+//    printf("Joueur n : %d \nComment vous appellez vous ?\t", i+1);
+//    scanf("%s", name);
+//    strcpy(player->name, name);
+////    scanf("%s", &player->name);
+//    printf("\nPar quel caractere voulez vous être represente ?\t");
+//    scanf("%c", &player[i].affichage);
+//    printf("cou");
+//}
 
 ///
 

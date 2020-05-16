@@ -198,12 +198,17 @@ int gagnant (Player *player)
 }
 
 
-void display_board (Plateau *plateau, Player player[])
+void display_board (Plateau *plateau, Player player[], int nb_player)
 {
     clear_console();
+    display_name_player(player[0]);
+    
+    display_abscisses();
+    display_lines();
     
     for (int i = 0; i < 9; i++)
     {
+        printf("%d",i);
         for (int j = 0; j < 9; j++)
         {
             switch (plateau->board[i][j])
@@ -220,15 +225,58 @@ void display_board (Plateau *plateau, Player player[])
                 }
                 case PAWN:
                 {
-                    printf("| J ");
+                    for (int k=0; k<nb_player; k++)
+                    {
+                        if (player[k].position.ligne == i &&  player[k].position.colonne == j)
+                        {
+                            printf("| %d ", player[k].affichage);
+                        }
+                    }
                     break;
                 }
             }
         }
-        printf("|\n");
+        printf("|%d\n",i);
+        display_lines();
     }
+    display_abscisses();
+    display_name_player(player[1]);
     printf("\n\n");
 }
 
+
+void display_name_player (Player player)
+{
+    unsigned long longueur_name = strlen(player.name);
+    int longueur_line = (DIM_TAB*4)+1;
+    unsigned long nb_blancs = (longueur_line-longueur_name)/2 + 1;
+    
+    printf("\n\n");
+    for (int i=0; i<nb_blancs; i++)
+    {
+        printf(" ");
+    }
+    printf("%s\n\n", player.name);
+}
+
+void display_abscisses(void)
+{
+    printf(" ");
+    for (int i=0; i<DIM_TAB; i++)
+    {
+        printf("  %d ", i);
+    }
+    printf("\n");
+}
+
+void display_lines (void)
+{
+    printf(" ");
+    for (int i=0; i<DIM_TAB; i++)
+    {
+        printf("|---");
+    }
+    printf("|\n");
+}
 
 #endif /* Fonctions_reutilisable_h */
