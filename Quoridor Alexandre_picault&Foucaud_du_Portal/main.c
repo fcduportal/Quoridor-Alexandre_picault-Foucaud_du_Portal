@@ -39,7 +39,6 @@ int main()
     {
         case 1:
         {
-            printf("Faire le jeu avec un bot.\n");
             Game_one_Player(player, nbPlayers, plateau, &duration);
             
             break;
@@ -54,7 +53,6 @@ int main()
             
         case 4: // play 4
         {
-            printf("Faire le jeu avec 4 joueurs\n");
             Game_4_Player(player, nbPlayers, plateau, &duration);
             
             break;

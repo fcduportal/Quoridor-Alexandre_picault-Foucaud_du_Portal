@@ -59,9 +59,6 @@ typedef struct fence fence;
 
 fence enter_coord_fence (void);
 
-//fence display
-
-void display_coord_fence (fence barrier);
 
 
 
@@ -84,17 +81,13 @@ typedef struct Player Player;
 
 point enter_coord_Pawn (void);
 
-//Player display
-
-void display_coord_Pawn (Player player);
-
 //
 
 int tester_adjacent (point M, point N);
 int switchtest_adjacent (int test, point M, point N, Plateau plateau);
 
-//int tester_Pawn (Player player, plateau plateau);
-//int switchtest_P (int test, Player player, plateau plateau);
+
+
 
 
 
@@ -124,8 +117,12 @@ int gagnant (Player *player);
 
 void display_board (Plateau *plateau, Player player[], int nb_player);
 
-void display_name_player (Player player);
+void display_name_player (Player player, char c1, char c2);
 
-void display_abscisses(void);
+void display_abscisses(char c1, char c2);
 
-void display_lines (void);
+void display_lines (char c1, char c2);
+
+void display_ligne_vide (char c1, char c2);
+
+point saisie_colonnes_lignes (void);

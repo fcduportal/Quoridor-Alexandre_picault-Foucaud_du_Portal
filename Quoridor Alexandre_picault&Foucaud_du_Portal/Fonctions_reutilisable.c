@@ -19,8 +19,6 @@
 
 void clear_console (void)
 {
-    usleep(1000000);
-    usleep(1000000);
     printf ("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"); // To erase console, not great but its work.
 }
 
@@ -39,14 +37,8 @@ fence enter_coord_fence (void)
     
     while (test != 0)
     {
-        printf("Veuillez saisir le numero de ligne (y1) de l'emplacement souhaite :\t");
-        scanf("%d",&Barrier.A.ligne);
-        printf("Veuillez saisir le numero de colonnes (x1) de l'emplacement souhaite :\t");
-        scanf("%d",&Barrier.A.colonne);
-        printf("Veuillez saisir le numero de ligne (y2) de l'emplacement souhaite :\t");
-        scanf("%d",&Barrier.B.ligne);
-        printf("Veuillez saisir le numero de colonnes (x2) de l'emplacement souhaite :\t");
-        scanf("%d",&Barrier.B.colonne);
+        Barrier.A = saisie_colonnes_lignes();
+        Barrier.B = saisie_colonnes_lignes();
         
         if (BETWEEN(Barrier.A.ligne, 0, 8) && BETWEEN(Barrier.A.colonne, 0, 8) && BETWEEN(Barrier.B.ligne, 0, 8) && BETWEEN(Barrier.B.colonne, 0, 8))
         {
@@ -60,13 +52,27 @@ fence enter_coord_fence (void)
     return Barrier;
 }
 
-//
 
-void display_coord_fence (fence barrier)
+point saisie_colonnes_lignes (void)
 {
-    printf("Votre barrière est en : (%d;%d) et (%d;%d)\n", barrier.A.ligne, barrier.A.colonne, barrier.B.ligne, barrier.B.colonne);
-    clear_console();
+    char lettre;
+    int chiffre=0;
+    point point={-1, -1};
+    
+    
+    scanf("%c",&lettre); // recuperer le \n precedent
+    
+    printf("Veuillez saisir les coordonees souhaitee. (ie : A 2)\t");
+    scanf("%c %d", &lettre, &chiffre);
+    lettre = toupper(lettre);
+    
+    point.colonne = ASCII_NUMBER(lettre);
+    point.ligne = chiffre;
+    
+    return point;
 }
+
+
 
 //
 
@@ -83,10 +89,8 @@ point enter_coord_Pawn (void)
     
     while (test != 0)
     {
-        printf("Veuillez saisir l'abscisse (x) de l'emplacement souhaite :\t");
-        scanf("%d",&point.ligne);
-        printf("Veuillez saisir l'ordonnee (y) de l'emplacement souhaite :\t");
-        scanf("%d",&point.colonne);
+        point = saisie_colonnes_lignes();
+
         
             if (BETWEEN(point.ligne, 0, 8) && BETWEEN(point.colonne, 0, 8))
             {
@@ -102,12 +106,7 @@ point enter_coord_Pawn (void)
 
 //
 
-void display_coord_Pawn (Player player)
-{
-    printf("Votre pion est en (%d;%d)\n", player.position.ligne, player.position.colonne);
-}
 
-//
 
 
 
@@ -124,7 +123,6 @@ int availability_Box (point M, Plateau *plateau)
     }
     else
     {
-        printf("La case est libre (%d,%d)\n", M.ligne, M.colonne);
         return EXIT_SUCCESS;
     }
 }
@@ -200,15 +198,65 @@ int gagnant (Player *player)
 
 void display_board (Plateau *plateau, Player player[], int nb_player)
 {
-    clear_console();
-    display_name_player(player[0]);
+    char nomJoueur3[LG_COLONNE+1];
+    char nomJoueur4[LG_COLONNE+1];
+    unsigned long p3 = 0, p4 = 0;
+    unsigned long lg3 = strlen(player[2].name), lg4 = strlen(player[3].name);
     
-    display_abscisses();
-    display_lines();
+    p3 = NB_BLANCS(LG_COLONNE, lg3);
+    p4 = NB_BLANCS(LG_COLONNE, lg4);
+    
+    for (int i = 0; i < p3 ; i++)
+    {
+        nomJoueur3[i] = ' ';
+    }
+    for (unsigned long i = p3; i < (p3 + lg3) ; i++)
+    {
+        nomJoueur3[i] = player[2].name[i - p3];
+    }
+    for (unsigned long i = (p3 + lg3) ; i < LG_COLONNE ; i++)
+    {
+        nomJoueur3[i] = ' ';
+    }
+
+   nomJoueur3[LG_COLONNE] = '\0';
+    
+    
+    for (int i = 0; i < p4 ; i++)
+    {
+        nomJoueur4[i] = ' ';
+    }
+    for (unsigned long i = p4; i < (p4 + lg4) ; i++)
+    {
+        nomJoueur4[i] = player[3].name[i - p4];
+    }
+    for (unsigned long i = (p4 + lg4) ; i < LG_COLONNE ; i++)
+    {
+        nomJoueur4[i] = ' ';
+    }
+    nomJoueur4[LG_COLONNE] = '\0';
+
+    
+    clear_console();
+    
+    int curseur = 0 ;
+    
+    display_name_player(player[0], nomJoueur3[curseur], nomJoueur4[curseur]) ;
+    curseur++;
+    
+    display_ligne_vide(nomJoueur3[curseur], nomJoueur4[curseur]);
+    curseur++;
+    
+    display_abscisses(nomJoueur3[curseur], nomJoueur4[curseur]);
+    curseur++;
+    
+    display_lines(nomJoueur3[curseur],  nomJoueur4[curseur]);
+    curseur++;
     
     for (int i = 0; i < 9; i++)
     {
-        printf("%d",i);
+
+        printf("%c  %d", nomJoueur3[curseur], i);
         for (int j = 0; j < 9; j++)
         {
             switch (plateau->board[i][j])
@@ -230,53 +278,79 @@ void display_board (Plateau *plateau, Player player[], int nb_player)
                         if (player[k].position.ligne == i &&  player[k].position.colonne == j)
                         {
                             printf("| %d ", player[k].affichage);
+                            
                         }
                     }
                     break;
                 }
             }
         }
-        printf("|%d\n",i);
-        display_lines();
+        printf("|%d  %c\n", i, nomJoueur4[curseur]);
+        curseur++;
+
+        display_lines(nomJoueur3[curseur], nomJoueur4[curseur]) ;
+        curseur++;
     }
-    display_abscisses();
-    display_name_player(player[1]);
+    display_abscisses(nomJoueur3[curseur], nomJoueur4[curseur]);
+    curseur++;
+    
+    display_ligne_vide(nomJoueur3[curseur], nomJoueur4[curseur]);
+    curseur++;
+    
+    display_name_player(player[1], nomJoueur3[curseur], nomJoueur4[curseur]);
     printf("\n\n");
 }
 
 
-void display_name_player (Player player)
+void display_name_player (Player player, char c1, char c2)
 {
     unsigned long longueur_name = strlen(player.name);
-    int longueur_line = (DIM_TAB*4)+1;
+    int longueur_line = LG_LIGNE;
     unsigned long nb_blancs = (longueur_line-longueur_name)/2 + 1;
     
-    printf("\n\n");
-    for (int i=0; i<nb_blancs; i++)
+    printf("%c", c1);
+    for (int i = 1; i < nb_blancs; i++) // 1er caractere = c1
     {
         printf(" ");
     }
-    printf("%s\n\n", player.name);
-}
-
-void display_abscisses(void)
-{
-    printf(" ");
-    for (int i=0; i<DIM_TAB; i++)
+    printf("%s", player.name);
+    for (int i = nb_blancs + longueur_name ; i < LG_LIGNE -1 ; i++)
     {
-        printf("  %d ", i);
+        printf(" ");
     }
-    printf("\n");
+    printf ("%c\n", c2);
 }
 
-void display_lines (void)
+void display_abscisses(char c1, char c2)
 {
-    printf(" ");
+    printf("%c   ", c1);
+ for (int columns=0; columns<DIM_TAB; columns++)
+    {
+        int columnChar = NUMBER_ASCII(columns);
+        printf("  %c ", columnChar);
+    }
+    printf("  %c\n", c2);
+}
+
+void display_lines (char c1, char c2)
+{
+    printf("%c   ", c1);
     for (int i=0; i<DIM_TAB; i++)
     {
         printf("|---");
     }
-    printf("|\n");
+    printf("|   %c\n", c2);
+}
+
+
+void display_ligne_vide (char c1, char c2)
+{
+    printf("%c", c1);
+    for (int i=1; i<(LG_LIGNE-1); i++)
+    {
+        printf(" ");
+    }
+    printf("%c\n",c2);
 }
 
 #endif /* Fonctions_reutilisable_h */

@@ -18,17 +18,10 @@
 void info_start(int *nb_players, int *duration, Player *player[]) //Fonction which ask the first info.
 {
 //    demand_nb_player(nb_players);
-    *nb_players = 2;
-    
-//    for (int i =0; i < *nb_players; i++)
-//    {
-//         demand_name_player(i, player[i]);
-//    }
-    
+    *nb_players = 1;
 //    *duration = demand_time();
     *duration = 10;
     
-
     clear_console();
 }
 
@@ -41,11 +34,11 @@ void demand_nb_player (int *nb_players)
     
     switch (*nb_players)
     {
-            //        case 1:
-            //        {
-            //            printf("Vous allez jouer tout seul mais contre un bot, mais combien de temps");
-            //            break;
-            //        }
+        case 1:
+        {
+            printf("Vous allez jouer tout seul mais contre un bot, mais combien de temps");
+            break;
+        }
             
         case 2:
         {
@@ -74,31 +67,27 @@ void demand_nb_player (int *nb_players)
 int demand_time (void)
 {
     int duration = 0;
-    printf("==TEMPS DE PARTIE==\n10 minutes\n15 minutes\n20.minutes\n");
+    printf("\n\n==TEMPS DE PARTIE==\n10 minutes\n15 minutes\n20.minutes\n");
     scanf("%d", &duration);
     
     switch (duration)
     {
         case 1:
         {
-            printf("Vous allez jouer %d minute\n", duration);
             break;
         }
         case 10:
         {
-            printf("Vous allez jouer %d minutes\n", duration);
             break;
         }
             
         case 15:
         {
-            printf("Vous allez jouer %d minutes\n", duration);
             break;
         }
             
         case 20:
         {
-            printf("Vous allez jouer %d minutes\n", duration);
             break;
         }
             

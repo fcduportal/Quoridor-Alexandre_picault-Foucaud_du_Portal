@@ -40,26 +40,12 @@ int playFence (Player player[], int digit_Player, Plateau *plateau)
                     {
                         plateau->board[Barrier.A.ligne][Barrier.A.colonne] = TAKEN;
                         plateau->board[Barrier.B.ligne][Barrier.B.colonne] = TAKEN;
-                        display_coord_fence(Barrier);
+                        
                         player[digit_Player].number_fence--;
                         return EXIT_SUCCESS;
                     }
-//                    else
-//                    {
-//                        return EXIT_FAILURE;
-//                    }
                 }
-//                else
-//                {
-//                    return EXIT_FAILURE;
-//                }
-
             }
-//            else
-//            {
-//                return EXIT_FAILURE;
-//            }
-            
             break;
         }
     }
@@ -74,7 +60,7 @@ return EXIT_FAILURE;
 
 int playPawn (Player player[], Plateau *plateau)
 {
-    display_coord_Pawn(*player);
+    
     player->temp = enter_coord_Pawn();
     
     if (tester_adjacent(player->position, player->temp) == EXIT_SUCCESS)
@@ -88,14 +74,9 @@ int playPawn (Player player[], Plateau *plateau)
             player->temp.ligne = -1;
             player->temp.colonne = -1;
             
-            display_coord_Pawn(*player);
+            
             return EXIT_SUCCESS;
         }
     }
-//    else
-//    {
-//        return EXIT_FAILURE;
-//    }
-    
     return EXIT_FAILURE;
 }

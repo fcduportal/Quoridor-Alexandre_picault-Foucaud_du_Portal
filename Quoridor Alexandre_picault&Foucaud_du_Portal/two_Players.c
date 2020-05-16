@@ -51,7 +51,9 @@ int Game_2_Players (Player player[], int nb_Players, Plateau plateau, int *durat
         
         display_board(&plateau, player, nb_Players);
         
-        printf("%s : Votre pion est en : (%d;%d) et il vous reste %d barrieres.\n\n", player[digitPlayer].name, player[digitPlayer].position.ligne, player[digitPlayer].position.colonne, player[digitPlayer].number_fence);
+        int columnChar = NUMBER_ASCII(player[digitPlayer].position.colonne);
+        
+        printf("%s : Votre pion est en : (%c;%d) et il vous reste %d barrieres.\n\n", player[digitPlayer].name, columnChar, player[digitPlayer].position.ligne, player[digitPlayer].number_fence);
         
         printf("Si vous voulez jouer une barriere taper 1 ou un pion taper 2:\t");
         scanf("%d",&choice);

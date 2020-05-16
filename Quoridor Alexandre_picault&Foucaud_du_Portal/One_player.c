@@ -13,28 +13,30 @@ int Game_one_Player (Player player[], int nb_Players, Plateau plateau, int *dura
     nb_Players+=1;
     int digit_Player=0, choice=0;
     
-    char foucaud[NB_CHAR] = "Foucaud", Alexandre[NB_CHAR] = "Alexandre";
+    char Foucaud[NB_CHAR] = "Foucaud", BOT[NB_CHAR] = "BOT";
+
+    strcpy(player[JOUEUR].name, Foucaud);
+    strcpy(player[ORDI].name, BOT);
     
-    strcpy(player[0].name, foucaud);
-    strcpy(player[1].name, Alexandre);
     
-    for (int i = 0; i<2; i++)
+    player[0].number_fence = NB_FENCE_MAX;
+    player[1].number_fence = NB_FENCE_MAX;
+    
+    player[0].position.ligne = 0;
+    player[0].position.colonne = 4;
+    plateau.board[0][4] = PAWN;
+    
+    player[1].position.ligne = 8;
+    player[1].position.colonne = 4;
+    plateau.board[8][4] = PAWN;
+    
+    for (int i = 0; i<nb_Players; i++)
     {
-        player[i].number_fence = NB_FENCE_MAX;
+        player[i].affichage = i+1;
     }
-    
-    player[0].position.ligne = 4;
-    player[0].position.colonne = 0;
-    plateau.board[4][0] = PAWN;
-    
-    player[1].position.ligne = 4;
-    player[1].position.colonne = 8;
-    plateau.board[4][8] = PAWN;
-    
     
     
     //    appel random (&)
-    
     
     
     time_t t_debut=time(NULL);
@@ -43,50 +45,59 @@ int Game_one_Player (Player player[], int nb_Players, Plateau plateau, int *dura
     
     while (boucle!=0)
     {
-        printf(" \nnom du joueur %s\n", player[digit_Player].name);
-        printf("Votre pion est en : (%d;%d) et il vous reste %d barrieres.\n\n", player[digit_Player].position.ligne, player[digit_Player].position.colonne, player[digit_Player].number_fence);
         
-        printf("Si vous voulez jouer une barriere taper 1 ou un pion taper 2:\t");
-        scanf("%d",&choice);
-        
-        switch (choice)
+        display_board(&plateau, player, nb_Players);
+
+        if (digit_Player == ORDI)
         {
-            case 1:
-            {
-                if (playFence(&player[digit_Player], digit_Player, &plateau) == EXIT_SUCCESS)
-                {
-                    digit_Player = ((digit_Player+1)%2);
-                }
-                break;
-            }
-                
-                
-            case 2:
-            {
-                
-                if (playPawn(&player[digit_Player], &plateau) == EXIT_SUCCESS)
-                {
-                    digit_Player = ((digit_Player+1)%2);
-                }
-                break;
-            }
-                
-                
-            default:
-            {
-                printf("Vous devez choisir 1 ou 2 :");
-                break;
-            }
-        }
-        
-        if (sablier(duration, t_debut) == 0) // il reste du temps
-        {
+            playBot(player, &plateau);
+            digit_Player = ((digit_Player+1)%2);
         }
         else
         {
-            boucle = 0;
+            int columnChar = NUMBER_ASCII(player[digit_Player].position.colonne);
+            printf(" \nnom du joueur %s\n", player[digit_Player].name);
+            printf("%s : Votre pion est en : (%c;%d) et il vous reste %d barrieres.\n\n", player[digit_Player].name, columnChar, player[digit_Player].position.ligne, player[digit_Player].number_fence);
+            
+            printf("Si vous voulez jouer une barriere taper 1 ou un pion taper 2:\t");
+            scanf("%d",&choice);
+            
+            switch (choice)
+            {
+                case 1:
+                {
+                    if (playFence(&player[digit_Player], digit_Player, &plateau) == EXIT_SUCCESS)
+                    {
+                        digit_Player = ((digit_Player+1)%2);
+                    }
+                    break;
+                }
+                    
+                    
+                case 2:
+                {
+                    
+                    if (playPawn(&player[digit_Player], &plateau) == EXIT_SUCCESS)
+                    {
+                        digit_Player = ((digit_Player+1)%2);
+                    }
+                    break;
+                }
+                    
+                    
+                default:
+                {
+                    printf("Vous devez choisir 1 ou 2 :");
+                    break;
+                }
+            }
         }
-    }
+        
+        if (sablier(duration, t_debut) != EXIT_SUCCESS || gagnant(player) == EXIT_SUCCESS) // il ne reste plus de temps ou un joueur a gagne la partie.
+        {
+            printf("\nFin de Partie.\n");
+            boucle=0;
+        }    }
     
     return 0;
     
