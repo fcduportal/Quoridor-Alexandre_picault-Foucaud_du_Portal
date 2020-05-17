@@ -314,7 +314,7 @@ void display_name_player (Player player, char c1, char c2)
         printf(" ");
     }
     printf("%s", player.name);
-    for (int i = nb_blancs + longueur_name ; i < LG_LIGNE -1 ; i++)
+    for (unsigned long i = nb_blancs + longueur_name ; i < LG_LIGNE -1 ; i++)
     {
         printf(" ");
     }
@@ -351,6 +351,32 @@ void display_ligne_vide (char c1, char c2)
         printf(" ");
     }
     printf("%c\n",c2);
+}
+
+
+point initialiserPointsAdjacentsPion (int ligne, int colonne, Plateau *plateau)
+{
+    point point;
+
+    
+    if (BETWEEN(ligne, 0, 8) && BETWEEN(colonne, 0, 8))
+    {
+        point.ligne = ligne;
+        point.colonne = colonne;
+        
+        if (availability_Box(point, plateau) == EXIT_FAILURE)
+        {
+            point.ligne = -1;
+            point.colonne = -1;
+        }
+    }
+    else
+    {
+        point.ligne = -1;
+        point.colonne = -1;
+    }
+    
+    return point;
 }
 
 #endif /* Fonctions_reutilisable_h */

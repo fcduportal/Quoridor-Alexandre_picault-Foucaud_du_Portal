@@ -126,3 +126,20 @@ void display_lines (char c1, char c2);
 void display_ligne_vide (char c1, char c2);
 
 point saisie_colonnes_lignes (void);
+
+
+struct PointCalcul
+{
+    point p;
+    int ValeurAssigneeOrdi;
+};
+typedef struct PointCalcul PointCalcul;
+
+struct PointsAdjacents
+{
+    PointCalcul droite, gauche, devant, derriere;
+};
+typedef struct PointsAdjacents PointsAdjacents;
+
+
+point initialiserPointsAdjacentsPion (int ligne, int colonne, Plateau *plateau);

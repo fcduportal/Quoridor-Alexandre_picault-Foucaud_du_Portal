@@ -31,7 +31,7 @@ int main()
     
     //
     
-    info_start(&nbPlayers, &duration, &player); //  Call fonction to ask the first info in order to adress differents rules to the game.
+    info_start(&nbPlayers, &duration, player); //  Call fonction to ask the first info in order to adress differents rules to the game.
     
     //
     

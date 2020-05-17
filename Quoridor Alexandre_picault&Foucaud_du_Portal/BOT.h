@@ -19,4 +19,9 @@ typedef enum TypeDeJoueur TypeDeJoueur;
 
 int playBot (Player player[], Plateau *plateau);
 
+PointCalcul rechercheMeilleurPoint (Plateau *plateau, point point, PointCalcul meilleurPointActuel);
+
+void mAJPoint (Plateau *plateau, Player *player);
+
+
 #endif /* BOT_h */

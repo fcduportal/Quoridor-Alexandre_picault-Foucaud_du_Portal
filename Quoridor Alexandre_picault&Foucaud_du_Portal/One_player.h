@@ -9,8 +9,11 @@
 #ifndef One_player_h
 #define One_player_h
 
-#include <stdio.h>
+//#include <stdio.h>
 
 int Game_one_Player (Player player[], int nb_Players, Plateau plateau, int *duration);
 
+
 #endif /* One_player_h */
+
+

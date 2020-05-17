@@ -45,4 +45,6 @@
 #define ASCII_NUMBER(value) (value - ASCII_A)
 #define NUMBER_ASCII(value) (value + ASCII_A)
 
+#define NB_POINTS_CALCUL 4
+
 #endif /* header_h */
