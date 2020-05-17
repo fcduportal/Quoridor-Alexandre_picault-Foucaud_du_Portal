@@ -29,7 +29,7 @@ int Game_4_Player (Player player[], int nb_Players, Plateau plateau, int *durati
         player[i].number_fence = NB_FENCE_MAX;
     }
     
-     player[0].position.ligne = 0;
+    player[0].position.ligne = 0;
     player[0].position.colonne = 4;
     plateau.board[0][4] = PAWN;
     
@@ -53,7 +53,7 @@ int Game_4_Player (Player player[], int nb_Players, Plateau plateau, int *durati
 
     
     
-    //    appel random (&)
+    digitPlayer = choice_player(nb_Players);
     
     
     time_t t_debut=time(NULL);

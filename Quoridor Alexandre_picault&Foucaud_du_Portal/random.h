@@ -11,6 +11,6 @@
 
 #include <stdio.h>
 
-void choice_player (int nb_player, int *i);
+int choice_player (int nb_player);
 
 #endif /* random_h */

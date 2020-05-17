@@ -101,6 +101,12 @@ enum boxes
 };
 typedef enum boxes boxes;
 
+enum boxesOrdi
+{
+    BANNED, POSSIBLE
+};
+typedef enum boxesOrdi boxesOrdi;
+
 //
 
 
@@ -128,12 +134,18 @@ void display_ligne_vide (char c1, char c2);
 point saisie_colonnes_lignes (void);
 
 
+
+
+
 struct PointCalcul
 {
     point p;
     int ValeurAssigneeOrdi;
 };
 typedef struct PointCalcul PointCalcul;
+
+
+
 
 struct PointsAdjacents
 {
@@ -142,4 +154,8 @@ struct PointsAdjacents
 typedef struct PointsAdjacents PointsAdjacents;
 
 
-point initialiserPointsAdjacentsPion (int ligne, int colonne, Plateau *plateau);
+
+
+
+point initialiserPointsAdjacentsPion (int ligne, int colonne, Plateau *plateau, Plateau *plateauOrdi);
+

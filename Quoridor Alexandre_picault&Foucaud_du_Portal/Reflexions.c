@@ -133,10 +133,11 @@
  
  
  menu recommencer
- printf ("voulze recommencer )
- printf (1OUI 2non )
+ printf ("voulez-vous recommencer?\n1.OUI\n2.NON");
+ 
  
  switch
+ 
  1
  {
  printf ("voulez allez recommencer,si oui tapez 1,sinon tapez 2:);
@@ -161,7 +162,7 @@
  
  default
  {
- vous devez
+ printf("vous devez choisir 1 ou 2\n")
  clear console 
  menu recomencer();
  }

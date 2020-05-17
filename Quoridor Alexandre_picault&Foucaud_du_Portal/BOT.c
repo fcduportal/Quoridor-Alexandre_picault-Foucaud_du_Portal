@@ -8,7 +8,7 @@
 
 #include "header.h"
 
-int playBot (Player player[], Plateau *plateau)
+int playBot (Player player[], Plateau *plateau, Plateau *plateauOrdi)
 {
     /*
      Cette fonction permet à l'ordinateur de jouer seul et de choisir l'action à effectuer.
@@ -21,73 +21,191 @@ int playBot (Player player[], Plateau *plateau)
     
     // l'ordi regarde s'il peut avancer. (La case devant lui est vide)
     int test = -1;
+    
     player[ORDI].temp.ligne = (player[ORDI].position.ligne+1);
     player[ORDI].temp.colonne = (player[ORDI].position.colonne);
-    if (BETWEEN(player[ORDI].temp.ligne, 0, 8) && BETWEEN(player[ORDI].temp.colonne, 0, 8))
-    {
-        test = 0;
-    }
-    else
-    {
-        printf("erreur ordi\n");
-    }
     
-    if (test == 0)
+    
+    if (BETWEEN_0_8(player[ORDI].temp.ligne) && BETWEEN_0_8(player[ORDI].temp.colonne))
     {
-        test = availability_Box(player[ORDI].temp, plateau);
-        if (test == EXIT_SUCCESS)
+        if (plateauOrdi->board[player[ORDI].temp.ligne][player[ORDI].temp.colonne] == POSSIBLE && availability_Box(player[ORDI].temp, plateau) ==
+                EXIT_SUCCESS)
         {
             mAJPoint(plateau, player);
-
+            
             return EXIT_SUCCESS;
         }
         else
         {
+            printf("Case interdite. ou pas dispo\n");
             
-            PointsAdjacents pointsAdjacents;
-            PointCalcul meilleurPoint;
-            meilleurPoint.p.ligne=-1;
-            meilleurPoint.p.colonne=-1;
-            meilleurPoint.ValeurAssigneeOrdi=-1;
+            int scoreG = 0, boucle = -1;
+            int colonne = (player[ORDI].position.colonne);
+            int ligne = player[ORDI].position.ligne;
             
             
-            pointsAdjacents.droite.p = initialiserPointsAdjacentsPion (player[ORDI].position.ligne, (player[ORDI].position.colonne + 1), plateau);
-            if (pointsAdjacents.droite.p.colonne != -1)
+            while (boucle != 0) // on balaie vers la gauche
             {
-                meilleurPoint = rechercheMeilleurPoint(plateau, pointsAdjacents.droite.p, meilleurPoint);
+                if (BETWEEN_0_8(colonne))
+                {
+                    if (plateauOrdi->board[ligne][colonne] != BANNED && plateau->board[ligne][colonne] != TAKEN )
+                    {
+                        if (BETWEEN_0_8(ligne))
+                        {
+                            scoreG ++;
+                            if (BETWEEN_0_8(ligne+1))
+                            {
+                                if (plateauOrdi->board[ligne+1][colonne] != BANNED && plateau->board[ligne+1][colonne] != TAKEN )
+                                {
+                                    if (BETWEEN_0_8(ligne+2))
+                                    {
+                                        if (plateauOrdi->board[ligne+2][colonne] != BANNED && plateau->board[ligne+2][colonne] != TAKEN )
+                                        {
+                                            scoreG+=2;
+                                            boucle = 0;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        scoreG++;
+                                        boucle = 0;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                scoreG++;
+                                boucle = 0;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        scoreG = 100;
+                        boucle = 0;
+                        for (int j = (player[ORDI].position.colonne-1) ; j > colonne; j--)
+                        {
+                            
+                            plateauOrdi->board[ligne][j] = BANNED;
+                        }
+                    }
+                }
+                else
+                {
+                    scoreG = 100;
+                    boucle = 0;
+                    for (int j = (player[ORDI].position.colonne-1) ; j > colonne; j--)
+                    {
+                        plateauOrdi->board[ligne][j] = BANNED;
+                    }
+                }
+                colonne--;
             }
             
             
-            pointsAdjacents.gauche.p = initialiserPointsAdjacentsPion (player[ORDI].position.ligne, (player[ORDI].position.colonne - 1), plateau);
-            if (pointsAdjacents.gauche.p.colonne != -1)
+            
+            boucle = -1;
+            int scoreD =0;
+            colonne = (player[ORDI].position.colonne);
+            ligne = player[ORDI].position.ligne;
+            
+            while (boucle != 0) // on balaie vers la droite
             {
-                meilleurPoint = rechercheMeilleurPoint(plateau, pointsAdjacents.gauche.p, meilleurPoint);
+                if (BETWEEN_0_8(colonne))
+                {
+                    if (plateauOrdi->board[ligne][colonne] != BANNED && plateau->board[ligne][colonne] != TAKEN )
+                    {
+                        if (BETWEEN_0_8(ligne))
+                        {
+                            scoreD ++;
+                            if (BETWEEN_0_8(ligne+1))
+                            {
+                                if (plateauOrdi->board[ligne+1][colonne] != BANNED && plateau->board[ligne+1][colonne] != TAKEN )
+                                {
+                                    if (BETWEEN_0_8(ligne+2))
+                                    {
+                                        if (plateauOrdi->board[ligne+2][colonne] != BANNED && plateau->board[ligne+2][colonne] != TAKEN )
+                                        {
+                                            scoreD+=2;
+                                            boucle = 0;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        scoreD++;
+                                        boucle = 0;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                scoreD++;
+                                boucle = 0;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        scoreD = 100;
+                        boucle = 0;
+                        for (int j = (player[ORDI].position.colonne+1) ; j > colonne; j++)
+                        {
+                            plateauOrdi->board[ligne][j] = BANNED;
+                        }
+                    }
+                }
+                else
+                {
+                    scoreD = 100;
+                    boucle = 0;
+                    for (int j = (player[ORDI].position.colonne+1) ; j > colonne; j++)
+                    {
+                        plateauOrdi->board[ligne][j] = BANNED;
+                    }
+                }
+                colonne++;
             }
             
-            
-            pointsAdjacents.devant.p = initialiserPointsAdjacentsPion ((player[ORDI].position.ligne+1), player[ORDI].position.colonne, plateau);
-            if (pointsAdjacents.devant.p.colonne != -1)
+            if (scoreG <= scoreD && scoreG < 100)
             {
-                meilleurPoint = rechercheMeilleurPoint(plateau, pointsAdjacents.devant.p, meilleurPoint);
+                player[ORDI].temp.ligne = player[ORDI].position.ligne;
+                player[ORDI].temp.colonne = player[ORDI].position.colonne - 1;
+                
+                printf("à gauche toute G : %d  D : %d\n", scoreG, scoreD);
+                
+                mAJPoint(plateau, player);
             }
-            
-            
-            pointsAdjacents.derriere.p = initialiserPointsAdjacentsPion (player[ORDI].position.ligne-1, player[ORDI].position.colonne, plateau);
-            if (pointsAdjacents.derriere.p.colonne != -1)
+            else if (scoreG >= scoreD && scoreD < 100)
             {
-                meilleurPoint = rechercheMeilleurPoint(plateau, pointsAdjacents.derriere.p, meilleurPoint);
+                player[ORDI].temp.ligne = player[ORDI].position.ligne;
+                player[ORDI].temp.colonne = player[ORDI].position.colonne + 1;
+                
+                printf("A droite G : %d  D : %d\n", scoreG, scoreD);
+                
+                mAJPoint(plateau, player);
             }
-            
-            
-            
-                        printf("droit : (%d;%d) -> %d \t gauche : (%d;%d)-> %d\t devant : (%d;%d)-> %d\t derriere : (%d;%d)-> %d\n",pointsAdjacents.droite.p.ligne, pointsAdjacents.droite.p.colonne,pointsAdjacents.droite.ValeurAssigneeOrdi, pointsAdjacents.gauche.p.ligne, pointsAdjacents.gauche.p.colonne, pointsAdjacents.gauche.ValeurAssigneeOrdi, pointsAdjacents.devant.p.ligne, pointsAdjacents.devant.p.colonne, pointsAdjacents.devant.ValeurAssigneeOrdi, pointsAdjacents.derriere.p.ligne, pointsAdjacents.derriere.p.colonne, pointsAdjacents.derriere.ValeurAssigneeOrdi);
-            printf("meilleur point (%d;%d) -> %d\n",meilleurPoint.p.ligne, meilleurPoint.p.colonne,meilleurPoint.ValeurAssigneeOrdi);
-            
-            
-            
-            player[ORDI].temp = meilleurPoint.p;
+            else // scoreD et scoreG = 100
+            {
+                plateauOrdi->board[player[ORDI].position.ligne][player[ORDI].position.colonne] = BANNED;
+                
+                player[ORDI].temp.ligne = (player[ORDI].position.ligne - 1);
+                player[ORDI].temp.colonne = player[ORDI].position.colonne;
+                
+                
+                
+                printf("On remonte G : %d  D : %d\n", scoreG, scoreD);
+                
+                mAJPoint(plateau, player);
+            }
             
         }
+    }
+    
+    else
+    {
+        printf("erreur ordi\n");
+        player[ORDI].temp.ligne = (player[ORDI].position.ligne);
+        player[ORDI].temp.colonne = (player[ORDI].position.colonne);
     }
     return EXIT_FAILURE;
 }
@@ -96,7 +214,7 @@ int playBot (Player player[], Plateau *plateau)
 
 
 
-PointCalcul rechercheMeilleurPoint (Plateau *plateau, point point, PointCalcul meilleurPointActuel)
+PointCalcul rechercheMeilleurPoint (Plateau *plateau, point point, PointCalcul meilleurPointActuel, Plateau *plateauOrdi)
 {
     PointCalcul temporaire;
     int score = 0, boucle =-1, ligne = (point.ligne+1);
@@ -118,6 +236,8 @@ PointCalcul rechercheMeilleurPoint (Plateau *plateau, point point, PointCalcul m
                 boucle = 0;
             }
         }
+        
+        
     }
     if (score > meilleurPointActuel.ValeurAssigneeOrdi)
     {
@@ -130,6 +250,8 @@ PointCalcul rechercheMeilleurPoint (Plateau *plateau, point point, PointCalcul m
         return meilleurPointActuel;
     }
 }
+
+
 
 
 

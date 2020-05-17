@@ -17,9 +17,9 @@ enum TypeDeJoueur
 };
 typedef enum TypeDeJoueur TypeDeJoueur;
 
-int playBot (Player player[], Plateau *plateau);
+int playBot (Player player[], Plateau *plateau, Plateau *plateauOrdi);
 
-PointCalcul rechercheMeilleurPoint (Plateau *plateau, point point, PointCalcul meilleurPointActuel);
+PointCalcul rechercheMeilleurPoint (Plateau *plateau, point point, PointCalcul meilleurPointActuel, Plateau *plateauOrdi);
 
 void mAJPoint (Plateau *plateau, Player *player);
 

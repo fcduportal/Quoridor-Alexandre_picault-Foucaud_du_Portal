@@ -17,12 +17,11 @@
 
 void info_start(int *nb_players, int *duration, Player *player) //Fonction which ask the first info.
 {
-    demand_nb_player(nb_players);
-//    *nb_players = 1;
-    *duration = demand_time();
-//    *duration = 10;
+//    demand_nb_player(nb_players);
+    *nb_players = 1;
+//    *duration = demand_time();
+    *duration = 10;
     
-    clear_console();
 }
 
 //request for the number of players

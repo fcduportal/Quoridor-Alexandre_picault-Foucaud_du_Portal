@@ -12,26 +12,25 @@
 
 
 
-void choice_player (int nb_player, int *i)
+int choice_player (int nb_player)
 {
     srand( time( NULL ) );
-    
+    int i=0;
     switch (nb_player)
     {
         case 2:
         {
-            *i=rand()%nb_player+1;
-            printf("\n c'est le joueur %d qui commence.\n", *i);
+            i = rand()%nb_player;
             break;
         }
             
         default:
         {
-            *i=rand()%nb_player+1;
-            printf("\n c'est le joueur %d qui commence.\n", *i);
+            i = rand()%nb_player;
             break;
         }
     }
+    return i;
 }
 
 

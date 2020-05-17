@@ -40,7 +40,7 @@ fence enter_coord_fence (void)
         Barrier.A = saisie_colonnes_lignes();
         Barrier.B = saisie_colonnes_lignes();
         
-        if (BETWEEN(Barrier.A.ligne, 0, 8) && BETWEEN(Barrier.A.colonne, 0, 8) && BETWEEN(Barrier.B.ligne, 0, 8) && BETWEEN(Barrier.B.colonne, 0, 8))
+        if (BETWEEN_0_8(Barrier.A.ligne) && BETWEEN_0_8(Barrier.A.colonne) && BETWEEN_0_8(Barrier.B.ligne) && BETWEEN_0_8(Barrier.B.colonne))
         {
             test = 0;
         }
@@ -92,7 +92,7 @@ point enter_coord_Pawn (void)
         point = saisie_colonnes_lignes();
 
         
-            if (BETWEEN(point.ligne, 0, 8) && BETWEEN(point.colonne, 0, 8))
+            if (BETWEEN_0_8(point.ligne) && BETWEEN_0_8(point.colonne))
             {
                 test = 0;
             }
@@ -302,6 +302,8 @@ void display_board (Plateau *plateau, Player player[], int nb_player)
 }
 
 
+
+
 void display_name_player (Player player, char c1, char c2)
 {
     unsigned long longueur_name = strlen(player.name);
@@ -321,6 +323,9 @@ void display_name_player (Player player, char c1, char c2)
     printf ("%c\n", c2);
 }
 
+
+
+
 void display_abscisses(char c1, char c2)
 {
     printf("%c   ", c1);
@@ -332,6 +337,9 @@ void display_abscisses(char c1, char c2)
     printf("  %c\n", c2);
 }
 
+
+
+
 void display_lines (char c1, char c2)
 {
     printf("%c   ", c1);
@@ -341,6 +349,9 @@ void display_lines (char c1, char c2)
     }
     printf("|   %c\n", c2);
 }
+
+
+
 
 
 void display_ligne_vide (char c1, char c2)
@@ -354,29 +365,33 @@ void display_ligne_vide (char c1, char c2)
 }
 
 
-point initialiserPointsAdjacentsPion (int ligne, int colonne, Plateau *plateau)
-{
-    point point;
 
-    
-    if (BETWEEN(ligne, 0, 8) && BETWEEN(colonne, 0, 8))
-    {
-        point.ligne = ligne;
-        point.colonne = colonne;
-        
-        if (availability_Box(point, plateau) == EXIT_FAILURE)
-        {
-            point.ligne = -1;
-            point.colonne = -1;
-        }
-    }
-    else
-    {
-        point.ligne = -1;
-        point.colonne = -1;
-    }
-    
-    return point;
-}
+
+
+//point initialiserPointsAdjacentsPion (int ligne, int colonne, Plateau *plateau, Plateau *plateauOrdi)
+//{
+//    point point;
+//
+//    
+//    if (BETWEEN_0_8(ligne) && BETWEEN_0_8(colonne))
+//    {
+//        point.ligne = ligne;
+//        point.colonne = colonne;
+//        
+//        if (availability_Box(point, plateau) == EXIT_FAILURE || plateauOrdi->board[ligne][colonne]==BANNED)
+//        {
+//            point.ligne = -1;
+//            point.colonne = -1;
+//        }
+//        
+//    }
+//    else
+//    {
+//        point.ligne = -1;
+//        point.colonne = -1;
+//    }
+//    
+//    return point;
+//}
 
 #endif /* Fonctions_reutilisable_h */

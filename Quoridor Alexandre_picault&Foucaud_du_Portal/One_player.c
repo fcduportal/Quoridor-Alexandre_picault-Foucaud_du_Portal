@@ -13,6 +13,15 @@ int Game_one_Player (Player player[], int nb_Players, Plateau plateau, int *dura
     nb_Players+=1;
     int digit_Player=0, choice=0;
     
+    Plateau plateauOrdi;
+    for (int i = 0; i<9; i++)
+    {
+        for (int j=0; j<9; j++)
+        {
+            plateauOrdi.board[i][j]=POSSIBLE;
+        }
+    }
+    
     char Foucaud[NB_CHAR] = "Foucaud", BOT[NB_CHAR] = "BOT";
 
     strcpy(player[JOUEUR].name, Foucaud);
@@ -36,7 +45,7 @@ int Game_one_Player (Player player[], int nb_Players, Plateau plateau, int *dura
     }
     
     
-    //    appel random (&)
+    digit_Player = choice_player(nb_Players);
     
     
     time_t t_debut=time(NULL);
@@ -50,7 +59,7 @@ int Game_one_Player (Player player[], int nb_Players, Plateau plateau, int *dura
 
         if (digit_Player == ORDI)
         {
-            playBot(player, &plateau);
+            playBot(player, &plateau, &plateauOrdi);
             digit_Player = ((digit_Player+1)%2);
         }
         else

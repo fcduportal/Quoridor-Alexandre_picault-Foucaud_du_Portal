@@ -59,8 +59,25 @@ int main()
         }
     }
     
-    // fonction recommencer
-    
+    clear_console();
+    int recommencer=0;
+    printf("Voulez vous recommencer?\n1.OUI\n2.NON\n");
+    scanf("%d",&recommencer);
+    switch (recommencer)
+    {
+        case 1:
+            clear_console();
+            main();
+            break;
+            
+        case 2:
+            printf("Bonne nuit.\n");
+            break;
+            
+        default:
+            printf("Vous n'aviez qu'a suivre les consignes. Vous ne recommencerez pas. :( \n");
+            break;
+    }
     return 0;
 }
 

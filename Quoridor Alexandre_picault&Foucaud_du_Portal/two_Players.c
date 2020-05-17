@@ -39,7 +39,7 @@ int Game_2_Players (Player player[], int nb_Players, Plateau plateau, int *durat
     }
     
     
-    //    appel random (&)
+    digitPlayer = choice_player(nb_Players);
     
     
     time_t t_debut=time(NULL);

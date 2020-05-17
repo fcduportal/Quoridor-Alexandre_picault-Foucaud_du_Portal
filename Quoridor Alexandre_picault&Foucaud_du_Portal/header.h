@@ -40,7 +40,8 @@
 #define LG_LIGNE ((DIM_TAB*4)+7)
 #define NB_BLANCS(value, longueur_prenom) ((value - longueur_prenom)/2)
 
-#define BETWEEN(value, min, max) (value <= max && value >= min)
+#define BETWEEN_0_8(value) (value <= 8 && value >= 0)
+
 
 #define ASCII_NUMBER(value) (value - ASCII_A)
 #define NUMBER_ASCII(value) (value + ASCII_A)
