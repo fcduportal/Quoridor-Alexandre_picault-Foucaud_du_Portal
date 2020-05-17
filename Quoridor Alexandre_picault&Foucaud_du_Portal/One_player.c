@@ -66,7 +66,7 @@ int Game_one_Player (Player player[], int nb_Players, Plateau plateau, int *dura
             {
                 case 1:
                 {
-                    if (playFence(&player[digit_Player], digit_Player, &plateau) == EXIT_SUCCESS)
+                    if (playFence(player, digit_Player, &plateau) == EXIT_SUCCESS)
                     {
                         digit_Player = ((digit_Player+1)%2);
                     }
