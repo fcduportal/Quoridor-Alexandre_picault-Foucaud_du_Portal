@@ -140,7 +140,15 @@
  1
  {
  printf ("voulez allez recommencer,si oui tapez 1,sinon tapez 2:);
- scanf(%d,&fin)
+ scanf(%d,&fin);
+ if (fin=1)
+ {
+ printf("nous alons recommencer une parti");
+ }
+ else
+ {
+ printf("merci de votre participation");
+ }
  clear console
  main ();
  }
