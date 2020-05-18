@@ -310,7 +310,7 @@ void displayPlayerName (Player player, char c1, char c2)
     unsigned long nbSpaces = (lineLength - nameLength)/2 + 1;
     
     printf("%c", c1);
-    for (int i = 1; i < nbSpaces; i++) // 1er caractere = c1
+    for (int i = 1; i < nbSpaces; i++) // first caractere = c1
     {
         printf(" ");
     }

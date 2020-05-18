@@ -11,41 +11,105 @@
 int playBot (Player player[], Plateau *plateau, Plateau *plateauComputer)
 {
     /*
-     Cette fonction permet à l'ordinateur de jouer seul et de choisir l'action à effectuer.
-     Sa première stratégie est d'avancer tout droit si possible.
-     s'il ne peut pas (barrière ou pion devant lui) il evalue l'interet d'aller sur chacune des cases qui l'entourent.
-     Il choisi d'aller sur la case la plus interessante si possible.
-     Si c'est un pion, il va poser une barière (derrière lui).
-     Si c'est une barrière il va se déplacer.
+     This feature allows the computer to play alone and choose the action to be performed.
+     Its first strategy is to go straight ahead if possible.
+     If it cannot (barrier or pawn in front of it) it evaluates whether it is better to go right or left.
+     he looks to see if there is an opening to go down.
+     and checks that it is not a dead end.
+     
+     He chooses to go to the most interesting square if possible. ie: where the path is the shortest to go down 2 squares.
+     If it is a pawn, he will put a barricade (behind him). it is not yet established.
+     If it is a barrier he will move.
+     
+     If a pawn blocks his way, he chooses to put a barrier behind it.
      */
     
-    // l'ordi regarde s'il peut avancer. (La case devant lui est vide)
+    // the computer sees if it can move forward. (The box in front of it is empty)
     
-    
-    
-    player[Computer].temp.line = (player[Computer].position.line + 1);
+    player[Computer].temp.line = (player[Computer].position.line + 1); // We initialize the square the computer wants to go to.
     player[Computer].temp.column = (player[Computer].position.column);
     
     
-    if (BETWEEN_0_8(player[Computer].temp.line) && BETWEEN_0_8(player[Computer].temp.column))
+    if (BETWEEN_0_8(player[Computer].temp.line) && BETWEEN_0_8(player[Computer].temp.column)) //Check box coordinates.
     {
         if (plateauComputer->board[player[Computer].temp.line][player[Computer].temp.column] == POSSIBLE && availabilityBox(player[Computer].temp, plateau) ==
-                EXIT_SUCCESS)
+            EXIT_SUCCESS)// If the square is clear and it's not a dead end.
         {
-            updatePoint(plateau, player);
+            updatePoint(plateau, player); // He's updating the set.
             
             return EXIT_SUCCESS;
         }
         else
         {
-            printf("Case interdite. ou pas dispo\n");
+//We check that the square in front of him is a pawn...
+            if (plateauComputer->board[player[Computer].temp.line][player[Computer].temp.column] == POSSIBLE && plateau->board[player[Computer].temp.line][player[Computer].temp.column] == PAWN)
+            {
+                /*
+                 If it's a pawn, you put a fence behind the computer.
+                 It chooses to take the first two free squares and adjacent two lines behind it.
+                 */
+                
+                
+                int linePoint1 = (player[Computer].position.line - 2);
+                
+                
+                int columnPoint1 = 0;
+                int columnPoint2 = 0;
+                int linePoint2 = 0;
+                
+                int loopFence=-1, j=0;
+                while (loopFence != 0)
+                {
+                    if (BETWEEN_0_8(linePoint1))
+                    {
+                        if (BETWEEN_0_8(j+1))
+                        {
+                            if (plateau->board[linePoint1][j] == FREE && (plateau->board[linePoint1][j+1] == FREE))
+                            {
+                                columnPoint1 = j;
+                                columnPoint2 = j+1;
+                                linePoint2 = linePoint1;
+                                loopFence = 0;
+                            }
+                            else
+                            {
+                                j++;
+                            }
+                        }
+                        else
+                        {
+                            j=0;
+                            linePoint1++;
+                        }
+                    }
+                    else
+                    {
+                        linePoint1++;
+                    }
+                    plateau->board[linePoint1][columnPoint1] = TAKEN;
+                    plateau->board[linePoint2][columnPoint2] = TAKEN;
+                    player[Computer].temp.line = -1;
+                    player[Computer].temp.column = -1;
+                    return EXIT_SUCCESS;
+                }
+            }
+            
+            
+            /*
+             The first step is to sweep to the left of the line to see if you can go down at least two spaces.
+             The number of squares to be covered is used to calculate the score and then choose the path.
+             If it's a dead end it marks these squares as 'Banned' in a virtual board so that you don't come back on it later.
+             In this last case the score is equal to 100.
+             */
+            
+            
             
             int scoreG = 0, loop = -1;
             int column = (player[Computer].position.column);
             int line = player[Computer].position.line;
             
             
-            while (loop != 0) // on balaie vers la gauche
+            while (loop != 0) // We sweep to the left
             {
                 if (BETWEEN_0_8(column))
                 {
@@ -103,14 +167,14 @@ int playBot (Player player[], Plateau *plateau, Plateau *plateauComputer)
                 column--;
             }
             
-            
+            // He does the same thing on the right.
             
             loop = -1;
             int scoreD =0;
             column = (player[Computer].position.column);
             line = player[Computer].position.line;
             
-            while (loop != 0) // on balaie vers la droite
+            while (loop != 0) // we sweep to the right
             {
                 if (BETWEEN_0_8(column))
                 {
@@ -167,6 +231,12 @@ int playBot (Player player[], Plateau *plateau, Plateau *plateauComputer)
                 column++;
             }
             
+            /*
+             We compare the two scores to see which way to go.
+             The lower score determines which side.
+             If both scores are equal to 100, the square on which it is located becomes forbidden. And it goes up.
+             */
+            
             if (scoreG <= scoreD && scoreG < 100)
             {
                 player[Computer].temp.line = player[Computer].position.line;
@@ -181,7 +251,7 @@ int playBot (Player player[], Plateau *plateau, Plateau *plateauComputer)
                 
                 updatePoint(plateau, player);
             }
-            else // scoreD et scoreG = 100
+            else // scoreD and scoreG = 100
             {
                 plateauComputer->board[player[Computer].position.line][player[Computer].position.column] = BANNED;
                 
@@ -192,56 +262,9 @@ int playBot (Player player[], Plateau *plateau, Plateau *plateauComputer)
             }
         }
     }
-    
-    else
-    {
-        printf("erreur ordi\n");
-        player[Computer].temp.line = (player[Computer].position.line);
-        player[Computer].temp.column = (player[Computer].position.column);
-    }
-    return EXIT_FAILURE;
+    return EXIT_SUCCESS;
 }
 
-
-
-
-
-PointCalculation searchBestPoint (Plateau *plateau, point point, PointCalculation bestCurrentPoint, Plateau *plateauComputer)
-{
-    PointCalculation temp;
-    int score = 0, boucle =-1, ligne = (point.line+1);
-    while (boucle != 0)
-    {
-        if (ligne == DIM_TAB)
-        {
-            boucle = 0;
-        }
-        else
-        {
-            if (plateau->board[ligne][point.column] != TAKEN)
-            {
-                score++;
-                ligne++;
-            }
-            else
-            {
-                boucle = 0;
-            }
-        }
-        
-        
-    }
-    if (score > bestCurrentPoint.ValeurAssigneeOrdi)
-    {
-        temp.p = point;
-        temp.ValeurAssigneeOrdi = score;
-        return temp;
-    }
-    else
-    {
-        return bestCurrentPoint;
-    }
-}
 
 
 void updatePoint (Plateau *plateau, Player *player)
@@ -256,7 +279,7 @@ void updatePoint (Plateau *plateau, Player *player)
 
 void displayMessage (void)
 {
-const char *mots[NB_CHAR] = {"Je reflechis.", "2 petites secondes.", "Tu ne m'auras pas.", "uhm uhm", "Floor gang", "GRRR", "PEEKABOO"};
+    const char *mots[NB_CHAR] = {"Je reflechis.", "2 petites secondes.", "Tu ne m'auras pas.", "uhm uhm", "Floor gang", "GRRR", "PEEKABOO"};
     
     time_t temps = time(NULL);
     unsigned long i = temps % 7;

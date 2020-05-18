@@ -23,7 +23,7 @@ void demandNbPlayer (int *nb_players);
 
 void demandNamePlayers (int nbPlayers, Player *player);
 
-//request for party time
+//request for game time
 
 int demandTime (void);
 

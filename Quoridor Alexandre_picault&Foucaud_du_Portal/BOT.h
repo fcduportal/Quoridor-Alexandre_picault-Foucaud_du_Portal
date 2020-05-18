@@ -19,8 +19,6 @@ typedef enum TypeOfPlayer TypeOfPlayer;
 
 int playBot (Player player[], Plateau *plateau, Plateau *plateauComputer);
 
-PointCalculation searchBestPoint (Plateau *plateau, point point, PointCalculation bestCurrentPoint, Plateau *plateauComputer);
-
 void updatePoint (Plateau *plateau, Player *player);
 
 void displayMessage (void);

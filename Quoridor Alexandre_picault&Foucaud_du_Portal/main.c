@@ -31,7 +31,7 @@ int main()
     
     //
     
-//    printf("Lorsque l'on vous demande des informations du type, les coordonees ou le nombre joueur ou encore le temps, saississez les au clavier puis appuyer sur entrer.\n Si par malheur vous vous etes trompe sur les infos a rentrer, par exemple vous avez rentrer des coordonees a la place de rentrer 1 ou 2 rentrer '00' cela devrait faire passer le message d'erreur.\n\n");
+
     startingInfos(&nbPlayers, &duration, player); //  Call fonction to ask the first info in order to adress differents rules to the game.
     
     //
