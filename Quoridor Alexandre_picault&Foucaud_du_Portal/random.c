@@ -12,21 +12,21 @@
 
 
 
-int choice_player (int nb_player)
+int choicePlayer (int nbPlayer)
 {
     srand( time( NULL ) );
     int i=0;
-    switch (nb_player)
+    switch (nbPlayer)
     {
         case 2:
         {
-            i = rand()%nb_player;
+            i = rand()%nbPlayer;
             break;
         }
             
         default:
         {
-            i = rand()%nb_player;
+            i = rand()%nbPlayer;
             break;
         }
     }

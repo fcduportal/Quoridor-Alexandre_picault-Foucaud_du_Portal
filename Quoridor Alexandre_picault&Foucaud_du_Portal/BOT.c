@@ -8,7 +8,7 @@
 
 #include "header.h"
 
-int playBot (Player player[], Plateau *plateau, Plateau *plateauOrdi)
+int playBot (Player player[], Plateau *plateau, Plateau *plateauComputer)
 {
     /*
      Cette fonction permet à l'ordinateur de jouer seul et de choisir l'action à effectuer.
@@ -22,16 +22,16 @@ int playBot (Player player[], Plateau *plateau, Plateau *plateauOrdi)
     // l'ordi regarde s'il peut avancer. (La case devant lui est vide)
     
     
-    player[ORDI].temp.line = (player[ORDI].position.line+1);
-    player[ORDI].temp.column = (player[ORDI].position.column);
+    player[Computer].temp.line = (player[Computer].position.line + 1);
+    player[Computer].temp.column = (player[Computer].position.column);
     
     
-    if (BETWEEN_0_8(player[ORDI].temp.line) && BETWEEN_0_8(player[ORDI].temp.column))
+    if (BETWEEN_0_8(player[Computer].temp.line) && BETWEEN_0_8(player[Computer].temp.column))
     {
-        if (plateauOrdi->board[player[ORDI].temp.line][player[ORDI].temp.column] == POSSIBLE && availabilityBox(player[ORDI].temp, plateau) ==
+        if (plateauComputer->board[player[Computer].temp.line][player[Computer].temp.column] == POSSIBLE && availabilityBox(player[Computer].temp, plateau) ==
                 EXIT_SUCCESS)
         {
-            mAJPoint(plateau, player);
+            updatePoint(plateau, player);
             
             return EXIT_SUCCESS;
         }
@@ -39,173 +39,164 @@ int playBot (Player player[], Plateau *plateau, Plateau *plateauOrdi)
         {
             printf("Case interdite. ou pas dispo\n");
             
-            int scoreG = 0, boucle = -1;
-            int colonne = (player[ORDI].position.column);
-            int ligne = player[ORDI].position.line;
+            int scoreG = 0, loop = -1;
+            int column = (player[Computer].position.column);
+            int line = player[Computer].position.line;
             
             
-            while (boucle != 0) // on balaie vers la gauche
+            while (loop != 0) // on balaie vers la gauche
             {
-                if (BETWEEN_0_8(colonne))
+                if (BETWEEN_0_8(column))
                 {
-                    if (plateauOrdi->board[ligne][colonne] != BANNED && plateau->board[ligne][colonne] != TAKEN )
+                    if (plateauComputer->board[line][column] != BANNED && plateau->board[line][column] != TAKEN )
                     {
-                        if (BETWEEN_0_8(ligne))
+                        if (BETWEEN_0_8(line))
                         {
                             scoreG ++;
-                            if (BETWEEN_0_8(ligne+1))
+                            if (BETWEEN_0_8(line + 1))
                             {
-                                if (plateauOrdi->board[ligne+1][colonne] != BANNED && plateau->board[ligne+1][colonne] != TAKEN )
+                                if (plateauComputer->board[line + 1][column] != BANNED && plateau->board[line + 1][column] != TAKEN )
                                 {
-                                    if (BETWEEN_0_8(ligne+2))
+                                    if (BETWEEN_0_8(line+2))
                                     {
-                                        if (plateauOrdi->board[ligne+2][colonne] != BANNED && plateau->board[ligne+2][colonne] != TAKEN )
+                                        if (plateauComputer->board[line + 2][column] != BANNED && plateau->board[line + 2][column] != TAKEN )
                                         {
                                             scoreG+=2;
-                                            boucle = 0;
+                                            loop = 0;
                                         }
                                     }
                                     else
                                     {
                                         scoreG++;
-                                        boucle = 0;
+                                        loop = 0;
                                     }
                                 }
                             }
                             else
                             {
                                 scoreG++;
-                                boucle = 0;
+                                loop = 0;
                             }
                         }
                     }
                     else
                     {
                         scoreG = 100;
-                        boucle = 0;
-                        for (int j = (player[ORDI].position.column-1) ; j > colonne; j--)
+                        loop = 0;
+                        for (int j = (player[Computer].position.column - 1) ; j > column; j--)
                         {
                             
-                            plateauOrdi->board[ligne][j] = BANNED;
+                            plateauComputer->board[line][j] = BANNED;
                         }
                     }
                 }
                 else
                 {
                     scoreG = 100;
-                    boucle = 0;
-                    for (int j = (player[ORDI].position.column-1) ; j > colonne; j--)
+                    loop = 0;
+                    for (int j = (player[Computer].position.column - 1) ; j > column; j--)
                     {
-                        plateauOrdi->board[ligne][j] = BANNED;
+                        plateauComputer->board[line][j] = BANNED;
                     }
                 }
-                colonne--;
+                column--;
             }
             
             
             
-            boucle = -1;
+            loop = -1;
             int scoreD =0;
-            colonne = (player[ORDI].position.column);
-            ligne = player[ORDI].position.line;
+            column = (player[Computer].position.column);
+            line = player[Computer].position.line;
             
-            while (boucle != 0) // on balaie vers la droite
+            while (loop != 0) // on balaie vers la droite
             {
-                if (BETWEEN_0_8(colonne))
+                if (BETWEEN_0_8(column))
                 {
-                    if (plateauOrdi->board[ligne][colonne] != BANNED && plateau->board[ligne][colonne] != TAKEN )
+                    if (plateauComputer->board[line][column] != BANNED && plateau->board[line][column] != TAKEN )
                     {
-                        if (BETWEEN_0_8(ligne))
+                        if (BETWEEN_0_8(line))
                         {
                             scoreD ++;
-                            if (BETWEEN_0_8(ligne+1))
+                            if (BETWEEN_0_8(line + 1))
                             {
-                                if (plateauOrdi->board[ligne+1][colonne] != BANNED && plateau->board[ligne+1][colonne] != TAKEN )
+                                if (plateauComputer->board[line + 1][column] != BANNED && plateau->board[line + 1][column] != TAKEN )
                                 {
-                                    if (BETWEEN_0_8(ligne+2))
+                                    if (BETWEEN_0_8(line+2))
                                     {
-                                        if (plateauOrdi->board[ligne+2][colonne] != BANNED && plateau->board[ligne+2][colonne] != TAKEN )
+                                        if (plateauComputer->board[line + 2][column] != BANNED && plateau->board[line + 2][column] != TAKEN )
                                         {
                                             scoreD+=2;
-                                            boucle = 0;
+                                            loop = 0;
                                         }
                                     }
                                     else
                                     {
                                         scoreD++;
-                                        boucle = 0;
+                                        loop = 0;
                                     }
                                 }
                             }
                             else
                             {
                                 scoreD++;
-                                boucle = 0;
+                                loop = 0;
                             }
                         }
                     }
                     else
                     {
                         scoreD = 100;
-                        boucle = 0;
-                        for (int j = (player[ORDI].position.column+1) ; j > colonne; j++)
+                        loop = 0;
+                        for (int j = (player[Computer].position.column + 1) ; j > column; j++)
                         {
-                            plateauOrdi->board[ligne][j] = BANNED;
+                            plateauComputer->board[line][j] = BANNED;
                         }
                     }
                 }
                 else
                 {
                     scoreD = 100;
-                    boucle = 0;
-                    for (int j = (player[ORDI].position.column+1) ; j > colonne; j++)
+                    loop = 0;
+                    for (int j = (player[Computer].position.column + 1) ; j > column; j++)
                     {
-                        plateauOrdi->board[ligne][j] = BANNED;
+                        plateauComputer->board[line][j] = BANNED;
                     }
                 }
-                colonne++;
+                column++;
             }
             
             if (scoreG <= scoreD && scoreG < 100)
             {
-                player[ORDI].temp.line = player[ORDI].position.line;
-                player[ORDI].temp.column = player[ORDI].position.column - 1;
+                player[Computer].temp.line = player[Computer].position.line;
+                player[Computer].temp.column = player[Computer].position.column - 1;
                 
-                printf("à gauche toute G : %d  D : %d\n", scoreG, scoreD);
-                
-                mAJPoint(plateau, player);
+                updatePoint(plateau, player);
             }
             else if (scoreG >= scoreD && scoreD < 100)
             {
-                player[ORDI].temp.line = player[ORDI].position.line;
-                player[ORDI].temp.column = player[ORDI].position.column + 1;
+                player[Computer].temp.line = player[Computer].position.line;
+                player[Computer].temp.column = player[Computer].position.column + 1;
                 
-                printf("A droite G : %d  D : %d\n", scoreG, scoreD);
-                
-                mAJPoint(plateau, player);
+                updatePoint(plateau, player);
             }
             else // scoreD et scoreG = 100
             {
-                plateauOrdi->board[player[ORDI].position.line][player[ORDI].position.column] = BANNED;
+                plateauComputer->board[player[Computer].position.line][player[Computer].position.column] = BANNED;
                 
-                player[ORDI].temp.line = (player[ORDI].position.line - 1);
-                player[ORDI].temp.column = player[ORDI].position.column;
+                player[Computer].temp.line = (player[Computer].position.line - 1);
+                player[Computer].temp.column = player[Computer].position.column;
                 
-                
-                
-                printf("On remonte G : %d  D : %d\n", scoreG, scoreD);
-                
-                mAJPoint(plateau, player);
+                updatePoint(plateau, player);
             }
-            
         }
     }
     
     else
     {
         printf("erreur ordi\n");
-        player[ORDI].temp.line = (player[ORDI].position.line);
-        player[ORDI].temp.column = (player[ORDI].position.column);
+        player[Computer].temp.line = (player[Computer].position.line);
+        player[Computer].temp.column = (player[Computer].position.column);
     }
     return EXIT_FAILURE;
 }
@@ -214,9 +205,9 @@ int playBot (Player player[], Plateau *plateau, Plateau *plateauOrdi)
 
 
 
-PointCalcul rechercheMeilleurPoint (Plateau *plateau, point point, PointCalcul meilleurPointActuel, Plateau *plateauOrdi)
+PointCalculation searchBestPoint (Plateau *plateau, point point, PointCalculation bestCurrentPoint, Plateau *plateauComputer)
 {
-    PointCalcul temporaire;
+    PointCalculation temp;
     int score = 0, boucle =-1, ligne = (point.line+1);
     while (boucle != 0)
     {
@@ -239,30 +230,24 @@ PointCalcul rechercheMeilleurPoint (Plateau *plateau, point point, PointCalcul m
         
         
     }
-    if (score > meilleurPointActuel.ValeurAssigneeOrdi)
+    if (score > bestCurrentPoint.ValeurAssigneeOrdi)
     {
-        temporaire.p = point;
-        temporaire.ValeurAssigneeOrdi = score;
-        return temporaire;
+        temp.p = point;
+        temp.ValeurAssigneeOrdi = score;
+        return temp;
     }
     else
     {
-        return meilleurPointActuel;
+        return bestCurrentPoint;
     }
 }
 
 
-
-
-
-
-
-void mAJPoint (Plateau *plateau, Player *player)
+void updatePoint (Plateau *plateau, Player *player)
 {
-    
-    plateau->board[player[ORDI].temp.line][player[ORDI].temp.column] = PAWN;
-    plateau->board[player[ORDI].position.line][player[ORDI].position.column] = FREE;
-    player[ORDI].position = player[ORDI].temp;
-    player[ORDI].temp.line = -1;
-    player[ORDI].temp.column = -1;
+    plateau->board[player[Computer].temp.line][player[Computer].temp.column] = PAWN;
+    plateau->board[player[Computer].position.line][player[Computer].position.column] = FREE;
+    player[Computer].position = player[Computer].temp;
+    player[Computer].temp.line = -1;
+    player[Computer].temp.column = -1;
 }

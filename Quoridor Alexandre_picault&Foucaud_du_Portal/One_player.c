@@ -11,21 +11,21 @@
 int onePlayer (Player player[], int nb_Players, Plateau plateau, int *duration)
 {
     nb_Players+=1;
-    int digit_Player=0, choice=0;
+    int digitPlayer=0, choice=0;
     
-    Plateau plateauOrdi;
+    Plateau plateauComputer;
     for (int i = 0; i<9; i++)
     {
         for (int j=0; j<9; j++)
         {
-            plateauOrdi.board[i][j]=POSSIBLE;
+            plateauComputer.board[i][j]=POSSIBLE;
         }
     }
     
     char Foucaud[NB_CHAR] = "Foucaud", BOT[NB_CHAR] = "BOT";
 
-    strcpy(player[JOUEUR].name, Foucaud);
-    strcpy(player[ORDI].name, BOT);
+    strcpy(player[Gamer].name, Foucaud);
+    strcpy(player[Computer].name, BOT);
     
     
     player[0].number_fence = NB_FENCE_MAX;
@@ -45,7 +45,7 @@ int onePlayer (Player player[], int nb_Players, Plateau plateau, int *duration)
     }
     
     
-    digit_Player = choice_player(nb_Players);
+    digitPlayer = choicePlayer(nb_Players);
     
     
     time_t t_debut=time(NULL);
@@ -57,16 +57,16 @@ int onePlayer (Player player[], int nb_Players, Plateau plateau, int *duration)
         
         display_board(&plateau, player, nb_Players);
 
-        if (digit_Player == ORDI)
+        if (digitPlayer == Computer)
         {
-            playBot(player, &plateau, &plateauOrdi);
-            digit_Player = ((digit_Player+1)%2);
+            playBot(player, &plateau, &plateauComputer);
+            digitPlayer = ( (digitPlayer + 1) % 2);
         }
         else
         {
-            int columnChar = NUMBER_ASCII(player[digit_Player].position.column);
-            printf(" \nnom du joueur %s\n", player[digit_Player].name);
-            printf("%s : Votre pion est en : (%c;%d) et il vous reste %d barrieres.\n\n", player[digit_Player].name, columnChar, player[digit_Player].position.line, player[digit_Player].number_fence);
+            int columnChar = NUMBER_ASCII(player[digitPlayer].position.column);
+            printf(" \nnom du joueur %s\n", player[digitPlayer].name);
+            printf("%s : Votre pion est en : (%c;%d) et il vous reste %d barrieres.\n\n", player[digitPlayer].name, columnChar, player[digitPlayer].position.line, player[digitPlayer].number_fence);
             
             printf("Si vous voulez jouer une barriere taper 1 ou un pion taper 2:\t");
             scanf("%d",&choice);
@@ -75,9 +75,9 @@ int onePlayer (Player player[], int nb_Players, Plateau plateau, int *duration)
             {
                 case 1:
                 {
-                    if (playFence(player, digit_Player, &plateau) == EXIT_SUCCESS)
+                    if (playFence(player, digitPlayer, &plateau) == EXIT_SUCCESS)
                     {
-                        digit_Player = ((digit_Player+1)%2);
+                        digitPlayer = ( (digitPlayer + 1) % 2);
                     }
                     break;
                 }
@@ -86,9 +86,9 @@ int onePlayer (Player player[], int nb_Players, Plateau plateau, int *duration)
                 case 2:
                 {
                     
-                    if (playPawn(&player[digit_Player], &plateau) == EXIT_SUCCESS)
+                    if (playPawn(&player[digitPlayer], &plateau) == EXIT_SUCCESS)
                     {
-                        digit_Player = ((digit_Player+1)%2);
+                        digitPlayer = ((digitPlayer + 1) % 2);
                     }
                     break;
                 }
@@ -102,13 +102,11 @@ int onePlayer (Player player[], int nb_Players, Plateau plateau, int *duration)
             }
         }
         
-        if (hourglass(duration, t_debut) != EXIT_SUCCESS || gagnant(player) == EXIT_SUCCESS) // il ne reste plus de temps ou un joueur a gagne la partie.
+        if (hourglass(duration, t_debut) != EXIT_SUCCESS || winner(player) == EXIT_SUCCESS) // il ne reste plus de temps ou un joueur a gagne la partie.
         {
             printf("\nFin de Partie.\n");
-            boucle=0;
-        }    }
-    
-    return 0;
-    
+            boucle = 0;
+        }
+    }
     return EXIT_SUCCESS;
 }

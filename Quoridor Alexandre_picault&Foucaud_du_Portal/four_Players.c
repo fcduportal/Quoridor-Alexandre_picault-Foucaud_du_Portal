@@ -13,9 +13,9 @@
 
 //
 
-int fourPlayers (Player player[], int nb_Players, Plateau plateau, int *duration)
+int fourPlayers (Player player[], int nbPlayers, Plateau plateau, int *duration)
 {
-    int digitPlayer=0, choice=0;
+    int digitPlayer = 0, choice = 0;
     
     char foucaud[NB_CHAR] = "Foucaud", Alexandre[NB_CHAR] = "Alexandre", Tom[NB_CHAR] = "Tom", Jules[NB_CHAR] = "Jules";
     
@@ -24,7 +24,7 @@ int fourPlayers (Player player[], int nb_Players, Plateau plateau, int *duration
     strcpy(player[2].name, Tom);
     strcpy(player[3].name, Jules);
     
-    for (int i = 0; i<4; i++)
+    for (int i = 0; i < 4; i++)
     {
         player[i].number_fence = NB_FENCE_MAX;
     }
@@ -46,24 +46,23 @@ int fourPlayers (Player player[], int nb_Players, Plateau plateau, int *duration
     plateau.board[4][8] = PAWN;
     
     
-    for (int i = 0; i<nb_Players; i++)
+    for (int i = 0; i < nbPlayers; i++)
     {
-        player[i].affichage = i+1;
+        player[i].affichage = (i+1);
     }
 
     
+    digitPlayer = choicePlayer(nbPlayers);
     
-    digitPlayer = choice_player(nb_Players);
     
-    
-    time_t t_debut=time(NULL);
+    time_t StartingTime=time(NULL);
     
     int boucle = -1;
     
     while (boucle!=0)
     {
         
-        display_board(&plateau, player, nb_Players);
+        display_board(&plateau, player, nbPlayers);
         
         int columnChar = NUMBER_ASCII(player[digitPlayer].position.column);
         
@@ -78,7 +77,7 @@ int fourPlayers (Player player[], int nb_Players, Plateau plateau, int *duration
             {
                 if (playFence(player, digitPlayer, &plateau) == EXIT_SUCCESS)
                 {
-                    digitPlayer = ((digitPlayer+1)%4);
+                    digitPlayer = ( (digitPlayer + 1) % 4);
                 }
                 break;
             }
@@ -88,7 +87,7 @@ int fourPlayers (Player player[], int nb_Players, Plateau plateau, int *duration
                 
                 if (playPawn(&player[digitPlayer], &plateau) == EXIT_SUCCESS)
                 {
-                    digitPlayer = ((digitPlayer+1)%4);
+                    digitPlayer = ( (digitPlayer + 1) % 4);
                 }
                 break;
             }
@@ -100,7 +99,7 @@ int fourPlayers (Player player[], int nb_Players, Plateau plateau, int *duration
             }
         }
         
-        if (hourglass(duration, t_debut) != EXIT_SUCCESS || gagnant(player) == EXIT_SUCCESS) // il ne reste plus de temps ou un joueur a gagne la partie.
+        if (hourglass(duration, StartingTime) != EXIT_SUCCESS || winner(player) == EXIT_SUCCESS) // il ne reste plus de temps ou un joueur a gagne la partie.
         {
             printf("\nFin de Partie.\n");
             boucle=0;

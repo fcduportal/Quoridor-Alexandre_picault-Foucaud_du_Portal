@@ -11,17 +11,17 @@
 
 #include <stdio.h>
 
-enum TypeDeJoueur
+enum TypeOfPlayer
 {
-    ORDI, JOUEUR
+    Computer, Gamer
 };
-typedef enum TypeDeJoueur TypeDeJoueur;
+typedef enum TypeOfPlayer TypeOfPlayer;
 
-int playBot (Player player[], Plateau *plateau, Plateau *plateauOrdi);
+int playBot (Player player[], Plateau *plateau, Plateau *plateauComputer);
 
-PointCalcul rechercheMeilleurPoint (Plateau *plateau, point point, PointCalcul meilleurPointActuel, Plateau *plateauOrdi);
+PointCalculation searchBestPoint (Plateau *plateau, point point, PointCalculation bestCurrentPoint, Plateau *plateauComputer);
 
-void mAJPoint (Plateau *plateau, Player *player);
+void updatePoint (Plateau *plateau, Player *player);
 
 
 #endif /* BOT_h */

@@ -14,7 +14,7 @@
 
 #include <stdio.h>
 
-//player code
+// two player code
 
 int twoPlayers (Player player[], int nb_Players, Plateau plateau, int *duration);
 

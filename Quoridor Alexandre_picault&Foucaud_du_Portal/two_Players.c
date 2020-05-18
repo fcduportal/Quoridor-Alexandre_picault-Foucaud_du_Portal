@@ -12,7 +12,7 @@
 
 ///
 
-int twoPlayers (Player player[], int nb_Players, Plateau plateau, int *duration)
+int twoPlayers (Player player[], int nbPlayers, Plateau plateau, int *duration)
 {
     int digitPlayer=0, choice=0;
     
@@ -33,23 +33,23 @@ int twoPlayers (Player player[], int nb_Players, Plateau plateau, int *duration)
     player[1].position.column = 4;
     plateau.board[8][4] = PAWN;
     
-    for (int i = 0; i<nb_Players; i++)
+    for (int i = 0; i<nbPlayers; i++)
     {
         player[i].affichage = i+1;
     }
     
     
-    digitPlayer = choice_player(nb_Players);
+    digitPlayer = choicePlayer(nbPlayers);
     
     
-    time_t t_debut=time(NULL);
+    time_t StartingTime=time(NULL);
     
     int boucle = -1;
     
-    while (boucle!=0)
+    while (boucle != 0)
     {
         
-        display_board(&plateau, player, nb_Players);
+        display_board(&plateau, player, nbPlayers);
         
         int columnChar = NUMBER_ASCII(player[digitPlayer].position.column);
         
@@ -64,7 +64,7 @@ int twoPlayers (Player player[], int nb_Players, Plateau plateau, int *duration)
             {
                 if (playFence(player, digitPlayer, &plateau) == EXIT_SUCCESS)
                 {
-                    digitPlayer = ((digitPlayer+1)%2);
+                    digitPlayer = ( (digitPlayer + 1) % 2 );
                 }
                 break;
             }
@@ -74,7 +74,7 @@ int twoPlayers (Player player[], int nb_Players, Plateau plateau, int *duration)
                 
                 if (playPawn(&player[digitPlayer], &plateau) == EXIT_SUCCESS)
                 {
-                    digitPlayer = ((digitPlayer+1)%2);
+                    digitPlayer = ( (digitPlayer + 1) % 2);
                 }
                 break;
             }
@@ -86,10 +86,10 @@ int twoPlayers (Player player[], int nb_Players, Plateau plateau, int *duration)
             }
         }
         
-        if (hourglass(duration, t_debut) != EXIT_SUCCESS || gagnant(player) == EXIT_SUCCESS) // il ne reste plus de temps ou un joueur a gagne la partie.
+        if (hourglass(duration, StartingTime) != EXIT_SUCCESS || winner(player) == EXIT_SUCCESS) // il ne reste plus de temps ou un joueur a gagne la partie.
         {
             printf("\nFin de Partie.\n");
-            boucle=0;
+            boucle = 0;
         }
     }
     return 0;

@@ -157,7 +157,7 @@ int hourglass (int *duration, time_t startTime )
     time_t currentTime = (time(NULL));
     time_t lapsedTime = difftime(currentTime, startTime );
     
-    if (lapsedTime>(*duration*60))
+    if (lapsedTime > (*duration*60))
     {
         return EXIT_FAILURE;
     }
@@ -169,7 +169,7 @@ int hourglass (int *duration, time_t startTime )
 
 //
 
-int gagnant (Player *player)
+int winner (Player *player)
 {
     int state = EXIT_FAILURE;
     if (player[0].position.line == 8)

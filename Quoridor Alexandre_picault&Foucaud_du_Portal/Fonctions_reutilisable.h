@@ -119,7 +119,7 @@ int availabilityBox (point M, Plateau *plateau);
 
 int hourglass (int *duration, time_t t_debut);
 
-int gagnant (Player *player);
+int winner (Player *player);
 
 void display_board (Plateau *plateau, Player player[], int nb_player);
 
@@ -137,19 +137,19 @@ point enterLinesColumns (void);
 
 
 
-struct PointCalcul
+struct PointCalculation
 {
     point p;
     int ValeurAssigneeOrdi;
 };
-typedef struct PointCalcul PointCalcul;
+typedef struct PointCalculation PointCalculation;
 
 
 
 
 struct PointsAdjacents
 {
-    PointCalcul droite, gauche, devant, derriere;
+    PointCalculation droite, gauche, devant, derriere;
 };
 typedef struct PointsAdjacents PointsAdjacents;
 
@@ -157,5 +157,5 @@ typedef struct PointsAdjacents PointsAdjacents;
 
 
 
-point initialiserPointsAdjacentsPion (int ligne, int colonne, Plateau *plateau, Plateau *plateauOrdi);
+point initialiserPointsAdjacentsPion (int ligne, int colonne, Plateau *plateau, Plateau *plateauComputer);
 
