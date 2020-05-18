@@ -20,15 +20,15 @@ int playBot (Player player[], Plateau *plateau, Plateau *plateauOrdi)
      */
     
     // l'ordi regarde s'il peut avancer. (La case devant lui est vide)
-    int test = -1;
-    
-    player[ORDI].temp.ligne = (player[ORDI].position.ligne+1);
-    player[ORDI].temp.colonne = (player[ORDI].position.colonne);
     
     
-    if (BETWEEN_0_8(player[ORDI].temp.ligne) && BETWEEN_0_8(player[ORDI].temp.colonne))
+    player[ORDI].temp.line = (player[ORDI].position.line+1);
+    player[ORDI].temp.column = (player[ORDI].position.column);
+    
+    
+    if (BETWEEN_0_8(player[ORDI].temp.line) && BETWEEN_0_8(player[ORDI].temp.column))
     {
-        if (plateauOrdi->board[player[ORDI].temp.ligne][player[ORDI].temp.colonne] == POSSIBLE && availability_Box(player[ORDI].temp, plateau) ==
+        if (plateauOrdi->board[player[ORDI].temp.line][player[ORDI].temp.column] == POSSIBLE && availability_Box(player[ORDI].temp, plateau) ==
                 EXIT_SUCCESS)
         {
             mAJPoint(plateau, player);
@@ -40,8 +40,8 @@ int playBot (Player player[], Plateau *plateau, Plateau *plateauOrdi)
             printf("Case interdite. ou pas dispo\n");
             
             int scoreG = 0, boucle = -1;
-            int colonne = (player[ORDI].position.colonne);
-            int ligne = player[ORDI].position.ligne;
+            int colonne = (player[ORDI].position.column);
+            int ligne = player[ORDI].position.line;
             
             
             while (boucle != 0) // on balaie vers la gauche
@@ -83,7 +83,7 @@ int playBot (Player player[], Plateau *plateau, Plateau *plateauOrdi)
                     {
                         scoreG = 100;
                         boucle = 0;
-                        for (int j = (player[ORDI].position.colonne-1) ; j > colonne; j--)
+                        for (int j = (player[ORDI].position.column-1) ; j > colonne; j--)
                         {
                             
                             plateauOrdi->board[ligne][j] = BANNED;
@@ -94,7 +94,7 @@ int playBot (Player player[], Plateau *plateau, Plateau *plateauOrdi)
                 {
                     scoreG = 100;
                     boucle = 0;
-                    for (int j = (player[ORDI].position.colonne-1) ; j > colonne; j--)
+                    for (int j = (player[ORDI].position.column-1) ; j > colonne; j--)
                     {
                         plateauOrdi->board[ligne][j] = BANNED;
                     }
@@ -106,8 +106,8 @@ int playBot (Player player[], Plateau *plateau, Plateau *plateauOrdi)
             
             boucle = -1;
             int scoreD =0;
-            colonne = (player[ORDI].position.colonne);
-            ligne = player[ORDI].position.ligne;
+            colonne = (player[ORDI].position.column);
+            ligne = player[ORDI].position.line;
             
             while (boucle != 0) // on balaie vers la droite
             {
@@ -148,7 +148,7 @@ int playBot (Player player[], Plateau *plateau, Plateau *plateauOrdi)
                     {
                         scoreD = 100;
                         boucle = 0;
-                        for (int j = (player[ORDI].position.colonne+1) ; j > colonne; j++)
+                        for (int j = (player[ORDI].position.column+1) ; j > colonne; j++)
                         {
                             plateauOrdi->board[ligne][j] = BANNED;
                         }
@@ -158,7 +158,7 @@ int playBot (Player player[], Plateau *plateau, Plateau *plateauOrdi)
                 {
                     scoreD = 100;
                     boucle = 0;
-                    for (int j = (player[ORDI].position.colonne+1) ; j > colonne; j++)
+                    for (int j = (player[ORDI].position.column+1) ; j > colonne; j++)
                     {
                         plateauOrdi->board[ligne][j] = BANNED;
                     }
@@ -168,8 +168,8 @@ int playBot (Player player[], Plateau *plateau, Plateau *plateauOrdi)
             
             if (scoreG <= scoreD && scoreG < 100)
             {
-                player[ORDI].temp.ligne = player[ORDI].position.ligne;
-                player[ORDI].temp.colonne = player[ORDI].position.colonne - 1;
+                player[ORDI].temp.line = player[ORDI].position.line;
+                player[ORDI].temp.column = player[ORDI].position.column - 1;
                 
                 printf("à gauche toute G : %d  D : %d\n", scoreG, scoreD);
                 
@@ -177,8 +177,8 @@ int playBot (Player player[], Plateau *plateau, Plateau *plateauOrdi)
             }
             else if (scoreG >= scoreD && scoreD < 100)
             {
-                player[ORDI].temp.ligne = player[ORDI].position.ligne;
-                player[ORDI].temp.colonne = player[ORDI].position.colonne + 1;
+                player[ORDI].temp.line = player[ORDI].position.line;
+                player[ORDI].temp.column = player[ORDI].position.column + 1;
                 
                 printf("A droite G : %d  D : %d\n", scoreG, scoreD);
                 
@@ -186,10 +186,10 @@ int playBot (Player player[], Plateau *plateau, Plateau *plateauOrdi)
             }
             else // scoreD et scoreG = 100
             {
-                plateauOrdi->board[player[ORDI].position.ligne][player[ORDI].position.colonne] = BANNED;
+                plateauOrdi->board[player[ORDI].position.line][player[ORDI].position.column] = BANNED;
                 
-                player[ORDI].temp.ligne = (player[ORDI].position.ligne - 1);
-                player[ORDI].temp.colonne = player[ORDI].position.colonne;
+                player[ORDI].temp.line = (player[ORDI].position.line - 1);
+                player[ORDI].temp.column = player[ORDI].position.column;
                 
                 
                 
@@ -204,8 +204,8 @@ int playBot (Player player[], Plateau *plateau, Plateau *plateauOrdi)
     else
     {
         printf("erreur ordi\n");
-        player[ORDI].temp.ligne = (player[ORDI].position.ligne);
-        player[ORDI].temp.colonne = (player[ORDI].position.colonne);
+        player[ORDI].temp.line = (player[ORDI].position.line);
+        player[ORDI].temp.column = (player[ORDI].position.column);
     }
     return EXIT_FAILURE;
 }
@@ -217,7 +217,7 @@ int playBot (Player player[], Plateau *plateau, Plateau *plateauOrdi)
 PointCalcul rechercheMeilleurPoint (Plateau *plateau, point point, PointCalcul meilleurPointActuel, Plateau *plateauOrdi)
 {
     PointCalcul temporaire;
-    int score = 0, boucle =-1, ligne = (point.ligne+1);
+    int score = 0, boucle =-1, ligne = (point.line+1);
     while (boucle != 0)
     {
         if (ligne == DIM_TAB)
@@ -226,7 +226,7 @@ PointCalcul rechercheMeilleurPoint (Plateau *plateau, point point, PointCalcul m
         }
         else
         {
-            if (plateau->board[ligne][point.colonne] != TAKEN)
+            if (plateau->board[ligne][point.column] != TAKEN)
             {
                 score++;
                 ligne++;
@@ -260,9 +260,9 @@ PointCalcul rechercheMeilleurPoint (Plateau *plateau, point point, PointCalcul m
 void mAJPoint (Plateau *plateau, Player *player)
 {
     
-    plateau->board[player[ORDI].temp.ligne][player[ORDI].temp.colonne] = PAWN;
-    plateau->board[player[ORDI].position.ligne][player[ORDI].position.colonne] = FREE;
+    plateau->board[player[ORDI].temp.line][player[ORDI].temp.column] = PAWN;
+    plateau->board[player[ORDI].position.line][player[ORDI].position.column] = FREE;
     player[ORDI].position = player[ORDI].temp;
-    player[ORDI].temp.ligne = -1;
-    player[ORDI].temp.colonne = -1;
+    player[ORDI].temp.line = -1;
+    player[ORDI].temp.column = -1;
 }

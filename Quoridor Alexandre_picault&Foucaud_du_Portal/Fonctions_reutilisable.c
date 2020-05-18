@@ -40,7 +40,7 @@ fence enter_coord_fence (void)
         Barrier.A = enterLinesColumns();
         Barrier.B = enterLinesColumns();
         
-        if (BETWEEN_0_8(Barrier.A.ligne) && BETWEEN_0_8(Barrier.A.colonne) && BETWEEN_0_8(Barrier.B.ligne) && BETWEEN_0_8(Barrier.B.colonne))
+        if (BETWEEN_0_8(Barrier.A.line) && BETWEEN_0_8(Barrier.A.column) && BETWEEN_0_8(Barrier.B.line) && BETWEEN_0_8(Barrier.B.column))
         {
             test = 0;
         }
@@ -66,8 +66,8 @@ point enterLinesColumns (void)
     scanf("%c %d", &letter, &number);
     letter = toupper(letter);
     
-    point.colonne = ASCII_NUMBER(letter);
-    point.ligne = number;
+    point.column = ASCII_NUMBER(letter);
+    point.line = number;
     
     return point;
 }
@@ -92,7 +92,7 @@ point enter_coord_Pawn (void)
         point = enterLinesColumns();
 
         
-            if (BETWEEN_0_8(point.ligne) && BETWEEN_0_8(point.colonne))
+            if (BETWEEN_0_8(point.line) && BETWEEN_0_8(point.column))
             {
                 test = 0;
             }
@@ -116,9 +116,9 @@ point enter_coord_Pawn (void)
 
 int availability_Box (point M, Plateau *plateau)
 {
-    if (plateau->board[M.ligne][M.colonne] != FREE)
+    if (plateau->board[M.line][M.column] != FREE)
     {
-        printf("Impossible la case (%d;%d) est déjà prise.\n", M.ligne, M.colonne);
+        printf("Impossible la case (%d;%d) est déjà prise.\n", M.line, M.column);
         return EXIT_FAILURE;
     }
     else
@@ -131,11 +131,11 @@ int availability_Box (point M, Plateau *plateau)
 
 int tester_adjacent (point M, point N)
 {
-    if (M.ligne == N.ligne && (M.colonne-N.colonne==-1 || M.colonne-N.colonne == 1))
+    if (M.line == N.line && (M.column-N.column==-1 || M.column-N.column == 1))
     {
         return EXIT_SUCCESS;
     }
-    else if (M.colonne == N.colonne && (M.ligne-N.ligne==-1 || M.ligne-N.ligne == 1))
+    else if (M.column == N.column && (M.line-N.line==-1 || M.line-N.line == 1))
     {
         return EXIT_SUCCESS;
     }
@@ -172,22 +172,22 @@ int sablier (int *duration, time_t t_debut)
 int gagnant (Player *player)
 {
     int etat = EXIT_FAILURE;
-    if (player[0].position.ligne == 8)
+    if (player[0].position.line == 8)
     {
         printf("Le joueur %s a gagne.\n", player[0].name);
         etat = EXIT_SUCCESS;
     }
-    if (player[1].position.ligne == 0)
+    if (player[1].position.line == 0)
     {
         printf("Le joueur %s a gagne.\n", player[1].name);
         etat = EXIT_SUCCESS;
     }
-    if (player[2].position.colonne == 8)
+    if (player[2].position.column == 8)
     {
         printf("Le joueur %s a gagne.\n", player[2].name);
         etat = EXIT_SUCCESS;
     }
-    if (player[0].position.colonne == 0)
+    if (player[0].position.column == 0)
     {
         printf("Le joueur %s a gagne.\n", player[3].name);
         etat = EXIT_SUCCESS;
@@ -275,7 +275,7 @@ void display_board (Plateau *plateau, Player player[], int nb_player)
                 {
                     for (int k=0; k<nb_player; k++)
                     {
-                        if (player[k].position.ligne == i &&  player[k].position.colonne == j)
+                        if (player[k].position.line == i &&  player[k].position.column == j)
                         {
                             printf("| %d ", player[k].affichage);
                             

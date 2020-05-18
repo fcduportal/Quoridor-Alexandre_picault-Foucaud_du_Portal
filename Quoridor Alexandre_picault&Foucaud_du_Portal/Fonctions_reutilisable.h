@@ -26,7 +26,7 @@ void clear_console (void);
 
 struct point
 {
-    int ligne,colonne;
+    int line,column;
 };
 typedef struct point point;
 

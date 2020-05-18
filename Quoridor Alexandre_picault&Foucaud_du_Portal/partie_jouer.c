@@ -38,8 +38,8 @@ int playFence (Player player[], int digit_Player, Plateau *plateau)
                 {
                     if (availability_Box(Barrier.B, plateau) == EXIT_SUCCESS)
                     {
-                        plateau->board[Barrier.A.ligne][Barrier.A.colonne] = TAKEN;
-                        plateau->board[Barrier.B.ligne][Barrier.B.colonne] = TAKEN;
+                        plateau->board[Barrier.A.line][Barrier.A.column] = TAKEN;
+                        plateau->board[Barrier.B.line][Barrier.B.column] = TAKEN;
                         
                         player[digit_Player].number_fence--;
                         return EXIT_SUCCESS;
@@ -67,12 +67,12 @@ int playPawn (Player player[], Plateau *plateau)
     {
         if (availability_Box(player->temp, plateau) == EXIT_SUCCESS)
         {
-            plateau->board[player->temp.ligne][player->temp.colonne] = PAWN;
-            plateau->board[player->position.ligne][player->position.colonne] = FREE;
+            plateau->board[player->temp.line][player->temp.column] = PAWN;
+            plateau->board[player->position.line][player->position.column] = FREE;
             
             player->position = player->temp;
-            player->temp.ligne = -1;
-            player->temp.colonne = -1;
+            player->temp.line = -1;
+            player->temp.column = -1;
             
             
             return EXIT_SUCCESS;

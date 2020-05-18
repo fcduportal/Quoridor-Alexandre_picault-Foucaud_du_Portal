@@ -31,12 +31,12 @@ int Game_one_Player (Player player[], int nb_Players, Plateau plateau, int *dura
     player[0].number_fence = NB_FENCE_MAX;
     player[1].number_fence = NB_FENCE_MAX;
     
-    player[0].position.ligne = 0;
-    player[0].position.colonne = 4;
+    player[0].position.line = 0;
+    player[0].position.column = 4;
     plateau.board[0][4] = PAWN;
     
-    player[1].position.ligne = 8;
-    player[1].position.colonne = 4;
+    player[1].position.line = 8;
+    player[1].position.column = 4;
     plateau.board[8][4] = PAWN;
     
     for (int i = 0; i<nb_Players; i++)
@@ -64,9 +64,9 @@ int Game_one_Player (Player player[], int nb_Players, Plateau plateau, int *dura
         }
         else
         {
-            int columnChar = NUMBER_ASCII(player[digit_Player].position.colonne);
+            int columnChar = NUMBER_ASCII(player[digit_Player].position.column);
             printf(" \nnom du joueur %s\n", player[digit_Player].name);
-            printf("%s : Votre pion est en : (%c;%d) et il vous reste %d barrieres.\n\n", player[digit_Player].name, columnChar, player[digit_Player].position.ligne, player[digit_Player].number_fence);
+            printf("%s : Votre pion est en : (%c;%d) et il vous reste %d barrieres.\n\n", player[digit_Player].name, columnChar, player[digit_Player].position.line, player[digit_Player].number_fence);
             
             printf("Si vous voulez jouer une barriere taper 1 ou un pion taper 2:\t");
             scanf("%d",&choice);
