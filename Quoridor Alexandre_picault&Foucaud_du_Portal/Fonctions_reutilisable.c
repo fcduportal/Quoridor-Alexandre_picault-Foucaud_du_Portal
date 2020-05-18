@@ -37,8 +37,8 @@ fence enter_coord_fence (void)
     
     while (test != 0)
     {
-        Barrier.A = saisie_colonnes_lignes();
-        Barrier.B = saisie_colonnes_lignes();
+        Barrier.A = enterLinesColumns();
+        Barrier.B = enterLinesColumns();
         
         if (BETWEEN_0_8(Barrier.A.ligne) && BETWEEN_0_8(Barrier.A.colonne) && BETWEEN_0_8(Barrier.B.ligne) && BETWEEN_0_8(Barrier.B.colonne))
         {
@@ -53,21 +53,21 @@ fence enter_coord_fence (void)
 }
 
 
-point saisie_colonnes_lignes (void)
+point enterLinesColumns (void)
 {
-    char lettre;
-    int chiffre=0;
-    point point={-1, -1};
+    char letter = ' ';
+    int number = 0;
+    point point = {-1, -1};
     
     
-    scanf("%c",&lettre); // recuperer le \n precedent
+    scanf("%c",&letter); // This line is used in order to retrieve a charactere that we identified as "\n" wich comes from a line of code before the appeal of the function, but we didn't understood why it is here.
     
     printf("Veuillez saisir les coordonees souhaitee. (ie : A 2)\t");
-    scanf("%c %d", &lettre, &chiffre);
-    lettre = toupper(lettre);
+    scanf("%c %d", &letter, &number);
+    letter = toupper(letter);
     
-    point.colonne = ASCII_NUMBER(lettre);
-    point.ligne = chiffre;
+    point.colonne = ASCII_NUMBER(letter);
+    point.ligne = number;
     
     return point;
 }
@@ -89,7 +89,7 @@ point enter_coord_Pawn (void)
     
     while (test != 0)
     {
-        point = saisie_colonnes_lignes();
+        point = enterLinesColumns();
 
         
             if (BETWEEN_0_8(point.ligne) && BETWEEN_0_8(point.colonne))

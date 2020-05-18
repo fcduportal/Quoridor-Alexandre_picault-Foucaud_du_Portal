@@ -131,7 +131,7 @@ void display_lines (char c1, char c2);
 
 void display_ligne_vide (char c1, char c2);
 
-point saisie_colonnes_lignes (void);
+point enterLinesColumns (void);
 
 
 
