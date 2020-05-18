@@ -18,9 +18,9 @@
 // 
 
 
-//play a fence
+//play a Fence
 
-int playFence (Player *player, int digit_Player, Plateau *plateau);
+int playFence (Player *player, int digitPlayer, Plateau *plateau);
 
 
 //play a pawn

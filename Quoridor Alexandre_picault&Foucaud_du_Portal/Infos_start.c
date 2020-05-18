@@ -15,23 +15,20 @@
 
 #include "header.h"
 
-void info_start(int *nb_players, int *duration, Player *player) //Fonction which ask the first info.
+void startingInfos(int *nb_players, int *duration, Player *player) //Fonction which ask the first info.
 {
-//    demand_nb_player(nb_players);
-    *nb_players = 1;
-//    *duration = demand_time();
-    *duration = 10;
-    
+    demandNbPlayer(nb_players);
+    *duration = demandTime();
 }
 
 //request for the number of players
 
-void demand_nb_player (int *nb_players)
+void demandNbPlayer (int *nbPlayers)
 {
     printf("==NOMBRE DE JOUEURS==\n1. 1joueur humain et une IA.\n2. 2joueurs\n4. 4joueurs\n");
-    scanf("%d", nb_players);
+    scanf("%d", nbPlayers);
     
-    switch (*nb_players)
+    switch (*nbPlayers)
     {
         case 1:
         {
@@ -54,8 +51,8 @@ void demand_nb_player (int *nb_players)
         default:
         {
             printf("Choississez 1, 2 ou 4\n");
-            clear_console();
-            demand_nb_player(nb_players);
+            clearConsole();
+            demandNbPlayer(nbPlayers);
             break;
         }
     }
@@ -63,7 +60,7 @@ void demand_nb_player (int *nb_players)
 
 //request for game time
 
-int demand_time (void)
+int demandTime (void)
 {
     int duration = 0;
     printf("\n\n==TEMPS DE PARTIE==\n10 minutes\n15 minutes\n20.minutes\n");
@@ -71,10 +68,6 @@ int demand_time (void)
     
     switch (duration)
     {
-        case 1:
-        {
-            break;
-        }
         case 10:
         {
             break;
@@ -93,8 +86,8 @@ int demand_time (void)
         default:
         {
             printf("Choississez 10, 15, 20 minutes.\n");
-            clear_console();
-            duration = demand_time();
+            clearConsole();
+            duration = demandTime();
             break;
         }
     }

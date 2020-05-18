@@ -15,7 +15,7 @@
 
 //
 
-int Game_4_Player (Player player[], int nb_Players, Plateau plateau, int *duration);
+int fourPlayers (Player player[], int nb_Players, Plateau plateau, int *duration);
 
 ///
 

@@ -11,15 +11,15 @@
 
 #include "header.h"
 
-//play a fence
+//play a Fence
 
-int playFence (Player player[], int digit_Player, Plateau *plateau)
+int playFence (Player player[], int digitPlayer, Plateau *Plateau)
 {
-    fence Barrier;
+    Fence Barrier;
     
-    printf("\n%s : Il vous reste %d barrières\n",player[digit_Player].name,player[digit_Player].number_fence);
+    printf("\n%s : Il vous reste %d barrières\n",player[digitPlayer].name,player[digitPlayer].number_fence);
     
-    switch (player[digit_Player].number_fence)
+    switch (player[digitPlayer].number_fence)
     {
         case 0:
         {
@@ -30,18 +30,18 @@ int playFence (Player player[], int digit_Player, Plateau *plateau)
             
         default:
         {
-            Barrier = enter_coord_fence();
+            Barrier = enterCoordFence();
             
-            if (test_adjacent(Barrier.A, Barrier.B) == EXIT_SUCCESS)
+            if (testAdjacent(Barrier.A, Barrier.B) == EXIT_SUCCESS)
             {
-                if (availability_Box(Barrier.A, plateau) == EXIT_SUCCESS)
+                if (availabilityBox(Barrier.A, Plateau) == EXIT_SUCCESS)
                 {
-                    if (availability_Box(Barrier.B, plateau) == EXIT_SUCCESS)
+                    if (availabilityBox(Barrier.B, Plateau) == EXIT_SUCCESS)
                     {
-                        plateau->board[Barrier.A.line][Barrier.A.column] = TAKEN;
-                        plateau->board[Barrier.B.line][Barrier.B.column] = TAKEN;
+                        Plateau->board[Barrier.A.line][Barrier.A.column] = TAKEN;
+                        Plateau->board[Barrier.B.line][Barrier.B.column] = TAKEN;
                         
-                        player[digit_Player].number_fence--;
+                        player[digitPlayer].number_fence--;
                         return EXIT_SUCCESS;
                     }
                 }
@@ -63,9 +63,9 @@ int playPawn (Player player[], Plateau *plateau)
     
     player->temp = enter_coord_Pawn();
     
-    if (test_adjacent(player->position, player->temp) == EXIT_SUCCESS)
+    if (testAdjacent(player->position, player->temp) == EXIT_SUCCESS)
     {
-        if (availability_Box(player->temp, plateau) == EXIT_SUCCESS)
+        if (availabilityBox(player->temp, plateau) == EXIT_SUCCESS)
         {
             plateau->board[player->temp.line][player->temp.column] = PAWN;
             plateau->board[player->position.line][player->position.column] = FREE;

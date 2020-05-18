@@ -8,7 +8,7 @@
 
 #include "header.h"
 
-int Game_one_Player (Player player[], int nb_Players, Plateau plateau, int *duration)
+int onePlayer (Player player[], int nb_Players, Plateau plateau, int *duration)
 {
     nb_Players+=1;
     int digit_Player=0, choice=0;

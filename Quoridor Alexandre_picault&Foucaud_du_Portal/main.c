@@ -17,11 +17,11 @@
 int main()
 {
     Plateau plateau = {-1};
-    for (int i = 0; i<9; i++)
+    for (int i = 0; i < 9; i++)
     {
-        for (int j=0; j<9; j++)
+        for (int j=0; j < 9; j++)
         {
-            plateau.board[i][j]=FREE;
+            plateau.board[i][j] = FREE;
         }
     }
     
@@ -31,7 +31,7 @@ int main()
     
     //
     
-    info_start(&nbPlayers, &duration, player); //  Call fonction to ask the first info in order to adress differents rules to the game.
+    startingInfos(&nbPlayers, &duration, player); //  Call fonction to ask the first info in order to adress differents rules to the game.
     
     //
     
@@ -39,46 +39,54 @@ int main()
     {
         case 1:
         {
-            Game_one_Player(player, nbPlayers, plateau, &duration);
+            onePlayer(player, nbPlayers, plateau, &duration);
             
             break;
         }
             
         case 2: // play 2
         {
-            Game_2_Players(player, nbPlayers, plateau, &duration);
+            twoPlayers(player, nbPlayers, plateau, &duration);
             
             break;
         }
             
         case 4: // play 4
         {
-            Game_4_Player(player, nbPlayers, plateau, &duration);
+            fourPlayers(player, nbPlayers, plateau, &duration);
             
             break;
         }
     }
     
-    clear_console();
-    int recommencer=0;
+    clearConsole();
+    
+    
+    int restart = 0;
     printf("Voulez vous recommencer?\n1.OUI\n2.NON\n");
-    scanf("%d",&recommencer);
-    switch (recommencer)
+    scanf("%d",&restart);
+    switch (restart)
     {
         case 1:
-            clear_console();
+        {
+            clearConsole();
             main();
             break;
+        }
             
         case 2:
+        {
             printf("Bonne nuit.\n");
             break;
+        }
             
         default:
+        {
             printf("Vous n'aviez qu'a suivre les consignes. Vous ne recommencerez pas. :( \n");
             break;
+        }
     }
-    return 0;
+    return EXIT_SUCCESS;
 }
 
 ///

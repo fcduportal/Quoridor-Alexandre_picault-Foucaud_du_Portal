@@ -20,7 +20,7 @@
 
 //
 
-void clear_console (void);
+void clearConsole (void);
 
 
 
@@ -43,26 +43,26 @@ typedef struct plateau Plateau;
 
 
 
-// -------------------------------------------  fence
+// -------------------------------------------  Fence
 
 
 
-//structure for each fence used
+//structure for each Fence used
 
 struct fence
 {
     point A,B;
 };
-typedef struct fence fence;
+typedef struct fence Fence;
 
-//define the position of a fence
+//define the position of a Fence
 
-fence enter_coord_fence (void);
-
-
+Fence enterCoordFence (void);
 
 
-// end fence -------------------------------------------  begin Pawn
+
+
+// end Fence -------------------------------------------  begin Pawn
 
 
 
@@ -83,7 +83,7 @@ point enter_coord_Pawn (void);
 
 //
 
-int test_adjacent (point M, point N);
+int testAdjacent (point M, point N);
 int switchtest_adjacent (int test, point M, point N, Plateau plateau);
 
 
@@ -111,7 +111,7 @@ typedef enum boxesOrdi boxesOrdi;
 
 
 
-int availability_Box (point M, Plateau *plateau);
+int availabilityBox (point M, Plateau *plateau);
 
 // end boxes--------------------------------------------
 
@@ -123,13 +123,13 @@ int gagnant (Player *player);
 
 void display_board (Plateau *plateau, Player player[], int nb_player);
 
-void display_name_player (Player player, char c1, char c2);
+void displayPlayerName (Player player, char c1, char c2);
 
-void display_abscisses(char c1, char c2);
+void displayAbscisses(char c1, char c2);
 
-void display_lines (char c1, char c2);
+void displayLines (char c1, char c2);
 
-void display_ligne_vide (char c1, char c2);
+void displayEmptyLine (char c1, char c2);
 
 point enterLinesColumns (void);
 

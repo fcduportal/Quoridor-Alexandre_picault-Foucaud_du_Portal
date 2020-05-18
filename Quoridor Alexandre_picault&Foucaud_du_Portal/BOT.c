@@ -28,7 +28,7 @@ int playBot (Player player[], Plateau *plateau, Plateau *plateauOrdi)
     
     if (BETWEEN_0_8(player[ORDI].temp.line) && BETWEEN_0_8(player[ORDI].temp.column))
     {
-        if (plateauOrdi->board[player[ORDI].temp.line][player[ORDI].temp.column] == POSSIBLE && availability_Box(player[ORDI].temp, plateau) ==
+        if (plateauOrdi->board[player[ORDI].temp.line][player[ORDI].temp.column] == POSSIBLE && availabilityBox(player[ORDI].temp, plateau) ==
                 EXIT_SUCCESS)
         {
             mAJPoint(plateau, player);
