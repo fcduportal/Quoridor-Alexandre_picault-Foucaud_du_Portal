@@ -17,12 +17,7 @@ int fourPlayers (Player player[], int nbPlayers, Plateau plateau, int *duration)
 {
     int digitPlayer = 0, choice = 0;
     
-    char foucaud[NB_CHAR] = "Foucaud", Alexandre[NB_CHAR] = "Alexandre", Tom[NB_CHAR] = "Tom", Jules[NB_CHAR] = "Jules";
-    
-    strcpy(player[0].name, foucaud);
-    strcpy(player[1].name, Alexandre);
-    strcpy(player[2].name, Tom);
-    strcpy(player[3].name, Jules);
+
     
     for (int i = 0; i < 4; i++)
     {

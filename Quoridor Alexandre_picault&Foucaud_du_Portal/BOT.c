@@ -22,6 +22,7 @@ int playBot (Player player[], Plateau *plateau, Plateau *plateauComputer)
     // l'ordi regarde s'il peut avancer. (La case devant lui est vide)
     
     
+    
     player[Computer].temp.line = (player[Computer].position.line + 1);
     player[Computer].temp.column = (player[Computer].position.column);
     
@@ -250,4 +251,28 @@ void updatePoint (Plateau *plateau, Player *player)
     player[Computer].position = player[Computer].temp;
     player[Computer].temp.line = -1;
     player[Computer].temp.column = -1;
+}
+
+
+void displayMessage (void)
+{
+const char *mots[NB_CHAR] = {"Je reflechis.", "2 petites secondes.", "Tu ne m'auras pas.", "uhm uhm", "Floor gang", "GRRR", "PEEKABOO"};
+    
+    time_t temps = time(NULL);
+    unsigned long i = temps % 7;
+    
+    printf("\n%s", mots[i]);
+    usleep(100000);
+    usleep(100000);
+    usleep(100000);
+    printf(".");
+    usleep(100000);
+    usleep(100000);
+    usleep(100000);
+    printf(".");
+    usleep(100000);
+    usleep(100000);
+    usleep(100000);
+    printf(".\n");
+    usleep(1000000);
 }

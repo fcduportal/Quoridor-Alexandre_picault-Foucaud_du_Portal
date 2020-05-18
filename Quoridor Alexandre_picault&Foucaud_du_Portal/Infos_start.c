@@ -15,36 +15,37 @@
 
 #include "header.h"
 
-void startingInfos(int *nb_players, int *duration, Player *player) //Fonction which ask the first info.
+void startingInfos(int *nbPlayers, int *duration, Player *player) //Fonction which ask the first info.
 {
-    demandNbPlayer(nb_players);
+    demandNbPlayer(nbPlayers);
     *duration = demandTime();
+    demandNamePlayers(*nbPlayers, player);
 }
 
 //request for the number of players
 
 void demandNbPlayer (int *nbPlayers)
 {
-    printf("==NOMBRE DE JOUEURS==\n1. 1joueur humain et une IA.\n2. 2joueurs\n4. 4joueurs\n");
+    printf("==NOMBRE DE JOUEURS==\n\nSaississez le nombre de joueur. (1, 2, 4)\nAppuyer sur 'entrer' après avoir saisie le nombre de joueur.\n\n1. 1joueur humain et une IA.\n2. 2joueurs\n4. 4joueurs\n");
     scanf("%d", nbPlayers);
     
     switch (*nbPlayers)
     {
         case 1:
         {
-            printf("Vous allez jouer tout seul mais contre un bot, mais combien de temps");
+            printf("Vous allez jouer tout seul mais contre un bot, mais combien de temps\n\n");
             break;
         }
             
         case 2:
         {
-            printf("Vous allez jouer a 2 mais combien de temps ?\n");
+            printf("Vous allez jouer a 2 mais combien de temps ?\n\n");
             break;
         }
             
         case 4:
         {
-            printf("Vous allez jouer a 4 mais combien de temps ?\n");
+            printf("Vous allez jouer a 4 mais combien de temps ?\n\n");
             break;
         }
             
@@ -63,7 +64,7 @@ void demandNbPlayer (int *nbPlayers)
 int demandTime (void)
 {
     int duration = 0;
-    printf("\n\n==TEMPS DE PARTIE==\n10 minutes\n15 minutes\n20.minutes\n");
+    printf("\n\n==TEMPS DE PARTIE==\n\nSaississez la duree de la partie. (10, 15, 20)\nAppuyer sur 'entrer' après avoir saisie la duree.\n\n10 minutes\n15 minutes\n20.minutes\n");
     scanf("%d", &duration);
     
     switch (duration)
@@ -94,17 +95,27 @@ int demandTime (void)
     return duration;
 }
 
-//void demand_name_player (int i, Player *player)
-//{
-//    char name[NB_CHAR];
-//    printf("Joueur n : %d \nComment vous appellez vous ?\t", i+1);
-//    scanf("%s", name);
-//    strcpy(player->name, name);
-////    scanf("%s", &player->name);
-//    printf("\nPar quel caractere voulez vous être represente ?\t");
-//    scanf("%c", &player[i].affichage);
-//    printf("cou");
-//}
+void demandNamePlayers (int nbPlayers, Player *player)
+{
+    if (nbPlayers == 1)
+    {
+        printf("\n\nComment vous appelez vous?\t");
+        scanf("%s",player[1].name);
+        
+        printf("Comment voulez vous appeler l'iA?\t");
+        scanf ("%s",player[0].name);
+    }
+    else
+    {
+        printf("\n");
+        for (int i = 0; i < nbPlayers; i++)
+        {
+            printf("Comment s'appelle le joueur numero %d?\t", (i + 1));
+            scanf("%s",player[i].name);
+        }
+    }
+}
+
 
 ///
 

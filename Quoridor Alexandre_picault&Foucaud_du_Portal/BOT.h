@@ -23,5 +23,6 @@ PointCalculation searchBestPoint (Plateau *plateau, point point, PointCalculatio
 
 void updatePoint (Plateau *plateau, Player *player);
 
+void displayMessage (void);
 
 #endif /* BOT_h */

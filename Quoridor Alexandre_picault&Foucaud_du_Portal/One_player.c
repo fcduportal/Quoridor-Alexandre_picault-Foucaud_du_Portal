@@ -22,11 +22,6 @@ int onePlayer (Player player[], int nb_Players, Plateau plateau, int *duration)
         }
     }
     
-    char Foucaud[NB_CHAR] = "Foucaud", BOT[NB_CHAR] = "BOT";
-
-    strcpy(player[Gamer].name, Foucaud);
-    strcpy(player[Computer].name, BOT);
-    
     
     player[0].number_fence = NB_FENCE_MAX;
     player[1].number_fence = NB_FENCE_MAX;
@@ -59,8 +54,11 @@ int onePlayer (Player player[], int nb_Players, Plateau plateau, int *duration)
 
         if (digitPlayer == Computer)
         {
+            
             playBot(player, &plateau, &plateauComputer);
+            displayMessage();
             digitPlayer = ( (digitPlayer + 1) % 2);
+            
         }
         else
         {

@@ -13,7 +13,7 @@
 
 ///
 
-void startingInfos(int *nb_players, int *duration, Player *player);
+void startingInfos(int *nbPlayers, int *duration, Player *player);
 
 //request for the number of players
 
@@ -21,7 +21,7 @@ void demandNbPlayer (int *nb_players);
 
 // request name player
 
-void demandNamePlayer (int digit_player, Player player[]);
+void demandNamePlayers (int nbPlayers, Player *player);
 
 //request for party time
 

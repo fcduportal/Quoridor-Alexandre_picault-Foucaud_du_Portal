@@ -17,8 +17,6 @@ int playFence (Player player[], int digitPlayer, Plateau *Plateau)
 {
     Fence Barrier;
     
-    printf("\n%s : Il vous reste %d barrières\n",player[digitPlayer].name,player[digitPlayer].number_fence);
-    
     switch (player[digitPlayer].number_fence)
     {
         case 0:

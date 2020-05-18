@@ -16,12 +16,6 @@ int twoPlayers (Player player[], int nbPlayers, Plateau plateau, int *duration)
 {
     int digitPlayer=0, choice=0;
     
-    char Foucaud[NB_CHAR] = "Foucaud", Alexandre[NB_CHAR] = "Alexandre";
-
-    strcpy(player[0].name, Foucaud);
-    strcpy(player[1].name, Alexandre);
-    
-    
     player[0].number_fence = NB_FENCE_MAX;
     player[1].number_fence = NB_FENCE_MAX;
     
