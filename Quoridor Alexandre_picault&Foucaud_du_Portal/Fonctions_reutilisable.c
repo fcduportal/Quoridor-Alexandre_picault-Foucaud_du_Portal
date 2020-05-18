@@ -152,12 +152,12 @@ int test_adjacent (point M, point N)
 
 
 
-int hourglass (int *duration, time_t t_debut)
+int hourglass (int *duration, time_t startTime )
 {
-    time_t t_courant = (time(NULL));
-    time_t t_ecoule = difftime(t_courant, t_debut);
+    time_t currentTime = (time(NULL));
+    time_t lapsedTime = difftime(currentTime, startTime );
     
-    if (t_ecoule>(*duration*60))
+    if (lapsedTime>(*duration*60))
     {
         return EXIT_FAILURE;
     }
@@ -171,35 +171,35 @@ int hourglass (int *duration, time_t t_debut)
 
 int gagnant (Player *player)
 {
-    int etat = EXIT_FAILURE;
+    int state = EXIT_FAILURE;
     if (player[0].position.line == 8)
     {
         printf("Le joueur %s a gagne.\n", player[0].name);
-        etat = EXIT_SUCCESS;
+        state = EXIT_SUCCESS;
     }
     if (player[1].position.line == 0)
     {
         printf("Le joueur %s a gagne.\n", player[1].name);
-        etat = EXIT_SUCCESS;
+        state = EXIT_SUCCESS;
     }
     if (player[2].position.column == 8)
     {
         printf("Le joueur %s a gagne.\n", player[2].name);
-        etat = EXIT_SUCCESS;
+        state = EXIT_SUCCESS;
     }
     if (player[0].position.column == 0)
     {
         printf("Le joueur %s a gagne.\n", player[3].name);
-        etat = EXIT_SUCCESS;
+        state = EXIT_SUCCESS;
     }
-    return etat;
+    return state;
 }
 
 
 void display_board (Plateau *plateau, Player player[], int nb_player)
 {
-    char nomJoueur3[LG_COLONNE+1];
-    char nomJoueur4[LG_COLONNE+1];
+    char namePlayer3[LG_COLONNE+1];
+    char namePlayer4[LG_COLONNE+1];
     unsigned long p3 = 0, p4 = 0;
     unsigned long lg3 = strlen(player[2].name), lg4 = strlen(player[3].name);
     
@@ -208,55 +208,55 @@ void display_board (Plateau *plateau, Player player[], int nb_player)
     
     for (int i = 0; i < p3 ; i++)
     {
-        nomJoueur3[i] = ' ';
+        namePlayer3[i] = ' ';
     }
     for (unsigned long i = p3; i < (p3 + lg3) ; i++)
     {
-        nomJoueur3[i] = player[2].name[i - p3];
+        namePlayer3[i] = player[2].name[i - p3];
     }
     for (unsigned long i = (p3 + lg3) ; i < LG_COLONNE ; i++)
     {
-        nomJoueur3[i] = ' ';
+        namePlayer3[i] = ' ';
     }
 
-   nomJoueur3[LG_COLONNE] = '\0';
+   namePlayer3[LG_COLONNE] = '\0';
     
     
     for (int i = 0; i < p4 ; i++)
     {
-        nomJoueur4[i] = ' ';
+        namePlayer4[i] = ' ';
     }
     for (unsigned long i = p4; i < (p4 + lg4) ; i++)
     {
-        nomJoueur4[i] = player[3].name[i - p4];
+        namePlayer4[i] = player[3].name[i - p4];
     }
     for (unsigned long i = (p4 + lg4) ; i < LG_COLONNE ; i++)
     {
-        nomJoueur4[i] = ' ';
+        namePlayer4[i] = ' ';
     }
-    nomJoueur4[LG_COLONNE] = '\0';
+    namePlayer4[LG_COLONNE] = '\0';
 
     
     clear_console();
     
     int curseur = 0 ;
     
-    display_name_player(player[0], nomJoueur3[curseur], nomJoueur4[curseur]) ;
+    display_name_player(player[0], namePlayer3[curseur], namePlayer4[curseur]) ;
     curseur++;
     
-    display_ligne_vide(nomJoueur3[curseur], nomJoueur4[curseur]);
+    display_ligne_vide(namePlayer3[curseur], namePlayer4[curseur]);
     curseur++;
     
-    display_abscisses(nomJoueur3[curseur], nomJoueur4[curseur]);
+    display_abscisses(namePlayer3[curseur], namePlayer4[curseur]);
     curseur++;
     
-    display_lines(nomJoueur3[curseur],  nomJoueur4[curseur]);
+    display_lines(namePlayer3[curseur],  namePlayer4[curseur]);
     curseur++;
     
     for (int i = 0; i < 9; i++)
     {
 
-        printf("%c  %d", nomJoueur3[curseur], i);
+        printf("%c  %d", namePlayer3[curseur], i);
         for (int j = 0; j < 9; j++)
         {
             switch (plateau->board[i][j])
@@ -285,19 +285,19 @@ void display_board (Plateau *plateau, Player player[], int nb_player)
                 }
             }
         }
-        printf("|%d  %c\n", i, nomJoueur4[curseur]);
+        printf("|%d  %c\n", i, namePlayer4[curseur]);
         curseur++;
 
-        display_lines(nomJoueur3[curseur], nomJoueur4[curseur]) ;
+        display_lines(namePlayer3[curseur], namePlayer4[curseur]) ;
         curseur++;
     }
-    display_abscisses(nomJoueur3[curseur], nomJoueur4[curseur]);
+    display_abscisses(namePlayer3[curseur], namePlayer4[curseur]);
     curseur++;
     
-    display_ligne_vide(nomJoueur3[curseur], nomJoueur4[curseur]);
+    display_ligne_vide(namePlayer3[curseur], namePlayer4[curseur]);
     curseur++;
     
-    display_name_player(player[1], nomJoueur3[curseur], nomJoueur4[curseur]);
+    display_name_player(player[1], namePlayer3[curseur], namePlayer4[curseur]);
     printf("\n\n");
 }
 
