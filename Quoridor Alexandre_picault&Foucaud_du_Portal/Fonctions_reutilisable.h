@@ -83,7 +83,7 @@ point enter_coord_Pawn (void);
 
 //
 
-int tester_adjacent (point M, point N);
+int test_adjacent (point M, point N);
 int switchtest_adjacent (int test, point M, point N, Plateau plateau);
 
 
@@ -117,7 +117,7 @@ int availability_Box (point M, Plateau *plateau);
 
 
 
-int sablier (int *duration, time_t t_debut);
+int hourglass (int *duration, time_t t_debut);
 
 int gagnant (Player *player);
 

@@ -32,7 +32,7 @@ int playFence (Player player[], int digit_Player, Plateau *plateau)
         {
             Barrier = enter_coord_fence();
             
-            if (tester_adjacent(Barrier.A, Barrier.B) == EXIT_SUCCESS)
+            if (test_adjacent(Barrier.A, Barrier.B) == EXIT_SUCCESS)
             {
                 if (availability_Box(Barrier.A, plateau) == EXIT_SUCCESS)
                 {
@@ -63,7 +63,7 @@ int playPawn (Player player[], Plateau *plateau)
     
     player->temp = enter_coord_Pawn();
     
-    if (tester_adjacent(player->position, player->temp) == EXIT_SUCCESS)
+    if (test_adjacent(player->position, player->temp) == EXIT_SUCCESS)
     {
         if (availability_Box(player->temp, plateau) == EXIT_SUCCESS)
         {

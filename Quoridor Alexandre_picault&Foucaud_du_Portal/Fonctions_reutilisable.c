@@ -129,13 +129,13 @@ int availability_Box (point M, Plateau *plateau)
 
 //
 
-int tester_adjacent (point M, point N)
+int test_adjacent (point M, point N)
 {
-    if (M.line == N.line && (M.column-N.column==-1 || M.column-N.column == 1))
+    if (M.line == N.line && ((M.column - N.column) == -1 || (M.column - N.column) == 1))
     {
         return EXIT_SUCCESS;
     }
-    else if (M.column == N.column && (M.line-N.line==-1 || M.line-N.line == 1))
+    else if (M.column == N.column && ( (M.line - N.line) == -1 || (M.line-N.line) == 1) )
     {
         return EXIT_SUCCESS;
     }
@@ -152,7 +152,7 @@ int tester_adjacent (point M, point N)
 
 
 
-int sablier (int *duration, time_t t_debut)
+int hourglass (int *duration, time_t t_debut)
 {
     time_t t_courant = (time(NULL));
     time_t t_ecoule = difftime(t_courant, t_debut);

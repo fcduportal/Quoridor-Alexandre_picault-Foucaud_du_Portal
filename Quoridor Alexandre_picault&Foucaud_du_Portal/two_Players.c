@@ -86,7 +86,7 @@ int Game_2_Players (Player player[], int nb_Players, Plateau plateau, int *durat
             }
         }
         
-        if (sablier(duration, t_debut) != EXIT_SUCCESS || gagnant(player) == EXIT_SUCCESS) // il ne reste plus de temps ou un joueur a gagne la partie.
+        if (hourglass(duration, t_debut) != EXIT_SUCCESS || gagnant(player) == EXIT_SUCCESS) // il ne reste plus de temps ou un joueur a gagne la partie.
         {
             printf("\nFin de Partie.\n");
             boucle=0;
