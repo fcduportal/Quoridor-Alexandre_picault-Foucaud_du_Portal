@@ -78,3 +78,5 @@ int playPawn (Player player[], Plateau *plateau)
     }
     return EXIT_FAILURE;
 }
+
+
